@@ -35,7 +35,7 @@ const AppHeader = (props) => {
       </div>
       <div className='right'>
         <div>
-          <Dropdown overlay={menu} overlayStyle={{ width: '20rem' }}>
+          <Dropdown overlay={menu} overlayStyle={{ width: '120px' }}>
             <div className='ant-dropdown-link'>
               <Avatar
                 icon={<UserOutlined />}

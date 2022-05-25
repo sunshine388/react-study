@@ -1,10 +1,10 @@
-import React from 'react'
-import img404 from '@/assets/images/404.jpg'
+import React from 'react';
+import img404 from '@/assets/images/404.jpg';
 
 const View404 = () => (
-    <div style={{ textAlign: 'center', marginTop: '5rem' }}>
-        <img src={img404} alt='' />
-    </div>
-)
+  <div style={{ textAlign: 'center', marginTop: '60px' }}>
+    <img src={img404} alt='' />
+  </div>
+);
 
-export default View404
+export default View404;

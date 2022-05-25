@@ -1,10 +1,10 @@
-import React from 'react'
-import img500 from '@/assets/images/500.png'
+import React from 'react';
+import img500 from '@/assets/images/500.png';
 
 const View500 = () => (
-    <div style={{ textAlign: 'center' }}>
-        <img src={img500} alt='' />
-    </div>
-)
+  <div style={{ textAlign: 'center' }}>
+    <img src={img500} alt='' />
+  </div>
+);
 
-export default View500
+export default View500;

@@ -4,8 +4,6 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import './styles/base.scss';
-import './styles/App.scss';
 import loadable from '@/utils/loadable';
 import routes from '@/router';
 const View404 = loadable(() => import('@/views/Others/404'));

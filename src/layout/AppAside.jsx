@@ -76,7 +76,7 @@ class AppAside extends Component {
             rel='noopener noreferrer'
             href='https://github.com/sunshine388'
             target='_blank'>
-            <GithubOutlined style={{ fontSize: '3.8rem', color: '#fff' }} />
+            <GithubOutlined style={{ fontSize: '45px', color: '#fff' }} />
           </a>
         </div>
         <Menu
