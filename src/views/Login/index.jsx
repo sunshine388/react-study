@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Input, Form, Button, Divider, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import '@/styles/view-style/login.scss';
+import './login.scss';
 import withRouter from '@/utils/withRouter';
 
 class Login extends Component {
@@ -20,7 +20,7 @@ class Login extends Component {
     this.enterLoading();
     this.timer = setTimeout(() => {
       message.success('登录成功!');
-      this.props.navigate('/public/button');
+      this.props.navigate('/native/pureCSS/batman');
     }, 2000);
   };
 

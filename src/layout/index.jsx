@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Layout, BackTop, message } from 'antd';
-import '@/styles/layout.scss';
+import './layout.scss';
 import withRouter from '@/utils/withRouter';
 
 import AppHeader from './AppHeader.jsx';

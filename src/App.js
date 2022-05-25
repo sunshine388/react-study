@@ -27,7 +27,7 @@ function App() {
                 element={item.component}></Route>
             );
           })}
-          <Route path='' element={<Navigate to={'/public/button'} />} />
+          <Route path='' element={<Navigate to={'/native/pureCSS/batman'} />} />
         </Route>
         <Route path='*' element={<View404 />} />
         <Route path='/500' element={<View500 />} />

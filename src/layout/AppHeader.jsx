@@ -19,7 +19,7 @@ const AppHeader = (props) => {
       items={[
         {
           label: '退出登录',
-          key: '/public',
+          key: 'logout',
           icon: <LoginOutlined />
         }
       ]}></Menu>
