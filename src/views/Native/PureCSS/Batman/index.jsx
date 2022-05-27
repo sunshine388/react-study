@@ -4,13 +4,13 @@ import './Batman.scss';
 class BatmanView extends Component {
   render() {
     return (
-      <div class='box'>
-        <div class='batman'>
-          <div class='head'></div>
-          <div class='eye left'></div>
-          <div class='eye right'> </div>
-          <div class='mouth'></div>
-          <div class='body'></div>
+      <div className='box'>
+        <div className='batman'>
+          <div className='head'></div>
+          <div className='eye left'></div>
+          <div className='eye right'></div>
+          <div className='mouth'></div>
+          <div className='body'></div>
         </div>
       </div>
     );

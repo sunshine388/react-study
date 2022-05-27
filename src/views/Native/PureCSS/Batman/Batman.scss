@@ -4,183 +4,184 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  font-size: 14px;
 }
 .batman {
   position: relative;
-  width: 15em;
-  height: 17em;
+  width: 210px;
+  height: 240px;
   background: #333333;
   z-index: 1;
   animation: move linear 1s infinite alternate;
-}
-.batman:after,
-.batman:before {
-  content: '';
-  position: absolute;
-}
-.batman:after {
-  width: 9.5em;
-  height: 12.8em;
-  background: #222222;
-  margin-top: 4em;
-  margin-left: 4.8em;
-  border-radius: 100% 50% 0% 0%;
-}
-.batman:before {
-  width: 15em;
-  height: 8em;
-  background: #333333;
-  margin-top: 17em;
-}
-.batman .head {
-  position: absolute;
-  background: #fff;
-  width: 8em;
-  height: 5em;
-  position: absolute;
-  top: 0;
-  left: 1em;
-  transform: skewX(15deg);
-}
-.batman .head:after,
-.batman .head:before {
-  content: '';
-  position: absolute;
-}
-.batman .head:after {
-  background: #fff;
-  width: 7em;
-  height: 5em;
-  top: 0;
-  left: 6em;
-  transform: skewX(-30deg);
-}
-.batman .head:before {
-  background: #333;
-  width: 13em;
-  z-index: 1;
-  margin-top: 3.7em;
-  margin-left: -1em;
-  height: 2em;
-  border-radius: 100%;
-  transform: skewX(-15deg);
-  top: 0;
-}
-.batman .eye {
-  position: absolute;
-  width: 3.5em;
-  margin-top: 13em;
-  margin-left: 2em;
-  height: 2em;
-  z-index: 2;
-  background: #777777;
-}
-.batman .left {
-  border-radius: 10% 70% 20% 100%;
-  transform: rotate(0deg);
-}
-.batman .right {
-  margin-left: 9em;
-  border-radius: 70% 20% 100% 20%;
-  transform: rotate(0deg);
-}
-.batman .mouth {
-  position: absolute;
-  background: #f4d2c9;
-  width: 13em;
-  height: 5.5em;
-  margin-top: 16.8em;
-  margin-left: 1.1em;
-  border-radius: 0% 0% 100% 100%;
-}
-.batman .mouth:after,
-.batman .mouth:before {
-  content: '';
-  position: absolute;
-}
-.batman .mouth:before {
-  width: 5em;
-  height: 1em;
-  background: #f4d2c9;
-  border-top: 0.8em solid #c6a59e;
-  border-radius: 100%;
-  margin-top: 2em;
-  margin-left: 3.8em;
-  animation: laugh ease 1s infinite alternate;
-}
-.batman .mouth:after {
-  width: 2em;
-  height: 0.3em;
-  background: #c6a59e;
-  margin-top: 3.5em;
-  border-radius: 0.3em;
-  margin-left: 5.4em;
-  z-index: 2;
-}
-.batman .body {
-  position: absolute;
-  width: 35em;
-  height: 15em;
-  margin-left: -9.5em;
-  border-radius: 100% 100% 0% 0%;
-  background: #333333;
-  margin-top: 23em;
-  animation: dance linear 1s infinite alternate;
-}
-.batman .body:after,
-.batman .body:before {
-  content: '';
-  position: absolute;
-}
-.batman .body:after {
-  width: 32em;
-  height: 8em;
-  margin-top: 7em;
-  margin-left: 1.5em;
-  border-radius: 100% 100% 0% 0%;
-  background: #656f71;
-}
-.batman .body:before {
-  background: #333333;
-  width: 20em;
-  height: 8em;
-  margin-top: 3em;
-  z-index: 1;
-  margin-left: 7.5em;
-  border-radius: 100%;
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+  }
+  &:after {
+    width: 135px;
+    height: 180px;
+    background: #222222;
+    margin-top: 55px;
+    margin-left: 70px;
+    border-radius: 100% 50% 0% 0%;
+  }
+  &:before {
+    width: 210px;
+    height: 110px;
+    background: #333333;
+    margin-top: 240px;
+  }
+  .head {
+    position: absolute;
+    background: #fff;
+    width: 110px;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    left: 14px;
+    transform: skewX(15deg);
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+    }
+    &:after {
+      background: #fff;
+      width: 100px;
+      height: 70px;
+      top: 0;
+      left: 84px;
+      transform: skewX(-30deg);
+    }
+    &:before {
+      background: #333;
+      width: 180px;
+      z-index: 1;
+      margin-top: 52px;
+      margin-left: -14px;
+      height: 28px;
+      border-radius: 100%;
+      transform: skewX(-15deg);
+      top: 0;
+    }
+  }
+  .eye {
+    position: absolute;
+    width: 50px;
+    margin-top: 180px;
+    margin-left: 28px;
+    height: 28px;
+    z-index: 2;
+    background: #777777;
+  }
+  .left {
+    border-radius: 10% 70% 20% 100%;
+    transform: rotate(0deg);
+  }
+  .right {
+    margin-left: 126px;
+    border-radius: 70% 20% 100% 20%;
+    transform: rotate(0deg);
+  }
+  .mouth {
+    position: absolute;
+    background: #f4d2c9;
+    width: 180px;
+    height: 77px;
+    margin-top: 235px;
+    margin-left: 15px;
+    border-radius: 0% 0% 100% 100%;
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+    }
+    &:before {
+      width: 70px;
+      height: 14px;
+      background: #f4d2c9;
+      border-top: 11px solid #c6a59e;
+      border-radius: 100%;
+      margin-top: 28px;
+      margin-left: 53px;
+      animation: laugh ease 1s infinite alternate;
+    }
+    &:after {
+      width: 28px;
+      height: 5px;
+      background: #c6a59e;
+      margin-top: 50x;
+      border-radius: 5px;
+      margin-left: 75px;
+      z-index: 2;
+    }
+  }
+  .body {
+    position: absolute;
+    width: 450px;
+    height: 210px;
+    margin-left: -133px;
+    border-radius: 100% 100% 0% 0%;
+    background: #333333;
+    margin-top: 322px;
+    animation: dance linear 1s infinite alternate;
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+    }
+    &:after {
+      width: 450px;
+      height: 110px;
+      margin-top: 100px;
+      margin-left: 21px;
+      border-radius: 100% 100% 0% 0%;
+      background: #656f71;
+    }
+    &:before {
+      background: #333333;
+      width: 280px;
+      height: 110px;
+      margin-top: 42px;
+      z-index: 1;
+      margin-left: 105px;
+      border-radius: 100%;
+    }
+  }
 }
 
 @keyframes dance {
   0% {
-    margin-left: -9em;
+    margin-left: -125px;
   }
   50% {
-    margin-left: -9.5em;
+    margin-left: -133px;
   }
   100% {
-    margin-left: -10em;
+    margin-left: -140px;
   }
 }
 @keyframes move {
   0% {
-    margin-top: 0em;
+    margin-top: 0px;
   }
   50% {
-    margin-top: 2em;
+    margin-top: 28px;
   }
   100% {
-    margin-top: 0em;
+    margin-top: 0px;
   }
 }
 @keyframes laugh {
   0% {
-    border-top: 0.8em solid #c6a59e;
+    border-top: 11px solid #c6a59e;
   }
   50% {
-    border-top: 0.5em solid #c6a59e;
+    border-top: 7px solid #c6a59e;
   }
   100% {
-    border-top: 0.8em solid #c6a59e;
+    border-top: 11px solid #c6a59e;
   }
 }
