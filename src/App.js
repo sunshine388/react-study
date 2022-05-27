@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import loadable from '@/utils/loadable';
 import routes from '@/router';
+import '@/styles/index.scss';
+
 const View404 = loadable(() => import('@/views/Others/404'));
 const View500 = loadable(() => import('@/views/Others/500'));
 const Login = loadable(() => import('@/views/Login'));

@@ -44,8 +44,10 @@ class DefaultLayout extends Component {
         <AppAside menuToggle={this.state.menuToggle} />
         <Layout
           style={{
-            marginLeft: this.state.menuToggle ? '80px' : '200px',
-            minHeight: '100vh'
+            width: this.state.menuToggle
+              ? 'calc(100% - 80px)'
+              : 'calc(100% - 200px)',
+            height: '100%'
           }}>
           <AppHeader
             menuToggle={this.state.menuToggle}
