@@ -16,6 +16,16 @@ const menu = [
             key: '/native/pureCSS/batman'
           }
         ]
+      },
+      {
+        label: '三件套',
+        key: '/native/threePiece',
+        children: [
+          {
+            label: <Link to='/native/threePiece/parallax'>视差效果</Link>,
+            key: '/native/threePiece/parallax'
+          }
+        ]
       }
     ]
   }
