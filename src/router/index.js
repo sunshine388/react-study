@@ -1,14 +1,7 @@
-import loadable from '@/utils/loadable';
+import { nativeRoutes } from './modules/native';
+import { gaodeMapRoutes } from './modules/gaodeMap';
+import { baiduMapRoutes } from './modules/baiduMap';
 
-const Batman = loadable(() => import('@/views/Native/PureCSS/Batman'));
-
-const ParallaxView = loadable(() =>
-  import('@/views/Native/ThreePiece/Parallax')
-);
-
-const routes = [
-  { path: 'native/pureCSS/batman', component: <Batman /> },
-  { path: 'native/threePiece/parallax', component: <ParallaxView /> }
-];
+const routes = [...nativeRoutes, ...gaodeMapRoutes, ...baiduMapRoutes];
 
 export default routes;
