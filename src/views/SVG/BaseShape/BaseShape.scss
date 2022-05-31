@@ -1,0 +1,70 @@
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  div {
+    margin: 0 20px 20px 0;
+    background-color: #eee;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+    p {
+      font-size: 20px;
+      line-height: 50px;
+      border-bottom: 1px solid #ccc;
+    }
+    svg {
+      background-color: #fff;
+    }
+  }
+}
+
+.svg__line {
+  width: 450px;
+  height: 180px;
+  border: 1px solid #ccc;
+  .line4 {
+    stroke: #9896f1;
+    stroke-width: 6;
+  }
+}
+
+.svg__rect {
+  width: 240px;
+  height: 180px;
+  border: 1px solid #ccc;
+}
+
+.svg__circle {
+  width: 460px;
+  height: 180px;
+  border: 1px solid #ccc;
+}
+
+.svg__ellipse {
+  width: 120px;
+  height: 180px;
+  border: 1px solid #ccc;
+}
+
+.svg__polygon {
+  width: 300px;
+  height: 180px;
+  border: 1px solid #ccc;
+  .polygon3 {
+    fill: yellow;
+    fill-opacity: 0.5;
+    stroke: black;
+    stroke-width: 2;
+  }
+}
+
+.svg__polyline {
+  width: 320px;
+  height: 180px;
+  border: 1px solid #ccc;
+}
+
+.svg__linecap {
+  width: 300px;
+  height: 180px;
+  border: 1px solid #ccc;
+}
