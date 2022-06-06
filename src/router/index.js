@@ -4,6 +4,7 @@ import { canvasRoutes } from './modules/canvas';
 import { gaodeMapRoutes } from './modules/gaodeMap';
 import { baiduMapRoutes } from './modules/baiduMap';
 import { openlayersRoutes } from './modules/openlayers';
+import { arcgisRoutes } from './modules/arcgis';
 
 const routes = [
   ...nativeRoutes,
@@ -11,7 +12,8 @@ const routes = [
   ...canvasRoutes,
   ...gaodeMapRoutes,
   ...baiduMapRoutes,
-  ...openlayersRoutes
+  ...openlayersRoutes,
+  ...arcgisRoutes
 ];
 
 export default routes;
