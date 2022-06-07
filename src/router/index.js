@@ -5,6 +5,7 @@ import { gaodeMapRoutes } from './modules/gaodeMap';
 import { baiduMapRoutes } from './modules/baiduMap';
 import { openlayersRoutes } from './modules/openlayers';
 import { arcgisRoutes } from './modules/arcgis';
+import { leafletRoutes } from './modules/leaflet';
 
 const routes = [
   ...nativeRoutes,
@@ -13,7 +14,8 @@ const routes = [
   ...gaodeMapRoutes,
   ...baiduMapRoutes,
   ...openlayersRoutes,
-  ...arcgisRoutes
+  ...arcgisRoutes,
+  ...leafletRoutes
 ];
 
 export default routes;

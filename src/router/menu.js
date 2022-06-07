@@ -5,6 +5,7 @@ import { gaodeMapMenu } from './modules/gaodeMap';
 import { baiduMapMenu } from './modules/baiduMap';
 import { openlayersMenu } from './modules/openlayers';
 import { arcgisMenu } from './modules/arcgis';
+import { leafletMenu } from './modules/leaflet';
 
 const menu = [
   nativeMenu,
@@ -13,7 +14,8 @@ const menu = [
   gaodeMapMenu,
   baiduMapMenu,
   openlayersMenu,
-  arcgisMenu
+  arcgisMenu,
+  leafletMenu
 ];
 
 export default menu;
