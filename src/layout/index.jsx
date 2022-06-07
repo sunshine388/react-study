@@ -17,7 +17,9 @@ class DefaultLayout extends Component {
 
   isLogin = () => {
     if (!localStorage.getItem('user')) {
-      this.props.navigate('/login');
+      this.setState({}, () => {
+        this.props.navigate('/login');
+      });
     }
   };
 
