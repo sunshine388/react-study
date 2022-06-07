@@ -7,6 +7,7 @@ import { tiandituRoutes } from './modules/tianditu';
 import { openlayersRoutes } from './modules/openlayers';
 import { arcgisRoutes } from './modules/arcgis';
 import { leafletRoutes } from './modules/leaflet';
+import { threeRoutes } from './modules/three';
 
 const routes = [
   ...nativeRoutes,
@@ -17,7 +18,8 @@ const routes = [
   ...tiandituRoutes,
   ...openlayersRoutes,
   ...arcgisRoutes,
-  ...leafletRoutes
+  ...leafletRoutes,
+  ...threeRoutes
 ];
 
 export default routes;

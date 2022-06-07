@@ -7,6 +7,7 @@ import { tiandituMenu } from './modules/tianditu';
 import { openlayersMenu } from './modules/openlayers';
 import { arcgisMenu } from './modules/arcgis';
 import { leafletMenu } from './modules/leaflet';
+import { threeMenu } from './modules/three';
 
 const menu = [
   nativeMenu,
@@ -17,7 +18,8 @@ const menu = [
   tiandituMenu,
   openlayersMenu,
   arcgisMenu,
-  leafletMenu
+  leafletMenu,
+  threeMenu
 ];
 
 export default menu;
