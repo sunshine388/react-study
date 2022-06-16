@@ -19,12 +19,12 @@
     position: absolute;
   }
   &:after {
-    width: 135px;
-    height: 180px;
+    width: 130px;
+    height: 176px;
     background: #222222;
-    margin-top: 55px;
+    margin-top: 58px;
     margin-left: 70px;
-    border-radius: 100% 50% 0% 0%;
+    border-radius: 100% 40% 0% 0%;
   }
   &:before {
     width: 210px;
@@ -51,7 +51,7 @@
       width: 100px;
       height: 70px;
       top: 0;
-      left: 84px;
+      left: 82px;
       transform: skewX(-30deg);
     }
     &:before {
@@ -133,10 +133,10 @@
       position: absolute;
     }
     &:after {
-      width: 450px;
+      width: 410px;
       height: 110px;
       margin-top: 100px;
-      margin-left: 21px;
+      margin-left: 20px;
       border-radius: 100% 100% 0% 0%;
       background: #656f71;
     }
