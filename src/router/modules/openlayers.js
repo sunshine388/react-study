@@ -6,12 +6,16 @@ const StatedView = loadable(() => import('@/views/OpenLayers/Stated'));
 const PopupView = loadable(() => import('@/views/OpenLayers/Popup'));
 const ZoomView = loadable(() => import('@/views/OpenLayers/Zoom'));
 const TabIndexView = loadable(() => import('@/views/OpenLayers/TabIndex'));
+const ChangeTargetView = loadable(() =>
+  import('@/views/OpenLayers/ChangeTarget')
+);
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
   { path: 'openlayers/popup', component: <PopupView /> },
   { path: 'openlayers/zoom', component: <ZoomView /> },
   { path: 'openlayers/tabIndex', component: <TabIndexView /> },
+  { path: 'openlayers/changeTarget', component: <ChangeTargetView /> },
 ];
 
 export const openlayersMenu = {
@@ -35,6 +39,9 @@ export const openlayersMenu = {
       label: <Link to='/openlayers/tabIndex'>点击激活地图 tabIndex</Link>,
       key: '/openlayers/tabIndex'
     },
+    {
+      label: <Link to='/openlayers/changeTarget'>切换地图容器</Link>,
+      key: '/openlayers/changeTarget'
     }
   ]
 };
