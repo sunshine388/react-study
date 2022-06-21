@@ -12,6 +12,7 @@ const ChangeTargetView = loadable(() =>
 const SynchronizationView = loadable(() =>
   import('@/views/OpenLayers/Synchronization')
 );
+const PreloadMapView = loadable(() => import('@/views/OpenLayers/PreloadMap'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -20,6 +21,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/tabIndex', component: <TabIndexView /> },
   { path: 'openlayers/changeTarget', component: <ChangeTargetView /> },
   { path: 'openlayers/synchronization', component: <SynchronizationView /> },
+  { path: 'openlayers/preloadMap', component: <PreloadMapView /> },
 ];
 
 export const openlayersMenu = {
@@ -50,6 +52,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/synchronization'>同步两个地图</Link>,
       key: '/openlayers/synchronization'
+    },
+    {
+      label: <Link to='/openlayers/preloadMap'>预加载 preload</Link>,
+      key: '/openlayers/preloadMap'
     }
   ]
 };
