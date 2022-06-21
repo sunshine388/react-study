@@ -1,0 +1,38 @@
+#map {
+  width: 1000px;
+  height: 700px;
+}
+
+.popup {
+  width: 300px;
+  height: 100px;
+  background: #fff;
+  position: absolute;
+  top: -115px;
+  left: -150px;
+  box-sizing: border-box;
+  padding: 10px;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .icon-close {
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    cursor: pointer;
+  }
+
+  .popup-content {
+    margin-top: 14px;
+  }
+}
