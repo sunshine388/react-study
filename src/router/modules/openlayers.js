@@ -9,6 +9,9 @@ const TabIndexView = loadable(() => import('@/views/OpenLayers/TabIndex'));
 const ChangeTargetView = loadable(() =>
   import('@/views/OpenLayers/ChangeTarget')
 );
+const SynchronizationView = loadable(() =>
+  import('@/views/OpenLayers/Synchronization')
+);
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -16,6 +19,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/zoom', component: <ZoomView /> },
   { path: 'openlayers/tabIndex', component: <TabIndexView /> },
   { path: 'openlayers/changeTarget', component: <ChangeTargetView /> },
+  { path: 'openlayers/synchronization', component: <SynchronizationView /> },
 ];
 
 export const openlayersMenu = {
@@ -42,6 +46,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/changeTarget'>切换地图容器</Link>,
       key: '/openlayers/changeTarget'
+    },
+    {
+      label: <Link to='/openlayers/synchronization'>同步两个地图</Link>,
+      key: '/openlayers/synchronization'
     }
   ]
 };

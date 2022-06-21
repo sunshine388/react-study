@@ -17,7 +17,6 @@ class PopupView extends Component {
     currentCoordinate: ''
   };
   initMap = () => {
-    // eslint-disable-next-line
     let overlay = new Overlay({
       element: this.popupRef.current, // 弹窗标签，在html里
       autoPan: true, // 如果弹窗在底图边缘时，底图会移动

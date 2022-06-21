@@ -13,7 +13,6 @@ class ZoomView extends Component {
     maxZoom: 14
   };
   initMap = () => {
-    // eslint-disable-next-line
     let map = new Map({
       target: 'map',
       layers: [
