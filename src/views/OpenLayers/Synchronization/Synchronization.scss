@@ -1,12 +1,17 @@
 .map-container {
-  width: 1000px;
-  height: 400px;
+  width: 100%;
+  height: calc(100% - 90px);
   display: flex;
   justify-content: space-between;
   .map {
-    width: 480px;
-    height: 400px;
+    width: calc(50% - 10px);
+    height: 100%;
     box-sizing: border-box;
     border: 1px solid #ccc;
   }
+}
+
+.explain {
+  height: 90px;
+  line-height: 30px;
 }

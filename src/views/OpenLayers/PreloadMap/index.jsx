@@ -51,7 +51,7 @@ class PreloadMapView extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div className='map-container'>
           <div id='map1' className='map'></div>
           <div id='map2' className='map'></div>
@@ -60,7 +60,7 @@ class PreloadMapView extends Component {
           <p>预加载：preload: Infinity</p>
           <p>默认值：preload: 0</p>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

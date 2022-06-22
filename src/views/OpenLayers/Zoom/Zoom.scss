@@ -1,11 +1,25 @@
 #map {
-  width: 1000px;
-  height: 700px;
+  width: 100%;
+  height: calc(100% - 60px);
 }
 
-.zoom__info {
+.zoom-info {
   display: flex;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
   p {
-    margin-right: 60px;
+    margin-right: 50px;
+  }
+}
+
+.zoom-btn {
+  height: 30px;
+  button {
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    margin-right: 20px;
+    padding: 0 16px;
   }
 }

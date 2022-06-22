@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Layout, BackTop, message } from 'antd';
+import { Layout, message } from 'antd';
 import './layout.scss';
 import withRouter from '@/utils/withRouter';
 
@@ -42,7 +42,6 @@ class DefaultLayout extends Component {
   render() {
     return (
       <Layout className='app'>
-        <BackTop />
         <AppAside menuToggle={this.state.menuToggle} />
         <Layout
           style={{
@@ -56,7 +55,7 @@ class DefaultLayout extends Component {
             menuClick={this.menuToggleAction}
             loginOut={this.loginOut}
           />
-          <Content className='content'>
+          <Content className='app_content'>
             <Outlet />
           </Content>
           <AppFooter />

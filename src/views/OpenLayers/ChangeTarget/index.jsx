@@ -42,15 +42,13 @@ class ChangeTargetView extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div className='map-container'>
           <div id='map1' className='map'></div>
           <div id='map2' className='map'></div>
         </div>
-        <button className='btn' onClick={this.changeMap}>
-          change
-        </button>
-      </div>
+        <button onClick={this.changeMap}> change </button>
+      </React.Fragment>
     );
   }
 }

@@ -47,7 +47,7 @@ class SynchronizationView extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div className='map-container'>
           <div id='OSM' className='map'></div>
           <div id='BingMaps' className='map'></div>
@@ -59,7 +59,7 @@ class SynchronizationView extends Component {
           <p>按住shift，鼠标在地图上选区，可以放大选区。</p>
           <p>按住alt+shift，鼠标可以在地图上拖拽，进行旋转。</p>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

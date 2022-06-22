@@ -27,14 +27,14 @@ class TabIndexView extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div tabIndex='2' id='map'></div>
         <div className='explain'>
           <p>通过给地图容器设置 tabindex="2" 来控制默认不会选中地图。</p>
           <p>只有当鼠标点击地图时，才能进行缩放等操作。</p>
           <p>如果没选中地图，即使在地图上滑动滚轮，也不会操作到地图。</p>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -49,8 +49,13 @@ a:hover {
 div:focus {
   outline: none;
 }
+
 ul {
   list-style-type: none;
+}
+
+p {
+  margin-bottom: 0px !important;
 }
 
 #root {

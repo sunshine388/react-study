@@ -57,18 +57,18 @@ class ZoomView extends Component {
   }
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div id='map'></div>
-        <div className='zoom__info'>
+        <div className='zoom-info'>
           <p>当前zoom: {this.state.currentZoom}</p>
           <p>minZoom: {this.state.minZoom}</p>
           <p>maxZoom: {this.state.maxZoom}</p>
         </div>
-        <div>
+        <div className="zoom-btn">
           <button onClick={this.zoomIn}>放大</button>
           <button onClick={this.zoomOut}>缩小</button>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
