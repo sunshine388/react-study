@@ -65,12 +65,12 @@ class PopupView extends Component {
     });
   };
 
-  closePopup() {
+  closePopup = () => {
     this.state.overlay.setPosition(undefined); // setPosition 传入undefined会隐藏弹窗元素
     this.setState({
       currentCoordinate: ''
     });
-  }
+  };
 
   componentDidMount() {
     this.initMap();
