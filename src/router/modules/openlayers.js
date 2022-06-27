@@ -26,6 +26,18 @@ const ViewAnimateView = loadable(() =>
 );
 const GraticuleView = loadable(() => import('@/views/OpenLayers/Graticule'));
 const HeatmapView = loadable(() => import('@/views/OpenLayers/Heatmap'));
+const ScaleLineView = loadable(() => import('@/views/OpenLayers/ScaleLine'));
+const FullScreenView = loadable(() => import('@/views/OpenLayers/FullScreen'));
+const ZoomToExtentView = loadable(() =>
+  import('@/views/OpenLayers/ZoomToExtent')
+);
+const OverviewMapView = loadable(() =>
+  import('@/views/OpenLayers/OverviewMap')
+);
+const MousePositionView = loadable(() =>
+  import('@/views/OpenLayers/MousePosition')
+);
+const ZoomSliderView = loadable(() => import('@/views/OpenLayers/ZoomSlider'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -42,6 +54,12 @@ export const openlayersRoutes = [
   { path: 'openlayers/viewAnimate', component: <ViewAnimateView /> },
   { path: 'openlayers/graticule', component: <GraticuleView /> },
   { path: 'openlayers/heatmap', component: <HeatmapView /> },
+  { path: 'openlayers/scaleLine', component: <ScaleLineView /> },
+  { path: 'openlayers/fullScreen', component: <FullScreenView /> },
+  { path: 'openlayers/zoomToExtent', component: <ZoomToExtentView /> },
+  { path: 'openlayers/overviewMap', component: <OverviewMapView /> },
+  { path: 'openlayers/mousePosition', component: <MousePositionView /> },
+  { path: 'openlayers/zoomSlider', component: <ZoomSliderView /> },
 ];
 
 export const openlayersMenu = {
@@ -104,6 +122,30 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/heatmap'>热力图</Link>,
       key: '/openlayers/heatmap'
+    },
+    {
+      label: <Link to='/openlayers/scaleLine'>比例尺控件 ScaleLine</Link>,
+      key: '/openlayers/scaleLine'
+    },
+    {
+      label: <Link to='/openlayers/fullScreen'>全屏控件 FullScreen</Link>,
+      key: '/openlayers/fullScreen'
+    },
+    {
+      label: <Link to='/openlayers/zoomToExtent'>导览控件 ZoomToExtent</Link>,
+      key: '/openlayers/zoomToExtent'
+    },
+    {
+      label: <Link to='/openlayers/overviewMap'>总览控件（鹰眼、小地图）</Link>,
+      key: '/openlayers/overviewMap'
+    },
+    {
+      label: <Link to='/openlayers/mousePosition'>鼠标位置控件</Link>,
+      key: '/openlayers/mousePosition'
+    },
+    {
+      label: <Link to='/openlayers/zoomSlider'>缩放滑块控件 ZoomSlider</Link>,
+      key: '/openlayers/zoomSlider'
     }
   ]
 };
