@@ -13,6 +13,8 @@ const SynchronizationView = loadable(() =>
   import('@/views/OpenLayers/Synchronization')
 );
 const PreloadMapView = loadable(() => import('@/views/OpenLayers/PreloadMap'));
+const VectorJSONView = loadable(() => import('@/views/OpenLayers/VectorJSON'));
+const VectorHighView = loadable(() => import('@/views/OpenLayers/VectorHigh'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -22,6 +24,8 @@ export const openlayersRoutes = [
   { path: 'openlayers/changeTarget', component: <ChangeTargetView /> },
   { path: 'openlayers/synchronization', component: <SynchronizationView /> },
   { path: 'openlayers/preloadMap', component: <PreloadMapView /> },
+  { path: 'openlayers/vectorJSON', component: <VectorJSONView /> },
+  { path: 'openlayers/vectorHigh', component: <VectorHighView /> },
 ];
 
 export const openlayersMenu = {
@@ -56,6 +60,14 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/preloadMap'>预加载 preload</Link>,
       key: '/openlayers/preloadMap'
+    },
+    {
+      label: <Link to='/openlayers/vectorJSON'>矢量图 JSON</Link>,
+      key: '/openlayers/vectorJSON'
+    },
+    {
+      label: <Link to='/openlayers/vectorHigh'>矢量图 高亮</Link>,
+      key: '/openlayers/vectorHigh'
     }
   ]
 };
