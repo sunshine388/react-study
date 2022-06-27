@@ -24,6 +24,7 @@ const MouseRotationMapView = loadable(() =>
 const ViewAnimateView = loadable(() =>
   import('@/views/OpenLayers/ViewAnimate')
 );
+const GraticuleView = loadable(() => import('@/views/OpenLayers/Graticule'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -38,6 +39,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/rotationMap', component: <RotationMapView /> },
   { path: 'openlayers/mouseRotationMap', component: <MouseRotationMapView /> },
   { path: 'openlayers/viewAnimate', component: <ViewAnimateView /> },
+  { path: 'openlayers/graticule', component: <GraticuleView /> },
 ];
 
 export const openlayersMenu = {
@@ -92,6 +94,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/viewAnimate'>动画 animate</Link>,
       key: '/openlayers/viewAnimate'
+    },
+    {
+      label: <Link to='/openlayers/graticule'>网格 Graticule</Link>,
+      key: '/openlayers/graticule'
     }
   ]
 };
