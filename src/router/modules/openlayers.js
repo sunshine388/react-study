@@ -21,6 +21,9 @@ const RotationMapView = loadable(() =>
 const MouseRotationMapView = loadable(() =>
   import('@/views/OpenLayers/MouseRotationMap')
 );
+const ViewAnimateView = loadable(() =>
+  import('@/views/OpenLayers/ViewAnimate')
+);
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -34,6 +37,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/vectorHigh', component: <VectorHighView /> },
   { path: 'openlayers/rotationMap', component: <RotationMapView /> },
   { path: 'openlayers/mouseRotationMap', component: <MouseRotationMapView /> },
+  { path: 'openlayers/viewAnimate', component: <ViewAnimateView /> },
 ];
 
 export const openlayersMenu = {
@@ -84,6 +88,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/mouseRotationMap'>鼠标拖拽旋转/缩放</Link>,
       key: '/openlayers/mouseRotationMap'
+    },
+    {
+      label: <Link to='/openlayers/viewAnimate'>动画 animate</Link>,
+      key: '/openlayers/viewAnimate'
     }
   ]
 };

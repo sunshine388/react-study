@@ -29,26 +29,6 @@ class RotationMapView extends Component {
     });
   };
 
-  // 放大1级
-  zoomIn = () => {
-    let view = this.state.map.getView(); // 获取当前视图
-    let zoom = view.getZoom(); // 获取当前缩放级别
-    view.setZoom(zoom + 1);
-    this.setState({
-      currentZoom: this.state.map.getView().getZoom()
-    });
-  };
-
-  // 缩小1级
-  zoomOut = () => {
-    let view = this.state.map.getView(); // 获取当前视图
-    let zoom = view.getZoom(); // 获取当前缩放级别
-    view.setZoom(zoom - 1);
-    this.setState({
-      currentZoom: this.state.map.getView().getZoom()
-    });
-  };
-
   // 顺时针
   rotateLeft = () => {
     let currentRotation = this.state.map.getView().getRotation();
@@ -60,6 +40,7 @@ class RotationMapView extends Component {
     let currentRotation = this.state.map.getView().getRotation();
     this.state.map.getView().setRotation(currentRotation - 1);
   };
+
   componentDidMount() {
     this.initMap();
   }
