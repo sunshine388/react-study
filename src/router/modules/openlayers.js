@@ -15,6 +15,9 @@ const SynchronizationView = loadable(() =>
 const PreloadMapView = loadable(() => import('@/views/OpenLayers/PreloadMap'));
 const VectorJSONView = loadable(() => import('@/views/OpenLayers/VectorJSON'));
 const VectorHighView = loadable(() => import('@/views/OpenLayers/VectorHigh'));
+const RotationMapView = loadable(() =>
+  import('@/views/OpenLayers/RotationMap')
+);
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -26,6 +29,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/preloadMap', component: <PreloadMapView /> },
   { path: 'openlayers/vectorJSON', component: <VectorJSONView /> },
   { path: 'openlayers/vectorHigh', component: <VectorHighView /> },
+  { path: 'openlayers/rotationMap', component: <RotationMapView /> },
 ];
 
 export const openlayersMenu = {
@@ -68,6 +72,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/vectorHigh'>矢量图 高亮</Link>,
       key: '/openlayers/vectorHigh'
+    },
+    {
+      label: <Link to='/openlayers/rotationMap'>旋转 rotation</Link>,
+      key: '/openlayers/rotationMap'
     }
   ]
 };
