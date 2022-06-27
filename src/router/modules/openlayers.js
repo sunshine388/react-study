@@ -25,6 +25,7 @@ const ViewAnimateView = loadable(() =>
   import('@/views/OpenLayers/ViewAnimate')
 );
 const GraticuleView = loadable(() => import('@/views/OpenLayers/Graticule'));
+const HeatmapView = loadable(() => import('@/views/OpenLayers/Heatmap'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -40,6 +41,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/mouseRotationMap', component: <MouseRotationMapView /> },
   { path: 'openlayers/viewAnimate', component: <ViewAnimateView /> },
   { path: 'openlayers/graticule', component: <GraticuleView /> },
+  { path: 'openlayers/heatmap', component: <HeatmapView /> },
 ];
 
 export const openlayersMenu = {
@@ -98,6 +100,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/graticule'>网格 Graticule</Link>,
       key: '/openlayers/graticule'
+    },
+    {
+      label: <Link to='/openlayers/heatmap'>热力图</Link>,
+      key: '/openlayers/heatmap'
     }
   ]
 };
