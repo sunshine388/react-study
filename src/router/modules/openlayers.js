@@ -40,6 +40,9 @@ const MousePositionView = loadable(() =>
 const ZoomSliderView = loadable(() => import('@/views/OpenLayers/ZoomSlider'));
 const LayerGroupView = loadable(() => import('@/views/OpenLayers/LayerGroup'));
 const SetZIndexView = loadable(() => import('@/views/OpenLayers/SetZIndex'));
+const SetResolutionView = loadable(() =>
+  import('@/views/OpenLayers/SetResolution')
+);
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -64,6 +67,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/zoomSlider', component: <ZoomSliderView /> },
   { path: 'openlayers/layerGroup', component: <LayerGroupView /> },
   { path: 'openlayers/setZIndex', component: <SetZIndexView /> },
+  { path: 'openlayers/setResolution', component: <SetResolutionView /> },
 ];
 
 export const openlayersMenu = {
@@ -158,6 +162,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/setZIndex'>控制图层层叠关系</Link>,
       key: '/openlayers/setZIndex'
+    },
+    {
+      label: <Link to='/openlayers/setResolution'>不同分辨率显示不同图层</Link>,
+      key: '/openlayers/setResolution'
     }
   ]
 };
