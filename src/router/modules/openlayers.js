@@ -48,6 +48,10 @@ const CoverageModalView = loadable(() =>
   import('@/views/OpenLayers/CoverageModal')
 );
 const SetSourceView = loadable(() => import('@/views/OpenLayers/SetSource'));
+const SimplenessLabelView = loadable(() =>
+  import('@/views/OpenLayers/SimplenessLabel')
+);
+const BrightMarkView = loadable(() => import('@/views/OpenLayers/BrightMark'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -76,6 +80,8 @@ export const openlayersRoutes = [
   { path: 'openlayers/setExtent', component: <SetExtentView /> },
   { path: 'openlayers/coverageModal', component: <CoverageModalView /> },
   { path: 'openlayers/setSource', component: <SetSourceView /> },
+  { path: 'openlayers/simplenessLabel', component: <SimplenessLabelView /> },
+  { path: 'openlayers/brightMark', component: <BrightMarkView /> },
 ];
 
 export const openlayersMenu = {
@@ -186,6 +192,14 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/setSource'>切换图源</Link>,
       key: '/openlayers/setSource'
+    },
+    {
+      label: <Link to='/openlayers/simplenessLabel'>简单的标记</Link>,
+      key: '/openlayers/simplenessLabel'
+    },
+    {
+      label: <Link to='/openlayers/brightMark'>定义标记颜色</Link>,
+      key: '/openlayers/brightMark'
     }
   ]
 };
