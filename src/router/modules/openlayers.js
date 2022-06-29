@@ -47,6 +47,7 @@ const SetExtentView = loadable(() => import('@/views/OpenLayers/SetExtent'));
 const CoverageModalView = loadable(() =>
   import('@/views/OpenLayers/CoverageModal')
 );
+const SetSourceView = loadable(() => import('@/views/OpenLayers/SetSource'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -74,6 +75,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/setResolution', component: <SetResolutionView /> },
   { path: 'openlayers/setExtent', component: <SetExtentView /> },
   { path: 'openlayers/coverageModal', component: <CoverageModalView /> },
+  { path: 'openlayers/setSource', component: <SetSourceView /> },
 ];
 
 export const openlayersMenu = {
@@ -180,6 +182,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/coverageModal'>图层遮罩</Link>,
       key: '/openlayers/coverageModal'
+    },
+    {
+      label: <Link to='/openlayers/setSource'>切换图源</Link>,
+      key: '/openlayers/setSource'
     }
   ]
 };
