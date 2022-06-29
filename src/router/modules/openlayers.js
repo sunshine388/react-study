@@ -55,6 +55,13 @@ const BrightMarkView = loadable(() => import('@/views/OpenLayers/BrightMark'));
 const PolymerizationView = loadable(() =>
   import('@/views/OpenLayers/Polymerization')
 );
+const BasicDrawView = loadable(() => import('@/views/OpenLayers/BasicDraw'));
+const DrawGraphView = loadable(() => import('@/views/OpenLayers/DrawGraph'));
+const FreeDrawingView = loadable(() =>
+  import('@/views/OpenLayers/FreeDrawing')
+);
+const ArrowLineView = loadable(() => import('@/views/OpenLayers/ArrowLine'));
+const SnapGraphView = loadable(() => import('@/views/OpenLayers/SnapGraph'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -86,6 +93,11 @@ export const openlayersRoutes = [
   { path: 'openlayers/simplenessLabel', component: <SimplenessLabelView /> },
   { path: 'openlayers/brightMark', component: <BrightMarkView /> },
   { path: 'openlayers/polymerization', component: <PolymerizationView /> },
+  { path: 'openlayers/basicDraw', component: <BasicDrawView /> },
+  { path: 'openlayers/drawGraph', component: <DrawGraphView /> },
+  { path: 'openlayers/freeDrawing', component: <FreeDrawingView /> },
+  { path: 'openlayers/arrowLine', component: <ArrowLineView /> },
+  { path: 'openlayers/snapGraph', component: <SnapGraphView /> }
 ];
 
 export const openlayersMenu = {
@@ -208,6 +220,26 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/polymerization'>聚合数据</Link>,
       key: '/openlayers/polymerization'
+    },
+    {
+      label: <Link to='/openlayers/basicDraw'>绘制点、线、面</Link>,
+      key: '/openlayers/basicDraw'
+    },
+    {
+      label: <Link to='/openlayers/drawGraph'>绘制图形</Link>,
+      key: '/openlayers/drawGraph'
+    },
+    {
+      label: <Link to='/openlayers/freeDrawing'>自由绘制图形</Link>,
+      key: '/openlayers/freeDrawing'
+    },
+    {
+      label: <Link to='/openlayers/arrowLine'>带箭头的线段</Link>,
+      key: '/openlayers/arrowLine'
+    },
+    {
+      label: <Link to='/openlayers/snapGraph'>修改已绘制的图形</Link>,
+      key: '/openlayers/snapGraph'
     }
   ]
 };
