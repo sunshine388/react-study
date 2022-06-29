@@ -1,0 +1,21 @@
+#map {
+  width: 1000px;
+  height: 700px;
+}
+
+.marker {
+  width: 30px;
+  height: 30px;
+  border: 6px solid rgb(89, 0, 255);
+  border-radius: 50%;
+  background-color: rgb(0, 252, 252);
+  opacity: 0.5;
+}
+
+.vienna {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20pt;
+  font-weight: bold;
+  text-shadow: 0 0 0.4em #000;
+}
