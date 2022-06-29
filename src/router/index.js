@@ -8,6 +8,7 @@ import { openlayersRoutes } from './modules/openlayers';
 import { arcgisRoutes } from './modules/arcgis';
 import { leafletRoutes } from './modules/leaflet';
 import { threeRoutes } from './modules/three';
+import { fabricRoutes } from './modules/fabric';
 
 const routes = [
   ...nativeRoutes,
@@ -19,7 +20,8 @@ const routes = [
   ...openlayersRoutes,
   ...arcgisRoutes,
   ...leafletRoutes,
-  ...threeRoutes
+  ...threeRoutes,
+  ...fabricRoutes
 ];
 
 export default routes;

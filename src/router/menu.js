@@ -8,6 +8,7 @@ import { openlayersMenu } from './modules/openlayers';
 import { arcgisMenu } from './modules/arcgis';
 import { leafletMenu } from './modules/leaflet';
 import { threeMenu } from './modules/three';
+import { fabricMenu } from './modules/fabric';
 
 const menu = [
   nativeMenu,
@@ -19,7 +20,8 @@ const menu = [
   openlayersMenu,
   arcgisMenu,
   leafletMenu,
-  threeMenu
+  threeMenu,
+  fabricMenu
 ];
 
 export default menu;
