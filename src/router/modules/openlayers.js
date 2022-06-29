@@ -43,6 +43,7 @@ const SetZIndexView = loadable(() => import('@/views/OpenLayers/SetZIndex'));
 const SetResolutionView = loadable(() =>
   import('@/views/OpenLayers/SetResolution')
 );
+const SetExtentView = loadable(() => import('@/views/OpenLayers/SetExtent'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -68,6 +69,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/layerGroup', component: <LayerGroupView /> },
   { path: 'openlayers/setZIndex', component: <SetZIndexView /> },
   { path: 'openlayers/setResolution', component: <SetResolutionView /> },
+  { path: 'openlayers/setExtent', component: <SetExtentView /> },
 ];
 
 export const openlayersMenu = {
@@ -166,6 +168,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/setResolution'>不同分辨率显示不同图层</Link>,
       key: '/openlayers/setResolution'
+    },
+    {
+      label: <Link to='/openlayers/setExtent'>区域图层</Link>,
+      key: '/openlayers/setExtent'
     }
   ]
 };
