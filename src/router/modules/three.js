@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import loadable from '@/utils/loadable';
 
 const ThreeMapView = loadable(() => import('@/views/Three/ThreeMap'));
+const CubeView = loadable(() => import('@/views/Three/Cube'));
 
 export const threeRoutes = [
-  { path: 'three/threeMap', component: <ThreeMapView /> }
+  { path: 'three/threeMap', component: <ThreeMapView /> },
+  { path: 'three/cube', component: <CubeView /> }
 ];
 
 export const threeMenu = {
@@ -16,6 +18,10 @@ export const threeMenu = {
     {
       label: <Link to='/three/threeMap'>三维地图</Link>,
       key: '/three/threeMap'
+    },
+    {
+      label: <Link to='/three/cube'>立方体</Link>,
+      key: '/three/cube'
     }
   ]
 };
