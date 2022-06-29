@@ -39,6 +39,7 @@ const MousePositionView = loadable(() =>
 );
 const ZoomSliderView = loadable(() => import('@/views/OpenLayers/ZoomSlider'));
 const LayerGroupView = loadable(() => import('@/views/OpenLayers/LayerGroup'));
+const SetZIndexView = loadable(() => import('@/views/OpenLayers/SetZIndex'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -62,6 +63,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/mousePosition', component: <MousePositionView /> },
   { path: 'openlayers/zoomSlider', component: <ZoomSliderView /> },
   { path: 'openlayers/layerGroup', component: <LayerGroupView /> },
+  { path: 'openlayers/setZIndex', component: <SetZIndexView /> },
 ];
 
 export const openlayersMenu = {
@@ -152,6 +154,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/layerGroup'>图层组 LayerGroup</Link>,
       key: '/openlayers/layerGroup'
+    },
+    {
+      label: <Link to='/openlayers/setZIndex'>控制图层层叠关系</Link>,
+      key: '/openlayers/setZIndex'
     }
   ]
 };
