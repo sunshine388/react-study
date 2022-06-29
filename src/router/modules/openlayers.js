@@ -52,6 +52,9 @@ const SimplenessLabelView = loadable(() =>
   import('@/views/OpenLayers/SimplenessLabel')
 );
 const BrightMarkView = loadable(() => import('@/views/OpenLayers/BrightMark'));
+const PolymerizationView = loadable(() =>
+  import('@/views/OpenLayers/Polymerization')
+);
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -82,6 +85,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/setSource', component: <SetSourceView /> },
   { path: 'openlayers/simplenessLabel', component: <SimplenessLabelView /> },
   { path: 'openlayers/brightMark', component: <BrightMarkView /> },
+  { path: 'openlayers/polymerization', component: <PolymerizationView /> },
 ];
 
 export const openlayersMenu = {
@@ -200,6 +204,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/brightMark'>定义标记颜色</Link>,
       key: '/openlayers/brightMark'
+    },
+    {
+      label: <Link to='/openlayers/polymerization'>聚合数据</Link>,
+      key: '/openlayers/polymerization'
     }
   ]
 };
