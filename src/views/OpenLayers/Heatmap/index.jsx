@@ -70,7 +70,7 @@ class HeatmapView extends Component {
   // 在控制台输出图层名
   getHeatName = () => {
     let layers = this.state.map.getLayers();
-    for (var i = 0; i < layers.getLength(); i++) {
+    for (let i = 0; i < layers.getLength(); i++) {
       console.log('图层名：', layers.item(i).get('name'));
     }
   };

@@ -1,0 +1,13 @@
+
+.box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.canvas_x {
+  margin: 10px;
+
+  canvas {
+    border: 1px solid #ccc;
+  }
+}

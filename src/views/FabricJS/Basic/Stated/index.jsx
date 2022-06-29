@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Stated.scss';
 import { fabric } from 'fabric';
-import jailCellBars from '@/assets/images/FabricJs/jail_cell_bars.png';
+import jailCellBars from '@/assets/images/FabricJS/jail_cell_bars.png';
 
 const imgURL =
   'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/27d1b4e5f8824198b6d51a2b1c2d0d75~tplv-k3u1fbpfcp-zoom-crop-mark:400:400:400:400.awebp';
@@ -70,7 +70,6 @@ class StatedView extends Component {
   init6 = () => {
     let canvas = new fabric.Canvas('canvas6');
     fabric.Image.fromURL(imgURL, (img) => {
-      console.log(img.width);
       img.set({
         // 缩放图片，使其完全填充满画布
         scaleX: canvas.width / img.width,

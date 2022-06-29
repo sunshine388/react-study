@@ -100,8 +100,6 @@ class CustomControlRenderView extends Component {
 
   // 克隆对象
   cloneObject = (eventData, transform) => {
-    console.log('eventData', eventData);
-    console.log('transform', transform);
     let target = transform.target;
     let canvas = target.canvas;
     target.clone(function(cloned) {

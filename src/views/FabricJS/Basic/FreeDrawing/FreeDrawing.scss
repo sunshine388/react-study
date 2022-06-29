@@ -1,0 +1,28 @@
+.box {
+  width: 900px;
+  height: 600px;
+  display: flex;
+
+  .tools__x {
+    flex: 1;
+    box-sizing: border-box;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    :deep(.el-button + .el-button) {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+
+  .control__x {
+    width: 100%;
+    flex: 1;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 8px;
+    background: #d6e6f2;
+  }
+}
