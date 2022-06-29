@@ -38,6 +38,7 @@ const MousePositionView = loadable(() =>
   import('@/views/OpenLayers/MousePosition')
 );
 const ZoomSliderView = loadable(() => import('@/views/OpenLayers/ZoomSlider'));
+const LayerGroupView = loadable(() => import('@/views/OpenLayers/LayerGroup'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },
@@ -60,6 +61,7 @@ export const openlayersRoutes = [
   { path: 'openlayers/overviewMap', component: <OverviewMapView /> },
   { path: 'openlayers/mousePosition', component: <MousePositionView /> },
   { path: 'openlayers/zoomSlider', component: <ZoomSliderView /> },
+  { path: 'openlayers/layerGroup', component: <LayerGroupView /> },
 ];
 
 export const openlayersMenu = {
@@ -146,6 +148,10 @@ export const openlayersMenu = {
     {
       label: <Link to='/openlayers/zoomSlider'>缩放滑块控件 ZoomSlider</Link>,
       key: '/openlayers/zoomSlider'
+    },
+    {
+      label: <Link to='/openlayers/layerGroup'>图层组 LayerGroup</Link>,
+      key: '/openlayers/layerGroup'
     }
   ]
 };
