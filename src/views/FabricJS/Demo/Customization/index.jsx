@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Customization.scss';
 import { fabric } from 'fabric';
-import jailCellBars from '@/assets/images/FabricJS/jail_cell_bars.png';
+import jailCellBars from '@/assets/images/jail_cell_bars.png';
 
 class HoveringView extends Component {
   // 自定义选框风格(鼠标框选时)

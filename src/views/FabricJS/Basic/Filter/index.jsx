@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Filter.scss';
 import { fabric } from 'fabric';
-import gwen from '@/assets/images/FabricJS/gwen-spider-verse-ah.jpg';
+import gwen from '@/assets/images/gwen-spider-verse-ah.jpg';
 
 /**
  * fabric 内置滤镜

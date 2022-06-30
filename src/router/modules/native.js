@@ -2,13 +2,70 @@ import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import loadable from '@/utils/loadable';
 
-const Batman = loadable(() => import('@/views/Native/PureCSS/Batman'));
+const BatmanView = loadable(() => import('@/views/Native/PureCSS/Batman'));
+const ActiveTextView = loadable(() =>
+  import('@/views/Native/PureCSS/ActiveText')
+);
+const GradientTextView = loadable(() =>
+  import('@/views/Native/PureCSS/GradientText')
+);
+const ZebraShadowTextView = loadable(() =>
+  import('@/views/Native/PureCSS/ZebraShadowText')
+);
+const MaterialInputView = loadable(() =>
+  import('@/views/Native/PureCSS/MaterialInput')
+);
+const CarouselView = loadable(() => import('@/views/Native/PureCSS/Carousel'));
+const TapeEdgeView = loadable(() => import('@/views/Native/PureCSS/TapeEdge'));
+const MultilayerBorderView = loadable(() =>
+  import('@/views/Native/PureCSS/MultilayerBorder')
+);
+const FilletedCornerView = loadable(() =>
+  import('@/views/Native/PureCSS/FilletedCorner')
+);
+const ParallelogramView = loadable(() =>
+  import('@/views/Native/PureCSS/Parallelogram')
+);
+const FrostedGlassView = loadable(() =>
+  import('@/views/Native/PureCSS/FrostedGlass')
+);
+const PhotoFrameView = loadable(() =>
+  import('@/views/Native/PureCSS/PhotoFrame')
+);
+const TurnBorderView = loadable(() =>
+  import('@/views/Native/PureCSS/TurnBorder')
+);
+const GradientBGAnimationView = loadable(() =>
+  import('@/views/Native/PureCSS/GradientBGAnimation')
+);
 const ParallaxView = loadable(() =>
   import('@/views/Native/ThreePiece/Parallax')
 );
 
 export const nativeRoutes = [
-  { path: 'native/pureCSS/batman', component: <Batman /> },
+  { path: 'native/pureCSS/batman', component: <BatmanView /> },
+  { path: 'native/pureCSS/activeText', component: <ActiveTextView /> },
+  { path: 'native/pureCSS/gradientText', component: <GradientTextView /> },
+  {
+    path: 'native/pureCSS/zebraShadowText',
+    component: <ZebraShadowTextView />
+  },
+  { path: 'native/pureCSS/materialInput', component: <MaterialInputView /> },
+  { path: 'native/pureCSS/carousel', component: <CarouselView /> },
+  { path: 'native/pureCSS/tapeEdge', component: <TapeEdgeView /> },
+  {
+    path: 'native/pureCSS/multilayerBorder',
+    component: <MultilayerBorderView />
+  },
+  { path: 'native/pureCSS/filletedCorner', component: <FilletedCornerView /> },
+  { path: 'native/pureCSS/parallelogram', component: <ParallelogramView /> },
+  { path: 'native/pureCSS/frostedGlass', component: <FrostedGlassView /> },
+  { path: 'native/pureCSS/photoFrame', component: <PhotoFrameView /> },
+  { path: 'native/pureCSS/turnBorder', component: <TurnBorderView /> },
+  {
+    path: 'native/pureCSS/gradientBGAnimation',
+    component: <GradientBGAnimationView />
+  },
   { path: 'native/threePiece/parallax', component: <ParallaxView /> }
 ];
 
@@ -24,6 +81,62 @@ export const nativeMenu = {
         {
           label: <Link to='/native/pureCSS/batman'>蝙蝠侠</Link>,
           key: '/native/pureCSS/batman'
+        },
+        {
+          label: <Link to='/native/pureCSS/activeText'>动态文字</Link>,
+          key: '/native/pureCSS/activeText'
+        },
+        {
+          label: <Link to='/native/pureCSS/gradientText'>渐变文字</Link>,
+          key: '/native/pureCSS/gradientText'
+        },
+        {
+          label: <Link to='/native/pureCSS/zebraShadowText'>斑马投影文字</Link>,
+          key: '/native/pureCSS/zebraShadowText'
+        },
+        {
+          label: (
+            <Link to='/native/pureCSS/materialInput'>Material风格输入框</Link>
+          ),
+          key: '/native/pureCSS/materialInput'
+        },
+        {
+          label: <Link to='/native/pureCSS/carousel'>走马灯（手动控制）</Link>,
+          key: '/native/pureCSS/carousel'
+        },
+        {
+          label: <Link to='/native/pureCSS/tapeEdge'>缝边边框</Link>,
+          key: '/native/pureCSS/tapeEdge'
+        },
+        {
+          label: <Link to='/native/pureCSS/multilayerBorder'>多重边框</Link>,
+          key: '/native/pureCSS/multilayerBorder'
+        },
+        {
+          label: <Link to='/native/pureCSS/filletedCorner'>内圆角</Link>,
+          key: '/native/pureCSS/filletedCorner'
+        },
+        {
+          label: <Link to='/native/pureCSS/parallelogram'>平行四边形</Link>,
+          key: '/native/pureCSS/parallelogram'
+        },
+        {
+          label: <Link to='/native/pureCSS/frostedGlass'>毛玻璃</Link>,
+          key: '/native/pureCSS/frostedGlass'
+        },
+        {
+          label: <Link to='/native/pureCSS/photoFrame'>相框</Link>,
+          key: '/native/pureCSS/photoFrame'
+        },
+        {
+          label: <Link to='/native/pureCSS/turnBorder'>旋转边框</Link>,
+          key: '/native/pureCSS/turnBorder'
+        },
+        {
+          label: (
+            <Link to='/native/pureCSS/gradientBGAnimation'>动态渐变背景</Link>
+          ),
+          key: '/native/pureCSS/gradientBGAnimation'
         }
       ]
     },

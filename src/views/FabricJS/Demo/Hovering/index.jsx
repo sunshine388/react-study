@@ -6,12 +6,12 @@ class HoveringView extends Component {
   init = () => {
     const canvas = new fabric.Canvas('canvas');
     // 随机生成一些图形
-    for (var i = 15; i--; ) {
-      var dim = fabric.util.getRandomInt(30, 60);
-      var klass = ['Rect', 'Triangle', 'Circle'][
+    for (let i = 15; i--; ) {
+      let dim = fabric.util.getRandomInt(30, 60);
+      let klass = ['Rect', 'Triangle', 'Circle'][
         fabric.util.getRandomInt(0, 2)
       ];
-      var options = {
+      let options = {
         top: fabric.util.getRandomInt(0, 600),
         left: fabric.util.getRandomInt(0, 600),
         fill: 'green'
