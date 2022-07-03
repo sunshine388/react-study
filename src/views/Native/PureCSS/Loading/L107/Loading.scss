@@ -1,0 +1,29 @@
+.loading107 {
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #ff3d00;
+  letter-spacing: 2px;
+  position: relative;
+
+  &::after {
+    content: 'Loading';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    text-shadow: 0 0 2px #ff3d00, 0 0 1px #ff3d00, 0 0 1px #ff3d00;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    animation: loading-animation-107 6s linear infinite;
+  }
+}
+@keyframes loading-animation-107 {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}

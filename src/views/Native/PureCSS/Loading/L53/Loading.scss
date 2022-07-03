@@ -1,0 +1,113 @@
+.loading53,
+.loading53 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading53 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 32px;
+  height: 32px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+  }
+  > div:nth-child(1),
+  > div:nth-child(2) {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-style: solid;
+    border-width: 16px;
+    border-right-color: transparent;
+    border-radius: 100%;
+    animation: pacman-rotate-half-up-53 0.5s 0s infinite;
+  }
+
+  > div:nth-child(2) {
+    margin-top: -32px;
+    animation-name: pacman-rotate-half-down-53;
+  }
+
+  > div:nth-child(3),
+  > div:nth-child(4),
+  > div:nth-child(5),
+  > div:nth-child(6) {
+    position: absolute;
+    top: 50%;
+    left: 200%;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    opacity: 0;
+    animation: pacman-balls-53 2s 0s infinite linear;
+  }
+
+  > div:nth-child(3) {
+    animation-delay: -1.44s;
+  }
+
+  > div:nth-child(4) {
+    animation-delay: -1.94s;
+  }
+
+  > div:nth-child(5) {
+    animation-delay: -2.44s;
+  }
+
+  > div:nth-child(6) {
+    animation-delay: -2.94s;
+  }
+}
+
+@keyframes pacman-rotate-half-up-53 {
+  0%,
+  100% {
+    transform: rotate(270deg);
+  }
+
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pacman-rotate-half-down-53 {
+  0%,
+  100% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pacman-balls-53 {
+  0% {
+    left: 200%;
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  5% {
+    opacity: 0.5;
+  }
+
+  66% {
+    opacity: 1;
+  }
+
+  67% {
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,42 @@
+.loading30,
+.loading30 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading30 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 32px;
+  height: 32px;
+
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    opacity: 0.5;
+    animation: ball-scale-pulse-30 2s infinite ease-in-out;
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+  }
+
+  > div:last-child {
+    animation-delay: -1s;
+  }
+}
+@keyframes ball-scale-pulse-30 {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,44 @@
+.loading31,
+.loading31 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading31 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 32px;
+  height: 32px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border-width: 2px;
+    border-radius: 100%;
+    opacity: 0;
+    animation: ball-scale-ripple-31 1s 0s infinite
+      cubic-bezier(0.21, 0.53, 0.56, 0.8);
+  }
+}
+
+@keyframes ball-scale-ripple-31 {
+  0% {
+    opacity: 1;
+    transform: scale(0.1);
+  }
+
+  70% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

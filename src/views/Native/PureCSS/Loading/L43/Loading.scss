@@ -1,0 +1,73 @@
+.loading43,
+.loading43 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading43 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  position: relative;
+  width: 32px;
+  height: 32px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    margin-left: -5px;
+    border-radius: 100%;
+  }
+
+  > div:first-child {
+    animation: ball-zig-effect-43 0.7s 0s infinite linear;
+  }
+
+  > div:last-child {
+    animation: ball-zag-effect-43 0.7s 0s infinite linear;
+  }
+}
+
+@keyframes ball-zig-effect-43 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(-75%, -150%);
+  }
+
+  66% {
+    transform: translate(75%, -150%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes ball-zag-effect-43 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(75%, 150%);
+  }
+
+  66% {
+    transform: translate(-75%, 150%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

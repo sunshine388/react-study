@@ -1,0 +1,56 @@
+.loading50,
+.loading50 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading50 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 40px;
+  height: 32px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    width: 4px;
+    height: 32px;
+    margin: 2px;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    animation: line-scale-pulse-out-rapid-50 0.9s infinite
+      cubic-bezier(0.11, 0.49, 0.38, 0.78);
+  }
+
+  > div:nth-child(3) {
+    animation-delay: -0.9s;
+  }
+
+  > div:nth-child(2),
+  > div:nth-child(4) {
+    animation-delay: -0.65s;
+  }
+
+  > div:nth-child(1),
+  > div:nth-child(5) {
+    animation-delay: -0.4s;
+  }
+}
+
+@keyframes line-scale-pulse-out-rapid-50 {
+  0% {
+    transform: scaley(1);
+  }
+
+  80% {
+    transform: scaley(0.3);
+  }
+
+  90% {
+    transform: scaley(1);
+  }
+}

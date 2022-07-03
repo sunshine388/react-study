@@ -1,0 +1,62 @@
+.loading57,
+.loading57 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading57 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 32px;
+  height: 32px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border-width: 2px;
+    border-radius: 100%;
+  }
+
+  > div:before,
+  > div:after {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: block;
+    width: 2px;
+    margin-top: -1px;
+    margin-left: -1px;
+    content: '';
+    background: currentColor;
+    border-radius: 2px;
+    transform-origin: 1px 1px 0;
+    animation: timer-loader-57 1250ms infinite linear;
+    animation-delay: -625ms;
+  }
+
+  > div:before {
+    height: 12px;
+  }
+
+  > div:after {
+    height: 8px;
+    animation-duration: 15s;
+    animation-delay: -7.5s;
+  }
+}
+
+@keyframes timer-loader-57 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

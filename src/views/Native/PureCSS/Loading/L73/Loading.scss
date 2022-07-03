@@ -1,0 +1,88 @@
+.loading73 {
+  width: 30px;
+  height: 30px;
+  position: relative;
+
+  .shape {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border-radius: 50%;
+    top: 40%;
+  }
+
+  .shape-1 {
+    background-color: #1875e5;
+    animation: animationShape1-73 1s ease infinite;
+  }
+
+  .shape-2 {
+    background-color: #c5523f;
+    left: 10px;
+  }
+
+  .shape-3 {
+    background-color: #499255;
+    left: 20px;
+  }
+
+  .shape-4 {
+    background-color: #f2b736;
+    left: 30px;
+    animation: animationShape4-73 1s ease infinite;
+  }
+}
+
+@keyframes animationShape1-73 {
+  0% {
+    left: -15px;
+    top: 5px;
+  }
+
+  25% {
+    left: 0;
+    top: 40%;
+  }
+
+  50% {
+    left: 0;
+    top: 40%;
+  }
+
+  75% {
+    left: 0;
+    top: 40%;
+  }
+
+  100% {
+    left: -15px;
+    top: 5px;
+  }
+}
+
+@keyframes animationShape4-73 {
+  0% {
+    left: 30px;
+    top: 40%;
+  }
+
+  25% {
+    left: 30px;
+    top: 40%;
+  }
+
+  50% {
+    left: 45px;
+    top: 5px;
+  }
+
+  75% {
+    left: 30px;
+    top: 40%;
+  }
+
+  100% {
+    left: 30px;
+    top: 40%;
+  }
+}

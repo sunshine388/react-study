@@ -1,0 +1,128 @@
+.loading21,
+.loading21 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading21 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 8px;
+  height: 8px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    animation: ball-fussion-ball1-21 1s 0s ease infinite;
+  }
+
+  > div:nth-child(1) {
+    top: 0;
+    left: 50%;
+    z-index: 1;
+  }
+
+  > div:nth-child(2) {
+    top: 50%;
+    left: 100%;
+    z-index: 2;
+    animation-name: ball-fussion-ball2-21;
+  }
+
+  > div:nth-child(3) {
+    top: 100%;
+    left: 50%;
+    z-index: 1;
+    animation-name: ball-fussion-ball3-21;
+  }
+
+  > div:nth-child(4) {
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    animation-name: ball-fussion-ball4-21;
+  }
+}
+@keyframes ball-fussion-ball2-21 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: 200%;
+    left: 200%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    left: 50%;
+    z-index: 1;
+    opacity: 0.35;
+  }
+}
+
+@keyframes ball-fussion-ball1-21 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: -100%;
+    left: 200%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 50%;
+    left: 100%;
+    z-index: 2;
+    opacity: 0.35;
+  }
+}
+
+@keyframes ball-fussion-ball3-21 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: 200%;
+    left: -100%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    opacity: 0.35;
+  }
+}
+
+@keyframes ball-fussion-ball4-21 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: -100%;
+    left: -100%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    opacity: 0.35;
+  }
+}

@@ -1,0 +1,81 @@
+.loading55,
+.loading55 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading55 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 32px;
+  height: 32px;
+  width: 32px;
+  height: 32px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-width: 2px;
+    border-radius: 0;
+    animation: square-loader-55 2s infinite ease;
+  }
+
+  > div:after {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    content: '';
+    background-color: currentColor;
+    animation: square-loader-inner-55 2s infinite ease-in;
+  }
+}
+
+@keyframes square-loader-55 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes square-loader-inner-55 {
+  0% {
+    height: 0;
+  }
+
+  25% {
+    height: 0;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0;
+  }
+}

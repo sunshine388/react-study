@@ -1,0 +1,40 @@
+.loading19,
+.loading19 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading19 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 120px;
+  height: 10px;
+  font-size: 0;
+  text-align: center;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    width: 10px;
+    height: 10px;
+    white-space: nowrap;
+    border-radius: 100%;
+    animation: ball-elastic-dots-anim-19 1s infinite;
+  }
+}
+
+@keyframes ball-elastic-dots-anim-19 {
+  0%,
+  100% {
+    margin: 0;
+    transform: scale(1);
+  }
+
+  50% {
+    margin: 0 5%;
+    transform: scale(0.65);
+  }
+}

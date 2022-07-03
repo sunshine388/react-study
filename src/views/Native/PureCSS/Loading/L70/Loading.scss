@@ -1,0 +1,89 @@
+.loading70 {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  transform: rotate(45deg);
+  animation: animationContainer-70 1s ease infinite;
+
+  .shape {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .shape-1 {
+    background-color: #1875e5;
+    left: 0;
+    animation: animationShape1-70 0.3s ease infinite alternate;
+  }
+
+  .shape-2 {
+    background-color: #c5523f;
+    right: 0;
+    animation: animationShape2-70 0.3s ease infinite 0.3s alternate;
+  }
+
+  .shape-3 {
+    background-color: #499255;
+    bottom: 0;
+    animation: animationShape3-70 0.3s ease infinite 0.3s alternate;
+  }
+
+  .shape-4 {
+    background-color: #f2b736;
+    right: 0;
+    bottom: 0;
+    animation: animationShape4-70 0.3s ease infinite alternate;
+  }
+}
+
+@keyframes animationContainer-70 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animationShape1-70 {
+  0% {
+    transform: translate(5px, 5px);
+  }
+
+  100% {
+    transform: translate(-3px, -3px);
+  }
+}
+
+@keyframes animationShape2-70 {
+  0% {
+    transform: translate(-5px, 5px);
+  }
+
+  100% {
+    transform: translate(3px, -3px);
+  }
+}
+
+@keyframes animationShape3-70 {
+  0% {
+    transform: translate(5px, -5px);
+  }
+
+  100% {
+    transform: translate(-3px, 3px);
+  }
+}
+
+@keyframes animationShape4-70 {
+  0% {
+    transform: translate(-5px, -5px);
+  }
+
+  100% {
+    transform: translate(3px, 3px);
+  }
+}

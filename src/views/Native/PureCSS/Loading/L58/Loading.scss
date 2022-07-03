@@ -1,0 +1,53 @@
+.loading58,
+.loading58 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading58 {
+  display: block;
+  font-size: 0;
+  color: #000;
+  width: 32px;
+  height: 16px;
+
+  > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: none;
+    border-style: solid;
+    border-width: 16px;
+    border-top-width: 0;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    animation: triangle-skew-spin-58 3s 0s cubic-bezier(0.09, 0.57, 0.49, 0.9)
+      infinite;
+  }
+}
+
+@keyframes triangle-skew-spin-58 {
+  0% {
+    transform: perspective(100px) rotateX(0) rotateY(0);
+  }
+
+  25% {
+    transform: perspective(100px) rotateX(180deg) rotateY(0);
+  }
+
+  50% {
+    transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+  }
+
+  75% {
+    transform: perspective(100px) rotateX(0) rotateY(180deg);
+  }
+
+  100% {
+    transform: perspective(100px) rotateX(0) rotateY(360deg);
+  }
+}

@@ -35,6 +35,7 @@ const PhotoFrameView = loadable(() =>
 const TurnBorderView = loadable(() =>
   import('@/views/Native/PureCSS/TurnBorder')
 );
+const LoadingView = loadable(() => import('@/views/Native/PureCSS/Loading'));
 const GradientBGAnimationView = loadable(() =>
   import('@/views/Native/PureCSS/GradientBGAnimation')
 );
@@ -62,6 +63,7 @@ export const nativeRoutes = [
   { path: 'native/pureCSS/frostedGlass', component: <FrostedGlassView /> },
   { path: 'native/pureCSS/photoFrame', component: <PhotoFrameView /> },
   { path: 'native/pureCSS/turnBorder', component: <TurnBorderView /> },
+  { path: 'native/pureCSS/loading', component: <LoadingView /> },
   {
     path: 'native/pureCSS/gradientBGAnimation',
     component: <GradientBGAnimationView />
@@ -131,6 +133,10 @@ export const nativeMenu = {
         {
           label: <Link to='/native/pureCSS/turnBorder'>旋转边框</Link>,
           key: '/native/pureCSS/turnBorder'
+        },
+        {
+          label: <Link to='/native/pureCSS/loading'>Loading</Link>,
+          key: '/native/pureCSS/loading'
         },
         {
           label: (

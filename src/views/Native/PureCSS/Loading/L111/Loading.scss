@@ -1,0 +1,48 @@
+.loading111 {
+  display: inline-block;
+  color: #ddd;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  letter-spacing: 4px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    right: 45px;
+    bottom: 13px;
+    height: 14px;
+    width: 4px;
+    background: currentColor;
+  }
+
+  &::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    right: 45px;
+    top: 8px;
+    border-radius: 50%;
+    background: red;
+    animation: loading-animation-111 1s ease-in infinite;
+  }
+}
+@keyframes loading-animation-111 {
+  0% {
+    transform: translateY(5px) scaleY(1) scaleX(1.25);
+  }
+
+  25%,
+  75% {
+    transform: translateY(-3px) scaleY(1.2) scaleX(1);
+  }
+
+  50% {
+    transform: translateY(-6px) scaleY(1) scaleX(1);
+  }
+
+  100% {
+    transform: translateY(5px) scaleY(0.8) scaleX(0.8);
+  }
+}

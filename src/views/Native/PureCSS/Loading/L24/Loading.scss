@@ -1,0 +1,59 @@
+.loading24,
+.loading24 > div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.loading24 {
+  display: block;
+  font-size: 0;
+  color: #000;
+
+  width: 40px;
+  height: 10px;
+
+  > div {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+  }
+
+  > div:first-child {
+    transform: translateX(0%);
+    animation: ball-newton-cradle-left-24 1s 0s ease-out infinite;
+  }
+
+  > div:last-child {
+    transform: translateX(0%);
+    animation: ball-newton-cradle-right-24 1s 0s ease-out infinite;
+  }
+}
+@keyframes ball-newton-cradle-left-24 {
+  25% {
+    transform: translateX(-100%);
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes ball-newton-cradle-right-24 {
+  50% {
+    transform: translateX(0%);
+  }
+
+  75% {
+    transform: translateX(100%);
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
