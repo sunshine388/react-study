@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './BrightMark.scss';
 import { Map, View, Feature } from 'ol';
 import Point from 'ol/geom/Point';
@@ -10,8 +10,8 @@ import layerVecor from 'ol/layer/Vector';
 import 'ol/ol.css';
 import dotPng from '@/assets/map/dot.png';
 
-class BrightMarkView extends Component {
-  initMap = () => {
+export default function BrightMarkView() {
+  const initMap = () => {
     // 罗马
     let rome = new Feature({
       geometry: new Point([12.5, 31.9])
@@ -77,12 +77,10 @@ class BrightMarkView extends Component {
       })
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default BrightMarkView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

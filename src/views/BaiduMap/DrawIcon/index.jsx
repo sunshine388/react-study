@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './DrawIcon.scss';
 import logo from '@/assets/images/logo.png';
 
-class DrawIconView extends Component {
-  initMap = () => {
+export default function DrawIconView() {
+  const initMap = () => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container'); // 创建Map实例
     // eslint-disable-next-line
@@ -23,12 +23,10 @@ class DrawIconView extends Component {
     const marker = new BMapGL.Marker(point, { icon: myIcon });
     map.addOverlay(marker);
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
 
-export default DrawIconView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='container'></div>;
+}

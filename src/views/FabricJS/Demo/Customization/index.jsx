@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Customization.scss';
 import { fabric } from 'fabric';
 import jailCellBars from '@/assets/images/jail_cell_bars.png';
 
-class HoveringView extends Component {
+export default function HoveringView() {
   // 自定义选框风格(鼠标框选时)
-  init1 = () => {
+  const init1 = () => {
     const canvas = new fabric.Canvas('canvas1');
     canvas.add(
       new fabric.Circle({
@@ -24,7 +24,7 @@ class HoveringView extends Component {
   };
 
   // 自定义边界, 控制角
-  init2 = () => {
+  const init2 = () => {
     const canvas = new fabric.Canvas('canvas2');
     canvas.add(
       new fabric.Circle({
@@ -45,7 +45,7 @@ class HoveringView extends Component {
     canvas.setActiveObject(canvas.item(0)); // 选中第一项
   };
 
-  init3 = () => {
+  const init3 = () => {
     const canvas = new fabric.Canvas('canvas3');
     canvas.add(
       new fabric.Circle({
@@ -67,7 +67,7 @@ class HoveringView extends Component {
   };
 
   // 选中的背景色
-  init4 = () => {
+  const init4 = () => {
     const canvas = new fabric.Canvas('canvas4');
     canvas.add(
       new fabric.Circle({
@@ -84,7 +84,7 @@ class HoveringView extends Component {
   };
 
   // 没有边框
-  init5 = () => {
+  const init5 = () => {
     const canvas = new fabric.Canvas('canvas5');
     canvas.add(
       new fabric.Circle({
@@ -99,7 +99,7 @@ class HoveringView extends Component {
   };
 
   // 没有控制角
-  init6 = () => {
+  const init6 = () => {
     const canvas = new fabric.Canvas('canvas6');
     canvas.add(
       new fabric.Circle({
@@ -114,7 +114,7 @@ class HoveringView extends Component {
   };
 
   // 没有边框，没有控制角
-  init7 = () => {
+  const init7 = () => {
     const canvas = new fabric.Canvas('canvas7');
     canvas.add(
       new fabric.Circle({
@@ -150,7 +150,7 @@ class HoveringView extends Component {
   };
 
   // 自定义光标在对象悬停
-  init8 = () => {
+  const init8 = () => {
     let canvas = new fabric.Canvas('canvas8');
     canvas.add(
       new fabric.Circle({
@@ -164,7 +164,7 @@ class HoveringView extends Component {
   };
 
   // 元素移动状态
-  init9 = () => {
+  const init9 = () => {
     const canvas = new fabric.Canvas('canvas9');
     canvas.add(
       new fabric.Rect({
@@ -221,7 +221,7 @@ class HoveringView extends Component {
   };
 
   // 不允许框选
-  init10 = () => {
+  const init10 = () => {
     const canvas = new fabric.Canvas('canvas10');
     canvas.add(
       new fabric.Circle({
@@ -235,7 +235,7 @@ class HoveringView extends Component {
   };
 
   // 部分元素不能选中(选不到圆)
-  init11 = () => {
+  const init11 = () => {
     const canvas = new fabric.Canvas('canvas11');
     canvas.add(
       new fabric.Circle({ radius: 30, fill: '#f55', top: 70, left: 70 })
@@ -281,7 +281,7 @@ class HoveringView extends Component {
   };
 
   // 自定义画布背景色
-  init12 = () => {
+  const init12 = () => {
     const canvas = new fabric.Canvas('canvas12');
     canvas.add(
       new fabric.Circle({
@@ -296,7 +296,7 @@ class HoveringView extends Component {
   };
 
   // 自定义画布背景图
-  init13 = () => {
+  const init13 = () => {
     const canvas = new fabric.Canvas('canvas13');
     canvas.add(
       new fabric.Circle({
@@ -343,7 +343,7 @@ class HoveringView extends Component {
   };
 
   // 重叠影象
-  init14 = () => {
+  const init14 = () => {
     const canvas = new fabric.Canvas('canvas14');
     canvas.add(
       new fabric.Circle({
@@ -363,7 +363,7 @@ class HoveringView extends Component {
   };
 
   // 禁止元素旋转
-  init15 = () => {
+  const init15 = () => {
     const canvas = new fabric.Canvas('canvas15');
     canvas.add(
       new fabric.Rect({
@@ -378,7 +378,7 @@ class HoveringView extends Component {
   };
 
   // 禁止元素缩放
-  init16 = () => {
+  const init16 = () => {
     let canvas = new fabric.Canvas('canvas16');
     canvas.add(
       new fabric.Rect({
@@ -394,7 +394,7 @@ class HoveringView extends Component {
   };
 
   // 禁止元素横向移动
-  init17 = () => {
+  const init17 = () => {
     const canvas = new fabric.Canvas('canvas17');
     canvas.add(
       new fabric.Rect({
@@ -409,7 +409,7 @@ class HoveringView extends Component {
   };
 
   // 禁止元素纵向移动
-  init18 = () => {
+  const init18 = () => {
     const canvas = new fabric.Canvas('canvas18');
     canvas.add(
       new fabric.Rect({
@@ -422,129 +422,127 @@ class HoveringView extends Component {
     );
     canvas.item(0).lockMovementY = true; // 禁止元素横向移动
   };
-  componentDidMount() {
-    this.init1();
-    this.init2();
-    this.init3();
-    this.init4();
-    this.init5();
-    this.init6();
-    this.init7();
-    this.init8();
-    this.init9();
-    this.init10();
-    this.init11();
-    this.init12();
-    this.init13();
-    this.init14();
-    this.init15();
-    this.init16();
-    this.init17();
-    this.init18();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div>
-          代码出处{' '}
-          <a href='http://fabricjs.com/customization' target='view_window'>
-            http://fabricjs.com/customization
-          </a>
+
+  useEffect(() => {
+    init1();
+    init2();
+    init3();
+    init4();
+    init5();
+    init6();
+    init7();
+    init8();
+    init9();
+    init10();
+    init11();
+    init12();
+    init13();
+    init14();
+    init15();
+    init16();
+    init17();
+    init18();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <div>
+        代码出处{' '}
+        <a href='http://fabricjs.com/customization' target='view_window'>
+          http://fabricjs.com/customization
+        </a>
+      </div>
+      <div className='box'>
+        <div className='canvas_x'>
+          <div>自定义选框风格(鼠标框选时)</div>
+          <canvas width='200' height='200' id='canvas1'></canvas>
         </div>
-        <div className='box'>
-          <div className='canvas_x'>
-            <div>自定义选框风格(鼠标框选时)</div>
-            <canvas width='200' height='200' id='canvas1'></canvas>
-          </div>
 
-          <div className='canvas_x'>
-            <div>自定义边界, 控制角</div>
-            <canvas width='200' height='200' id='canvas2'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>透明控制角</div>
-            <canvas width='200' height='200' id='canvas3'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>选中后自定义背景色</div>
-            <canvas width='200' height='200' id='canvas4'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>没有边框</div>
-            <canvas width='200' height='200' id='canvas5'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>没有控制角</div>
-            <canvas width='200' height='200' id='canvas6'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>没有边框，没有控制角</div>
-            <canvas width='200' height='200' id='canvas7'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>自定义光标在对象悬停</div>
-            <canvas width='200' height='200' id='canvas8'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>元素移动状态</div>
-            <canvas width='200' height='200' id='canvas9'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>不允许框选</div>
-            <canvas width='200' height='200' id='canvas10'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>部分元素不能选中(选不到圆)</div>
-            <canvas width='200' height='200' id='canvas11'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>自定义画布背景色</div>
-            <canvas width='200' height='200' id='canvas12'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>自定义画布背景图</div>
-            <canvas width='200' height='200' id='canvas13'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>重叠影象</div>
-            <canvas width='200' height='200' id='canvas14'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>禁止元素旋转</div>
-            <canvas width='200' height='200' id='canvas15'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>禁止元素缩放</div>
-            <canvas width='200' height='200' id='canvas16'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>禁止元素横向移动</div>
-            <canvas width='200' height='200' id='canvas17'></canvas>
-          </div>
-
-          <div className='canvas_x'>
-            <div>禁止元素纵向移动</div>
-            <canvas width='200' height='200' id='canvas18'></canvas>
-          </div>
+        <div className='canvas_x'>
+          <div>自定义边界, 控制角</div>
+          <canvas width='200' height='200' id='canvas2'></canvas>
         </div>
-      </React.Fragment>
-    );
-  }
+
+        <div className='canvas_x'>
+          <div>透明控制角</div>
+          <canvas width='200' height='200' id='canvas3'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>选中后自定义背景色</div>
+          <canvas width='200' height='200' id='canvas4'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>没有边框</div>
+          <canvas width='200' height='200' id='canvas5'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>没有控制角</div>
+          <canvas width='200' height='200' id='canvas6'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>没有边框，没有控制角</div>
+          <canvas width='200' height='200' id='canvas7'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>自定义光标在对象悬停</div>
+          <canvas width='200' height='200' id='canvas8'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>元素移动状态</div>
+          <canvas width='200' height='200' id='canvas9'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>不允许框选</div>
+          <canvas width='200' height='200' id='canvas10'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>部分元素不能选中(选不到圆)</div>
+          <canvas width='200' height='200' id='canvas11'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>自定义画布背景色</div>
+          <canvas width='200' height='200' id='canvas12'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>自定义画布背景图</div>
+          <canvas width='200' height='200' id='canvas13'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>重叠影象</div>
+          <canvas width='200' height='200' id='canvas14'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>禁止元素旋转</div>
+          <canvas width='200' height='200' id='canvas15'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>禁止元素缩放</div>
+          <canvas width='200' height='200' id='canvas16'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>禁止元素横向移动</div>
+          <canvas width='200' height='200' id='canvas17'></canvas>
+        </div>
+
+        <div className='canvas_x'>
+          <div>禁止元素纵向移动</div>
+          <canvas width='200' height='200' id='canvas18'></canvas>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
-
-export default HoveringView;

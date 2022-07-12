@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './FullScreen.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -6,8 +6,8 @@ import OSM from 'ol/source/OSM';
 import * as control from 'ol/control';
 import 'ol/ol.css';
 
-class FullScreenView extends Component {
-  initMap = () => {
+export default function FullScreenView() {
+  const initMap = () => {
     // eslint-disable-next-line
     let map = new Map({
       target: 'map',
@@ -27,12 +27,10 @@ class FullScreenView extends Component {
       ])
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default FullScreenView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

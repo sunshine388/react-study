@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Color.scss';
 import { fabric } from 'fabric';
 
-class ColorView extends Component {
-  init = () => {
+export default function ColorView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     // 2种颜色配置
@@ -40,20 +40,17 @@ class ColorView extends Component {
     canvas.add(rect);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default ColorView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

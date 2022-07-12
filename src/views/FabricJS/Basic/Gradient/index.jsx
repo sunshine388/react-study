@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Gradient.scss';
 import { fabric } from 'fabric';
 
-class GradientView extends Component {
-  init = () => {
+export default function GradientView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     // 圆
@@ -57,20 +57,17 @@ class GradientView extends Component {
     canvas.add(circle2);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default GradientView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

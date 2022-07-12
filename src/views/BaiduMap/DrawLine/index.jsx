@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './DrawLine.scss';
 
-class DrawLineView extends Component {
-  initMap = () => {
+export default function DrawLineView() {
+  const initMap = () => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container'); // 创建Map实例
     // eslint-disable-next-line
@@ -30,12 +30,10 @@ class DrawLineView extends Component {
 
     map.addOverlay(polyline);
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
 
-export default DrawLineView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='container'></div>;
+}

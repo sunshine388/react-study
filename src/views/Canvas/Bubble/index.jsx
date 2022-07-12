@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Bubble.scss';
 
-class BubbleView extends Component {
-  bubble = () => {
+export default function BubbleView() {
+  const bubble = () => {
     const appHome = document.getElementById('appHome');
 
     let canvas = document.getElementById('canvas'),
@@ -222,16 +222,14 @@ class BubbleView extends Component {
       attract = false;
     });
   };
-  componentDidMount() {
-    this.bubble();
-  }
-  render() {
-    return (
-      <div className='app__home' id='appHome'>
-        <canvas id='canvas'></canvas>
-      </div>
-    );
-  }
-}
 
-export default BubbleView;
+  useEffect(() => {
+    bubble();
+  }, []);
+
+  return (
+    <div className='app__home' id='appHome'>
+      <canvas id='canvas'></canvas>
+    </div>
+  );
+}

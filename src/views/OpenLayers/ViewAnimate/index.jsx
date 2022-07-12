@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ViewAnimate.scss';
 import { Map, View } from 'ol';
 import * as olEasing from 'ol/easing';
@@ -11,12 +11,12 @@ const Moscow = [37.6178, 55.7517]; // 莫斯科
 const Istanbul = [28.9744, 41.0128]; // 伊斯坦布尔
 const Rome = [12.5, 41.9]; // 罗马
 const Bern = [7.4458, 46.95]; // 伯尔尼
-class ViewAnimateView extends Component {
-  state = {
-    map: null
-  };
-  initMap = () => {
-    let map = new Map({
+
+let map = null;
+
+export default function ViewAnimateView() {
+  const initMap = () => {
+    map = new Map({
       target: 'map',
       layers: [
         // 图层
@@ -35,51 +35,48 @@ class ViewAnimateView extends Component {
         zoom: 6 // 地图缩放最大级别
       })
     });
-    this.setState({
-      map: map
-    });
   };
 
   // 顺时针
-  rotateLeft = () => {
-    let currentRotation = this.state.map.getView().getRotation();
-    this.state.map.getView().setRotation(currentRotation + 1);
+  const rotateLeft = () => {
+    let currentRotation = map.getView().getRotation();
+    map.getView().setRotation(currentRotation + 1);
   };
 
   // 逆时针
-  rotateRight = () => {
-    let currentRotation = this.state.map.getView().getRotation();
-    this.state.map.getView().setRotation(currentRotation - 1);
+  const rotateRight = () => {
+    let currentRotation = map.getView().getRotation();
+    map.getView().setRotation(currentRotation - 1);
   };
 
   // 平移到伦敦
-  panToLondon = () => {
-    this.state.map.getView().animate({
+  const panToLondon = () => {
+    map.getView().animate({
       center: London, // 目标位置
       duration: 2000 // 动画时长
     });
   };
 
   // 弹性平移到莫斯科
-  elasticToMoscow = () => {
-    this.state.map.getView().animate({
+  const elasticToMoscow = () => {
+    map.getView().animate({
       center: Moscow, // 目标位置
       easing: olEasing.easeOut // 动画: 传入动画函数，olEasing是内置动画集
     });
   };
 
   // 弹跳平移到伊斯坦布尔
-  bounceToIstanbul = () => {
-    this.state.map.getView().animate({
+  const bounceToIstanbul = () => {
+    map.getView().animate({
       center: Istanbul,
       duration: 2000, // 动画时长
-      easing: this.bounce // 动画：传入动画函数
+      easing: bounce // 动画：传入动画函数
     });
   };
 
   // 旋转平移到罗马
-  spinToRome = () => {
-    let view = this.state.map.getView();
+  const spinToRome = () => {
+    let view = map.getView();
     let center = view.getCenter();
     view.animate(
       {
@@ -100,8 +97,8 @@ class ViewAnimateView extends Component {
   };
 
   // 绕着罗马旋转
-  rotateAroundRome = () => {
-    let view = this.state.map.getView();
+  const rotateAroundRome = () => {
+    let view = map.getView();
     let rotation = view.getRotation();
     view.animate(
       {
@@ -119,8 +116,8 @@ class ViewAnimateView extends Component {
   };
 
   // 飞行到伯尔尼
-  flyToBern = () => {
-    let view = this.state.map.getView();
+  const flyToBern = () => {
+    let view = map.getView();
     let duration = 2000;
     let zoom = view.getZoom();
     let parts = 2;
@@ -155,7 +152,7 @@ class ViewAnimateView extends Component {
   };
 
   // 弹跳动画
-  bounce = (t) => {
+  const bounce = (t) => {
     let s = 7.5625;
     let p = 2.75;
     let l;
@@ -177,26 +174,24 @@ class ViewAnimateView extends Component {
     }
     return l;
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <div className='map-btn'>
-          <button onClick={this.rotateLeft}>↻</button>
-          <button onClick={this.rotateRight}>↺</button>
-          <button onClick={this.panToLondon}>平移到伦敦</button>
-          <button onClick={this.elasticToMoscow}>弹性平移到莫斯科</button>
-          <button onClick={this.bounceToIstanbul}>弹跳平移到伊斯坦布尔</button>
-          <button onClick={this.spinToRome}>旋转平移到罗马</button>
-          <button onClick={this.rotateAroundRome}>绕着罗马旋转</button>
-          <button onClick={this.flyToBern}>飞行到伯尔尼</button>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
 
-export default ViewAnimateView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <div className='map-btn'>
+        <button onClick={rotateLeft}>↻</button>
+        <button onClick={rotateRight}>↺</button>
+        <button onClick={panToLondon}>平移到伦敦</button>
+        <button onClick={elasticToMoscow}>弹性平移到莫斯科</button>
+        <button onClick={bounceToIstanbul}>弹跳平移到伊斯坦布尔</button>
+        <button onClick={spinToRome}>旋转平移到罗马</button>
+        <button onClick={rotateAroundRome}>绕着罗马旋转</button>
+        <button onClick={flyToBern}>飞行到伯尔尼</button>
+      </div>
+    </React.Fragment>
+  );
+}

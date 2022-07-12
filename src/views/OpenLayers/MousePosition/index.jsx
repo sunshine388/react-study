@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './MousePosition.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -7,8 +7,8 @@ import * as control from 'ol/control';
 import * as coordinate from 'ol/coordinate';
 import 'ol/ol.css';
 
-class MousePositionView extends Component {
-  initMap = () => {
+export default function MousePositionView() {
+  const initMap = () => {
     // eslint-disable-next-line
     let map = new Map({
       target: 'map',
@@ -31,17 +31,15 @@ class MousePositionView extends Component {
       ])
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <p id='mousePosition'></p>
-      </React.Fragment>
-    );
-  }
-}
 
-export default MousePositionView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <p id='mousePosition'></p>
+    </React.Fragment>
+  );
+}

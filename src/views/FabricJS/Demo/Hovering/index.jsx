@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Hovering.scss';
 import { fabric } from 'fabric';
 
-class HoveringView extends Component {
-  init = () => {
+export default function HoveringView() {
+  const init = () => {
     const canvas = new fabric.Canvas('canvas');
     // 随机生成一些图形
     for (let i = 15; i--; ) {
@@ -42,26 +42,23 @@ class HoveringView extends Component {
     });
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-        <div>
-          代码出处{' '}
-          <a href='http://fabricjs.com/hovering' target='view_window'>
-            http://fabricjs.com/hovering
-          </a>
-        </div>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default HoveringView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+      <div>
+        代码出处{' '}
+        <a href='http://fabricjs.com/hovering' target='view_window'>
+          http://fabricjs.com/hovering
+        </a>
+      </div>
+    </div>
+  );
+}

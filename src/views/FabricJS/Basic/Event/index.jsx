@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Event.scss';
 import { fabric } from 'fabric';
 
@@ -39,13 +39,11 @@ import { fabric } from 'fabric';
  * 点击点在对象中的位置：{e.transform.offsetX,e.transform.offsetY}
  */
 
-class EventView extends Component {
-  state = {
-    canvas: null
-  };
-  init = () => {
-    const canvas = new fabric.Canvas('canvas');
+let canvas = null;
 
+export default function EventView() {
+  const init = () => {
+    canvas = new fabric.Canvas('canvas');
     let rect = new fabric.Rect({
       top: 20,
       left: 20,
@@ -59,50 +57,41 @@ class EventView extends Component {
       console.log('选中矩形啦', options);
     });
     canvas.add(rect);
-
-    this.setState(
-      {
-        canvas: canvas
-      },
-      () => {
-        this.addClickEvent();
-      }
-    );
+    addClickEvent();
   };
 
   // 移除画布点击事件
-  removeClickEvent = () => {
-    this.state.canvas.off('mouse:down');
+  const removeClickEvent = () => {
+    canvas.off('mouse:down');
   };
 
   // 添加画布点击事件
-  addClickEvent = () => {
-    this.removeClickEvent(); // 在添加事件之前先把该事件清除掉，以免重复添加
-    this.state.canvas.on('mouse:down', (options) => {
+  const addClickEvent = () => {
+    removeClickEvent(); // 在添加事件之前先把该事件清除掉，以免重复添加
+    canvas.on('mouse:down', (options) => {
       console.log(
         `x轴坐标: ${options.e.clientX};    y轴坐标: ${options.e.clientY}`
       );
     });
   };
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-        <div>
-          <button onClick={this.addClickEvent}>添加画布点击事件</button>
-          <button onClick={this.removeClickEvent}>移除画布点击事件</button>
-          <div>打开控制台，然后用鼠标点击画布试试</div>
-        </div>
-      </div>
-    );
-  }
-}
 
-export default EventView;
+  useEffect(() => {
+    init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+      <div>
+        <button onClick={addClickEvent}>添加画布点击事件</button>
+        <button onClick={removeClickEvent}>移除画布点击事件</button>
+        <div>打开控制台，然后用鼠标点击画布试试</div>
+      </div>
+    </div>
+  );
+}

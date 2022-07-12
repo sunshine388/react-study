@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './DrawPath.scss';
 import { fabric } from 'fabric';
 
-class DrawPathView extends Component {
-  init = () => {
+export default function DrawPathView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
     let path = new fabric.Path('M 0 0 L 200 100 L 170 200 z');
     path.set({
@@ -17,20 +17,17 @@ class DrawPathView extends Component {
     canvas.add(path);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default DrawPathView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

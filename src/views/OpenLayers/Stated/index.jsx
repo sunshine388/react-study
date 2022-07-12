@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Stated.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import 'ol/ol.css';
 
-class StatedView extends Component {
-  initMap = () => {
+export default function StatedView() {
+  const initMap = () => {
     // eslint-disable-next-line
     let map = new Map({
       target: 'map',
@@ -22,12 +22,10 @@ class StatedView extends Component {
       })
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default StatedView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Stated.scss';
 import { loadModules } from 'esri-loader';
 
-class StatedView extends Component {
-  initMap = () => {
+export default function StatedView() {
+  const initMap = () => {
     loadModules(['esri/Map', 'esri/views/MapView']).then(([Map, MapView]) => {
       this.esriMap = new Map({
         basemap: 'streets-vector'
@@ -16,12 +16,10 @@ class StatedView extends Component {
       });
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default StatedView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

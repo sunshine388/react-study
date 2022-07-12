@@ -1,26 +1,28 @@
-import React, { Component } from 'react';
-import Loadable from 'react-loadable';
+import React, { useState, useEffect, Suspense, lazy, Component } from 'react';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
-class loadingComponent extends Component {
-  constructor(props) {
-    super(props);
-    NProgress.start();
-  }
-  componentDidMount() {
-    NProgress.done();
-  }
-  render() {
-    return <div />;
-  }
-}
+const LoadingComponent = () => {
+  useState(NProgress.start());
 
-const loadable = (loader, loading = loadingComponent) => {
-  return Loadable({
-    loader,
-    loading
+  useEffect(() => {
+    NProgress.done();
   });
+
+  return <div />;
+};
+
+const loadable = (component, Loading = LoadingComponent) => {
+  const Comp = lazy(component);
+  return class Loadable extends Component {
+    render() {
+      return (
+        <Suspense fallback={<Loading />}>
+          <Comp />
+        </Suspense>
+      );
+    }
+  };
 };
 
 export default loadable;

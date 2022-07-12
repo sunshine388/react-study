@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './3DArchitecture.scss';
 
-class Architecture3DView extends Component {
+export default function Architecture3DView() {
   // 初始化百度地图
-  initBMap = () => {
+  const initBMap = () => {
     // eslint-disable-next-line
     const cityCenter = mapv.utilCityCenter.getCenterByCityName('北京');
     // eslint-disable-next-line
@@ -16,7 +16,7 @@ class Architecture3DView extends Component {
     return map;
   };
 
-  initData = () => {
+  const initData = () => {
     let data = [
       {
         geometry: {
@@ -37,7 +37,7 @@ class Architecture3DView extends Component {
     return data;
   };
 
-  setData = (map, data) => {
+  const setData = (map, data) => {
     // eslint-disable-next-line
     let view = new mapvgl.View({ map });
     // eslint-disable-next-line
@@ -50,14 +50,11 @@ class Architecture3DView extends Component {
     shapeLayer.setData(data);
   };
 
-  componentDidMount() {
-    const map = this.initBMap();
-    const data = this.initData();
-    this.setData(map, data);
-  }
-  render() {
-    return <div id='map_container'></div>;
-  }
-}
+  useEffect(() => {
+    const map = initBMap();
+    const data = initData();
+    setData(map, data);
+  }, []);
 
-export default Architecture3DView;
+  return <div id='map_container'></div>;
+}

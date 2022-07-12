@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ManageSelection.scss';
 import { fabric } from 'fabric';
 
-class ManageSelectionView extends Component {
-  state = {
-    cancas: null
-  };
-  init = () => {
-    let canvas = new fabric.Canvas('canvas');
+let canvas = null;
+
+export default function ManageSelectionView() {
+  const init = () => {
+    canvas = new fabric.Canvas('canvas');
 
     const red = new fabric.Rect({
       top: 100,
@@ -35,113 +34,107 @@ class ManageSelectionView extends Component {
 
     fabric.Object.prototype.transparentCorners = false; // 选中时，角是被填充了。true 空心；false 实心
     canvas.add(red, blue, green);
-    this.setState({
-      canvas: canvas
-    });
   };
 
   // 建组
-  group = () => {
+  const group = () => {
     // 如果当前没选中东西，什么都不做
-    if (!this.state.canvas.getActiveObject()) {
+    if (!canvas.getActiveObject()) {
       return;
     }
 
-    console.log('当前选中的状态', this.state.canvas.getActiveObject().type);
+    console.log('当前选中的状态', canvas.getActiveObject().type);
 
     // 如果当前选中的不是框选多个元素的群组，什么都不做
-    if (this.state.canvas.getActiveObject().type !== 'activeSelection') {
+    if (canvas.getActiveObject().type !== 'activeSelection') {
       return;
     }
-    this.state.canvas.getActiveObject().toGroup();
-    this.state.canvas.requestRenderAll();
+    canvas.getActiveObject().toGroup();
+    canvas.requestRenderAll();
   };
 
   // 取消组
-  ungroup = () => {
-    if (!this.state.canvas.getActiveObject()) {
+  const ungroup = () => {
+    if (!canvas.getActiveObject()) {
       return;
     }
 
-    console.log('当前选中的状态', this.state.canvas.getActiveObject().type);
+    console.log('当前选中的状态', canvas.getActiveObject().type);
 
-    if (this.state.canvas.getActiveObject().type !== 'group') {
+    if (canvas.getActiveObject().type !== 'group') {
       return;
     }
-    this.state.canvas.getActiveObject().toActiveSelection();
-    this.state.canvas.requestRenderAll();
+    canvas.getActiveObject().toActiveSelection();
+    canvas.requestRenderAll();
   };
 
   // 全选
-  multiselect = () => {
-    this.state.canvas.discardActiveObject(); // 丢弃当前活动的对象和触发事件。 如果fabric作为鼠标事件的结果调用该函数，则将该事件作为参数传递给自定义事件的fire函数。 当作为一个方法使用时，参数没有任何应用。
-    const sel = new fabric.ActiveSelection(this.state.canvas.getObjects(), {
-      canvas: this.state.canvas
+  const multiselect = () => {
+    canvas.discardActiveObject(); // 丢弃当前活动的对象和触发事件。 如果fabric作为鼠标事件的结果调用该函数，则将该事件作为参数传递给自定义事件的fire函数。 当作为一个方法使用时，参数没有任何应用。
+    const sel = new fabric.ActiveSelection(canvas.getObjects(), {
+      canvas: canvas
     });
     // console.log(sel)
-    this.state.canvas.setActiveObject(sel);
-    this.state.canvas.requestRenderAll();
+    canvas.setActiveObject(sel);
+    canvas.requestRenderAll();
   };
 
   // 添加更多图形（随机位置）
-  addmore = () => {
+  const addmore = () => {
     const red = new fabric.Rect({
-      top: Math.random() * this.state.canvas.height,
-      left: Math.random() * this.state.canvas.width,
+      top: Math.random() * canvas.height,
+      left: Math.random() * canvas.width,
       width: 80,
       height: 50,
       fill: 'red'
     });
     const blue = new fabric.Rect({
-      top: Math.random() * this.state.canvas.height,
-      left: Math.random() * this.state.canvas.width,
+      top: Math.random() * canvas.height,
+      left: Math.random() * canvas.width,
       width: 50,
       height: 70,
       fill: 'blue'
     });
     const green = new fabric.Rect({
-      top: Math.random() * this.state.canvas.height,
-      left: Math.random() * this.state.canvas.width,
+      top: Math.random() * canvas.height,
+      left: Math.random() * canvas.width,
       width: 60,
       height: 60,
       fill: 'green'
     });
-    this.state.canvas.add(red, blue, green);
+    canvas.add(red, blue, green);
   };
 
   // 取消选择
-  discard = () => {
-    this.state.canvas.discardActiveObject();
-    this.state.canvas.requestRenderAll();
+  const discard = () => {
+    canvas.discardActiveObject();
+    canvas.requestRenderAll();
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <div>
-          <button onClick={this.group}>建组</button>
-          <button onClick={this.ungroup}>取消组</button>
-          <button onClick={this.multiselect}>全选</button>
-          <button onClick={this.discard}>取消选中</button>
-          <button onClick={this.addmore}>添加更多图形</button>
-        </div>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-        <div>
-          代码出处{' '}
-          <a href='http://fabricjs.com/manage-selection' target='view_window'>
-            http://fabricjs.com/manage-selection
-          </a>
-        </div>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default ManageSelectionView;
+  return (
+    <div className='box'>
+      <div>
+        <button onClick={group}>建组</button>
+        <button onClick={ungroup}>取消组</button>
+        <button onClick={multiselect}>全选</button>
+        <button onClick={discard}>取消选中</button>
+        <button onClick={addmore}>添加更多图形</button>
+      </div>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+      <div>
+        代码出处{' '}
+        <a href='http://fabricjs.com/manage-selection' target='view_window'>
+          http://fabricjs.com/manage-selection
+        </a>
+      </div>
+    </div>
+  );
+}

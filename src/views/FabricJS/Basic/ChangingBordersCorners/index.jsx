@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ChangingBordersCorners.scss';
 import { fabric } from 'fabric';
 
-class ChangingBordersCornersView extends Component {
-  init = () => {
+export default function ChangingBordersCornersView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     let circle1 = new fabric.Circle({
@@ -29,20 +29,17 @@ class ChangingBordersCornersView extends Component {
     canvas.add(circle1, circle2);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default ChangingBordersCornersView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

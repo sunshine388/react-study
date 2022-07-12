@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Zoom.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import 'ol/ol.css';
 
-class ZoomView extends Component {
-  state = {
-    map: null,
-    currentZoom: 12,
-    minZoom: 10,
-    maxZoom: 14
-  };
-  initMap = () => {
-    let map = new Map({
+const minZoom = 10;
+const maxZoom = 14;
+
+let map = null;
+
+export default function ZoomView() {
+  const [currentZoom, setCurrentZoom] = useState(12);
+
+  const initMap = () => {
+    map = new Map({
       target: 'map',
       layers: [
         new Tile({
@@ -23,54 +24,47 @@ class ZoomView extends Component {
       view: new View({
         projection: 'EPSG:4326',
         center: [116.404, 39.915],
-        zoom: this.state.currentZoom, // 地图缩放级别（打开页面时默认级别）
-        minZoom: this.state.minZoom, // 地图缩放最小级别
-        maxZoom: this.state.maxZoom // 地图缩放最大级别
+        zoom: 12, // 地图缩放级别（打开页面时默认级别）
+        minZoom: minZoom, // 地图缩放最小级别
+        maxZoom: maxZoom // 地图缩放最大级别
       })
     });
-    this.setState({
-      map: map
+    map.getView().on('change:resolution', function(e) {
+      let zoom = map.getView().getZoom();
+      setCurrentZoom(zoom);
     });
   };
 
   // 放大1级
-  zoomIn = () => {
-    let view = this.state.map.getView(); // 获取当前视图
+  const zoomIn = () => {
+    let view = map.getView(); // 获取当前视图
     let zoom = view.getZoom(); // 获取当前缩放级别
     view.setZoom(zoom + 1);
-    this.setState({
-      currentZoom: this.state.map.getView().getZoom()
-    });
   };
 
   // 缩小1级
-  zoomOut = () => {
-    let view = this.state.map.getView(); // 获取当前视图
+  const zoomOut = () => {
+    let view = map.getView(); // 获取当前视图
     let zoom = view.getZoom(); // 获取当前缩放级别
     view.setZoom(zoom - 1);
-    this.setState({
-      currentZoom: this.state.map.getView().getZoom()
-    });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <div className='zoom-info'>
-          <p>当前zoom: {this.state.currentZoom}</p>
-          <p>minZoom: {this.state.minZoom}</p>
-          <p>maxZoom: {this.state.maxZoom}</p>
-        </div>
-        <div className="zoom-btn">
-          <button onClick={this.zoomIn}>放大</button>
-          <button onClick={this.zoomOut}>缩小</button>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
 
-export default ZoomView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <div className='zoom-info'>
+        <p>当前zoom: {currentZoom}</p>
+        <p>minZoom: {minZoom}</p>
+        <p>maxZoom: {maxZoom}</p>
+      </div>
+      <div className='zoom-btn'>
+        <button onClick={zoomIn}>放大</button>
+        <button onClick={zoomOut}>缩小</button>
+      </div>
+    </React.Fragment>
+  );
+}

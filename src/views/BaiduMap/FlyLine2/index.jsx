@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './FlyLine2.scss';
 
-class FlyLine2View extends Component {
+export default function FlyLine2View() {
   // 飞线图文档：https://mapv.baidu.com/gl/docs/FlyLineLayer.html
   // 贝塞尔曲线工具文档（内置工具）：https://mapv.baidu.com/gl/docs/BezierCurve.html
   // 基于Threejs实现，使用前需要额外引入mapvgl.threelayers包
@@ -15,7 +15,7 @@ class FlyLine2View extends Component {
   // 使用边绑定算法
 
   // 初始化百度地图
-  initBMap = () => {
+  const initBMap = () => {
     // eslint-disable-next-line
     const cityCenter = mapv.utilCityCenter.getCenterByCityName('佛山');
     // eslint-disable-next-line
@@ -29,7 +29,7 @@ class FlyLine2View extends Component {
     return map;
   };
 
-  initData = () => {
+  const initData = () => {
     // 数据源需要提供起点坐标和终点坐标
     let data = [];
     let cities = [
@@ -132,7 +132,7 @@ class FlyLine2View extends Component {
     return data;
   };
 
-  setData = (map, data) => {
+  const setData = (map, data) => {
     // 1. 初始化图层
     // eslint-disable-next-line
     const view = new mapvgl.View({ map });
@@ -163,14 +163,11 @@ class FlyLine2View extends Component {
     linePointLayer.setData(data);
   };
 
-  componentDidMount() {
-    const map = this.initBMap();
-    const data = this.initData();
-    this.setData(map, data);
-  }
-  render() {
-    return <div id='map_container'></div>;
-  }
-}
+  useEffect(() => {
+    const map = initBMap();
+    const data = initData();
+    setData(map, data);
+  }, []);
 
-export default FlyLine2View;
+  return <div id='map_container'></div>;
+}

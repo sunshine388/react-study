@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './DrawPolygon.scss';
 
-class DrawPolygonView extends Component {
-  initMap = () => {
+export default function DrawPolygonView() {
+  const initMap = () => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container'); // 创建Map实例
     // eslint-disable-next-line
@@ -30,12 +30,10 @@ class DrawPolygonView extends Component {
 
     map.addOverlay(polygon);
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
 
-export default DrawPolygonView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='container'></div>;
+}

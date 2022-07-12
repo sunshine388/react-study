@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './3DArchitecture2.scss';
 import cqArchitecture from '@/assets/map/cqArchitecture.json';
 
-class Architecture3D2View extends Component {
+export default function Architecture3D2View() {
   // 初始化百度地图
-  initBMap = () => {
+  const initBMap = () => {
     // eslint-disable-next-line
     const cityCenter = mapv.utilCityCenter.getCenterByCityName('北京');
     // eslint-disable-next-line
@@ -17,7 +17,7 @@ class Architecture3D2View extends Component {
     return map;
   };
 
-  initData = () => {
+  const initData = () => {
     let polygons = []; // 面
 
     let len = cqArchitecture.length;
@@ -44,7 +44,7 @@ class Architecture3D2View extends Component {
     return polygons;
   };
 
-  setData = (map, data) => {
+  const setData = (map, data) => {
     // eslint-disable-next-line
     let view = new mapvgl.View({ map });
     // eslint-disable-next-line
@@ -67,14 +67,11 @@ class Architecture3D2View extends Component {
     shapeLayer.setData(data);
   };
 
-  componentDidMount() {
-    const map = this.initBMap();
-    const data = this.initData();
-    this.setData(map, data);
-  }
-  render() {
-    return <div id='map_container'></div>;
-  }
-}
+  useEffect(() => {
+    const map = initBMap();
+    const data = initData();
+    setData(map, data);
+  }, []);
 
-export default Architecture3D2View;
+  return <div id='map_container'></div>;
+}

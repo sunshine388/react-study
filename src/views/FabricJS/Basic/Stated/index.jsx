@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Stated.scss';
 import { fabric } from 'fabric';
 import jailCellBars from '@/assets/images/jail_cell_bars.png';
@@ -6,8 +6,8 @@ import jailCellBars from '@/assets/images/jail_cell_bars.png';
 const imgURL =
   'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/27d1b4e5f8824198b6d51a2b1c2d0d75~tplv-k3u1fbpfcp-zoom-crop-mark:400:400:400:400.awebp';
 
-class StatedView extends Component {
-  init1 = () => {
+export default function StatedView() {
+  const init1 = () => {
     let canvas = new fabric.Canvas('canvas1'); // 通过元素id绑定
 
     // 矩形
@@ -22,7 +22,7 @@ class StatedView extends Component {
     canvas.add(rect); // 将图案添加到canvas里
   };
 
-  init2 = () => {
+  const init2 = () => {
     let canvas = new fabric.StaticCanvas('canvas2'); // 通过元素id绑定
 
     // 矩形
@@ -37,7 +37,7 @@ class StatedView extends Component {
     canvas.add(rect); // 将图案添加到canvas里
   };
 
-  init3 = () => {
+  const init3 = () => {
     let canvas = new fabric.Canvas('canvas3', {
       width: 300,
       height: 300,
@@ -55,19 +55,19 @@ class StatedView extends Component {
     canvas.add(circle);
   };
 
-  init4 = () => {
+  const init4 = () => {
     let canvas = new fabric.Canvas('canvas4');
     canvas.setBackgroundImage(imgURL, canvas.renderAll.bind(canvas));
   };
 
-  init5 = () => {
+  const init5 = () => {
     let canvas = new fabric.Canvas('canvas5');
     canvas.setBackgroundImage(imgURL, canvas.renderAll.bind(canvas), {
       angle: 15 // 旋转背景图
     });
   };
 
-  init6 = () => {
+  const init6 = () => {
     let canvas = new fabric.Canvas('canvas6');
     fabric.Image.fromURL(imgURL, (img) => {
       img.set({
@@ -81,7 +81,7 @@ class StatedView extends Component {
     });
   };
 
-  init7 = () => {
+  const init7 = () => {
     let canvas = new fabric.Canvas('canvas7');
     canvas.setBackgroundColor(
       {
@@ -93,7 +93,7 @@ class StatedView extends Component {
     );
   };
 
-  init8 = () => {
+  const init8 = () => {
     let canvas = new fabric.Canvas('canvas8');
     canvas.add(
       new fabric.Circle({
@@ -111,61 +111,58 @@ class StatedView extends Component {
     );
   };
 
-  componentDidMount() {
-    this.init1();
-    this.init2();
-    this.init3();
-    this.init4();
-    this.init5();
-    this.init6();
-    this.init7();
-    this.init8();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <div className='canvas_x'>
-          <div>可交互</div>
-          <canvas width='400' height='400' id='canvas1'></canvas>
-        </div>
+  useEffect(() => {
+    init1();
+    init2();
+    init3();
+    init4();
+    init5();
+    init6();
+    init7();
+    init8();
+  }, []);
 
-        <div className='canvas_x'>
-          <div>不可交互</div>
-          <canvas width='400' height='400' id='canvas2'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>初始化画布样式</div>
-          <canvas id='canvas3'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>使用背景图</div>
-          <canvas width='400' height='400' id='canvas4'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>旋转背景图</div>
-          <canvas width='400' height='400' id='canvas5'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>拉伸背景图</div>
-          <canvas width='400' height='400' id='canvas6'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>重复背景图</div>
-          <canvas width='400' height='400' id='canvas7'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>重叠影象</div>
-          <canvas width='400' height='400' id='canvas8'></canvas>
-        </div>
+  return (
+    <div className='box'>
+      <div className='canvas_x'>
+        <div>可交互</div>
+        <canvas width='400' height='400' id='canvas1'></canvas>
       </div>
-    );
-  }
-}
 
-export default StatedView;
+      <div className='canvas_x'>
+        <div>不可交互</div>
+        <canvas width='400' height='400' id='canvas2'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>初始化画布样式</div>
+        <canvas id='canvas3'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>使用背景图</div>
+        <canvas width='400' height='400' id='canvas4'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>旋转背景图</div>
+        <canvas width='400' height='400' id='canvas5'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>拉伸背景图</div>
+        <canvas width='400' height='400' id='canvas6'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>重复背景图</div>
+        <canvas width='400' height='400' id='canvas7'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>重叠影象</div>
+        <canvas width='400' height='400' id='canvas8'></canvas>
+      </div>
+    </div>
+  );
+}

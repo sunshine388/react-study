@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Text.scss';
 import { fabric } from 'fabric';
 
-class TextView extends Component {
-  init = () => {
+export default function TextView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     // 基础用法
@@ -137,20 +137,16 @@ class TextView extends Component {
     canvas.add(text12, text11);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
+  useEffect(() => {
+    init();
+  }, []);
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
 }
-
-export default TextView;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Popup.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -6,19 +6,15 @@ import XYZ from 'ol/source/XYZ'; // 引入XYZ地图格式
 import Overlay from 'ol/Overlay';
 import 'ol/ol.css';
 
-class PopupView extends Component {
-  constructor() {
-    super();
-    this.popupRef = React.createRef();
-  }
-  state = {
-    map: null,
-    overlay: null,
-    currentCoordinate: ''
-  };
-  initMap = () => {
-    let overlay = new Overlay({
-      element: this.popupRef.current, // 弹窗标签，在html里
+let overlay = null;
+
+export default function PopupView() {
+  const [currentCoordinate, setCurrentCoordinate] = useState('');
+  const popupRef = useRef(null);
+
+  const initMap = () => {
+    overlay = new Overlay({
+      element: popupRef.current, // 弹窗标签，在html里
       autoPan: true, // 如果弹窗在底图边缘时，底图会移动
       autoPanAnimation: {
         // 底图移动动画
@@ -44,54 +40,36 @@ class PopupView extends Component {
       }),
       overlays: [overlay]
     });
-    this.setState(
-      {
-        map: map,
-        overlay: overlay
-      },
-      () => {
-        this.mapClick();
-      }
-    );
-  };
 
-  mapClick = () => {
-    this.state.map.on('singleclick', (evt) => {
+    map.on('singleclick', (evt) => {
       const coordinate = evt.coordinate; // 获取坐标
-      this.setState({
-        currentCoordinate: coordinate
-      });
-      this.state.overlay.setPosition(coordinate);
+      setCurrentCoordinate(coordinate);
+      overlay.setPosition(coordinate);
     });
   };
 
-  closePopup = () => {
-    this.state.overlay.setPosition(undefined); // setPosition 传入undefined会隐藏弹窗元素
-    this.setState({
-      currentCoordinate: ''
-    });
+  const closePopup = () => {
+    overlay.setPosition(undefined); // setPosition 传入undefined会隐藏弹窗元素
+    setCurrentCoordinate('');
   };
 
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <div className='container'>
-        <div id='map'></div>
-        <div ref={this.popupRef} className='popup'>
-          <span className='icon-close' onClick={this.closePopup}>
-            ✖
-          </span>
-          <div className='popup-content'>
-            {this.state.currentCoordinate[0]}
-            <br />
-            {this.state.currentCoordinate[1]}
-          </div>
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return (
+    <div className='container'>
+      <div id='map'></div>
+      <div ref={popupRef} className='popup'>
+        <span className='icon-close' onClick={closePopup}>
+          ✖
+        </span>
+        <div className='popup-content'>
+          {currentCoordinate[0]}
+          <br />
+          {currentCoordinate[1]}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default PopupView;

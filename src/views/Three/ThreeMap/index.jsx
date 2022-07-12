@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ThreeMap.scss';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-class ThreeMapView extends Component {
-  initMap = () => {
+export default function ThreeMapView() {
+  const initMap = () => {
     let container = document.getElementById('WebGL-output');
     const width = container.clientWidth;
     const height = container.clientHeight;
@@ -63,12 +63,10 @@ class ThreeMapView extends Component {
       requestAnimationFrame(animate);
     }
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='WebGL-output'></div>;
-  }
-}
 
-export default ThreeMapView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='WebGL-output'></div>;
+}

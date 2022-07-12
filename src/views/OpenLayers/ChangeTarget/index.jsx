@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ChangeTarget.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import 'ol/ol.css';
 
-class ChangeTargetView extends Component {
-  state = {
-    map: null
-  };
-  initMap = () => {
-    let map = new Map({
+let map = null;
+
+export default function ChangeTargetView() {
+  const initMap = () => {
+    map = new Map({
       layers: [
         // 图层
         new Tile({
@@ -25,32 +24,26 @@ class ChangeTargetView extends Component {
     });
 
     map.setTarget('map1'); // 使用 setTarget 绑定地图容器
-    this.setState({
-      map: map
-    });
   };
 
-  changeMap = () => {
+  const changeMap = () => {
     // 获取当前地图容器，并进行判断
-    let target = this.state.map.getTarget() === 'map1' ? 'map2' : 'map1';
+    let target = map.getTarget() === 'map1' ? 'map2' : 'map1';
     // 重新设置地图容器
-    this.state.map.setTarget(target);
+    map.setTarget(target);
   };
 
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div className='map-container'>
-          <div id='map1' className='map'></div>
-          <div id='map2' className='map'></div>
-        </div>
-        <button onClick={this.changeMap}> change </button>
-      </React.Fragment>
-    );
-  }
-}
+  useEffect(() => {
+    initMap();
+  }, []);
 
-export default ChangeTargetView;
+  return (
+    <React.Fragment>
+      <div className='map-container'>
+        <div id='map1' className='map'></div>
+        <div id='map2' className='map'></div>
+      </div>
+      <button onClick={changeMap}> change </button>
+    </React.Fragment>
+  );
+}

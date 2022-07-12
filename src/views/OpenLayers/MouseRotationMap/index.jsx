@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './MouseRotationMap.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -7,8 +7,8 @@ import DragRotateAndZoom from 'ol/interaction/DragRotateAndZoom';
 import * as olInteraction from 'ol/interaction';
 import 'ol/ol.css';
 
-class MouseRotationMapView extends Component {
-  initMap = () => {
+export default function MouseRotationMapView() {
+  const initMap = () => {
     // eslint-disable-next-line
     let map = new Map({
       target: 'map',
@@ -27,17 +27,15 @@ class MouseRotationMapView extends Component {
       })
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <p>按住Shift并使用鼠标拖拽可以旋转、缩放地图</p>
-      </React.Fragment>
-    );
-  }
-}
 
-export default MouseRotationMapView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <p>按住Shift并使用鼠标拖拽可以旋转、缩放地图</p>
+    </React.Fragment>
+  );
+}

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Layout, message } from 'antd';
 import './layout.scss';
-import withRouter from '@/utils/withRouter';
+import { useNavigate } from 'react-router-dom';
 
 import AppHeader from './AppHeader.jsx';
 import AppAside from './AppAside.jsx';
@@ -10,59 +10,49 @@ import AppFooter from './AppFooter.jsx';
 
 const { Content } = Layout;
 
-class DefaultLayout extends Component {
-  state = {
-    menuToggle: false
-  };
+export default function DefaultLayout() {
+  const [menuToggle, setMenuToggle] = useState();
+  const navigate = useNavigate();
 
-  isLogin = () => {
+  const isLogin = () => {
     if (!localStorage.getItem('user')) {
-      this.setState({}, () => {
-        this.props.navigate('/login');
-      });
+      navigate('/login');
     }
   };
 
-  loginOut = () => {
+  const loginOut = () => {
     localStorage.clear();
-    this.props.navigate('/login');
+    navigate('/login');
     message.success('登出成功!');
   };
 
-  menuToggleAction = () => {
-    this.setState({
-      menuToggle: !this.state.menuToggle
-    });
+  const menuToggleAction = () => {
+    setMenuToggle((val) => !val);
   };
 
-  componentDidMount() {
-    this.isLogin();
-  }
+  useEffect(() => {
+    isLogin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  render() {
-    return (
-      <Layout className='app'>
-        <AppAside menuToggle={this.state.menuToggle} />
-        <Layout
-          style={{
-            width: this.state.menuToggle
-              ? 'calc(100% - 80px)'
-              : 'calc(100% - 200px)',
-            height: '100%'
-          }}>
-          <AppHeader
-            menuToggle={this.state.menuToggle}
-            menuClick={this.menuToggleAction}
-            loginOut={this.loginOut}
-          />
-          <Content className='app_content'>
-            <Outlet />
-          </Content>
-          <AppFooter />
-        </Layout>
+  return (
+    <Layout className='app'>
+      <AppAside menuToggle={menuToggle} />
+      <Layout
+        style={{
+          width: menuToggle ? 'calc(100% - 80px)' : 'calc(100% - 200px)',
+          height: '100%'
+        }}>
+        <AppHeader
+          menuToggle={menuToggle}
+          menuClick={menuToggleAction}
+          loginOut={loginOut}
+        />
+        <Content className='app_content'>
+          <Outlet />
+        </Content>
+        <AppFooter />
       </Layout>
-    );
-  }
+    </Layout>
+  );
 }
-
-export default withRouter(DefaultLayout);

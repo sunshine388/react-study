@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Cube.scss';
 import * as THREE from 'three';
 
-class ThreeMapView extends Component {
-  initMap = () => {
+export default function ThreeMapView() {
+  const initMap = () => {
     let container = document.getElementById('WebGL-output');
 
     //创建一个场景
@@ -34,12 +34,10 @@ class ThreeMapView extends Component {
       requestAnimationFrame(animate);
     }
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='WebGL-output'></div>;
-  }
-}
 
-export default ThreeMapView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='WebGL-output'></div>;
+}

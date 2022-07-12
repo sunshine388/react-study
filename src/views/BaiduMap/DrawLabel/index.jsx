@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './DrawLabel.scss';
 
-class DrawLabelView extends Component {
-  label = null;
-  labelClick = (e) => {
+let label = null;
+
+export default function DrawLabelView() {
+  const labelClick = (e) => {
     alert(e.target.content);
   };
-  initMap = () => {
+
+  useEffect(() => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container'); // 这里填入的是容器的 ID
     // eslint-disable-next-line
@@ -15,12 +17,12 @@ class DrawLabelView extends Component {
     map.enableScrollWheelZoom(true); // 允许滚轮缩放
 
     // eslint-disable-next-line
-    this.label = new BMapGL.Label('数据可视化 - 数据可视化', {
+    label = new BMapGL.Label('数据可视化 - 数据可视化', {
       position: point, // 出现的坐标点
       // eslint-disable-next-line
       offset: new BMapGL.Size(-100, 20) // 位移
     });
-    this.label.setStyle({
+    label.setStyle({
       // 修改样式
       width: '300px',
       height: '100px',
@@ -32,18 +34,13 @@ class DrawLabelView extends Component {
     });
 
     // label 添加点击事件
-    this.label.addEventListener('click', this.labelClick);
-    map.addOverlay(this.label);
-  };
-  componentDidMount() {
-    this.initMap();
-  }
-  componentWillUnmount() {
-    this.label.removeEventListener('click', this.labelClick);
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
+    label.addEventListener('click', labelClick);
+    map.addOverlay(label);
 
-export default DrawLabelView;
+    return () => {
+      label.removeEventListener('click', labelClick);
+    };
+  }, []);
+
+  return <div id='container'></div>;
+}

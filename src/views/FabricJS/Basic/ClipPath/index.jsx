@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ClipPath.scss';
 import { fabric } from 'fabric';
 
-class ClipPathView extends Component {
+export default function ClipPathView() {
   // 裁剪单一图形
-  init1() {
+  const init1 = function() {
     const canvas = new fabric.Canvas('canvas1');
 
     // 裁剪的图形
@@ -26,10 +26,10 @@ class ClipPathView extends Component {
     rect.clipPath = clipPath;
 
     canvas.add(rect);
-  }
+  };
 
   // 裁剪一个组
-  init2() {
+  const init2 = function() {
     const canvas = new fabric.Canvas('canvas2');
 
     // 裁剪的图形
@@ -57,9 +57,9 @@ class ClipPathView extends Component {
     group.clipPath = clipPath;
 
     canvas.add(group);
-  }
+  };
 
-  init3() {
+  const init3 = function() {
     const canvas = new fabric.Canvas('canvas3');
 
     const clipPath = new fabric.Group(
@@ -86,9 +86,9 @@ class ClipPathView extends Component {
 
     group.clipPath = clipPath;
     canvas.add(group);
-  }
+  };
 
-  init4() {
+  const init4 = function() {
     const canvas = new fabric.Canvas('canvas4');
 
     const clipPath = new fabric.Circle({ radius: 70, top: -50, left: -50 });
@@ -114,9 +114,9 @@ class ClipPathView extends Component {
 
     group.clipPath = clipPath;
     canvas.add(group);
-  }
+  };
 
-  init5() {
+  const init5 = function() {
     const canvas = new fabric.Canvas('canvas5');
 
     const clipPath = new fabric.Circle({ radius: 100, top: -100, left: -100 });
@@ -142,9 +142,9 @@ class ClipPathView extends Component {
 
     group.clipPath = clipPath;
     canvas.add(group);
-  }
+  };
 
-  init6() {
+  const init6 = function() {
     const canvas = new fabric.Canvas('canvas6');
 
     const clipPath = new fabric.Text(
@@ -167,9 +167,9 @@ class ClipPathView extends Component {
 
     group.clipPath = clipPath;
     canvas.add(group);
-  }
+  };
 
-  init7() {
+  const init7 = function() {
     const canvas = new fabric.Canvas('canvas7', {
       backgroundColor: '#ddd'
     });
@@ -190,9 +190,9 @@ class ClipPathView extends Component {
     const clipPath = new fabric.Circle({ radius: 100, top: 0, left: 50 });
     canvas.clipPath = clipPath;
     canvas.add(group);
-  }
+  };
 
-  init8() {
+  const init8 = function() {
     const canvas = new fabric.Canvas('canvas8', {
       backgroundColor: '#ddd'
     });
@@ -216,9 +216,9 @@ class ClipPathView extends Component {
     const clipPath = new fabric.Circle({ radius: 100, top: 0, left: 50 });
     canvas.clipPath = clipPath;
     canvas.add(group);
-  }
+  };
 
-  init9() {
+  const init9 = function() {
     const canvas = new fabric.Canvas('canvas9', {
       backgroundColor: '#ddd'
     });
@@ -307,9 +307,9 @@ class ClipPathView extends Component {
 
     canvas.clipPath = clipPath;
     canvas.add(group);
-  }
+  };
 
-  init10() {
+  const init10 = function() {
     const canvas = new fabric.Canvas('canvas10');
 
     const clipPath = new fabric.Rect({
@@ -344,9 +344,9 @@ class ClipPathView extends Component {
       img.top = 150;
       canvas.add(img);
     });
-  }
+  };
 
-  init11() {
+  const init11 = function() {
     const canvas = new fabric.Canvas('canvas11');
 
     const clipPath = new fabric.Circle({ radius: 100, top: -200, left: -200 });
@@ -364,81 +364,78 @@ class ClipPathView extends Component {
       img.scaleToWidth(500);
       canvas.add(img);
     });
-  }
+  };
 
-  componentDidMount() {
-    this.init1();
-    this.init2();
-    this.init3();
-    this.init4();
-    this.init5();
-    this.init6();
-    this.init7();
-    this.init8();
-    this.init9();
-    this.init10();
-    this.init11();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <div className='canvas_x'>
-          <div>裁剪单一图形</div>
-          <canvas width='300' height='300' id='canvas1'></canvas>
-        </div>
+  useEffect(() => {
+    init1();
+    init2();
+    init3();
+    init4();
+    init5();
+    init6();
+    init7();
+    init8();
+    init9();
+    init10();
+    init11();
+  }, []);
 
-        <div className='canvas_x'>
-          <div>裁剪一个组</div>
-          <canvas width='300' height='300' id='canvas2'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>组合剪辑</div>
-          <canvas width='300' height='300' id='canvas3'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>剪完再剪（组合剪辑）</div>
-          <canvas width='300' height='300' id='canvas4'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>组内嵌套剪辑</div>
-          <canvas width='300' height='300' id='canvas5'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>剪文字</div>
-          <canvas width='300' height='300' id='canvas6'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>裁剪画布</div>
-          <canvas width='300' height='300' id='canvas7'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>裁剪画布，但不裁控件</div>
-          <canvas width='300' height='300' id='canvas8'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>动画裁剪</div>
-          <canvas width='300' height='300' id='canvas9'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>使用绝对定位裁剪</div>
-          <canvas width='300' height='300' id='canvas10'></canvas>
-        </div>
-
-        <div className='canvas_x'>
-          <div>颠倒的clipPaths</div>
-          <canvas width='300' height='300' id='canvas11'></canvas>
-        </div>
+  return (
+    <div className='box'>
+      <div className='canvas_x'>
+        <div>裁剪单一图形</div>
+        <canvas width='300' height='300' id='canvas1'></canvas>
       </div>
-    );
-  }
-}
 
-export default ClipPathView;
+      <div className='canvas_x'>
+        <div>裁剪一个组</div>
+        <canvas width='300' height='300' id='canvas2'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>组合剪辑</div>
+        <canvas width='300' height='300' id='canvas3'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>剪完再剪（组合剪辑）</div>
+        <canvas width='300' height='300' id='canvas4'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>组内嵌套剪辑</div>
+        <canvas width='300' height='300' id='canvas5'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>剪文字</div>
+        <canvas width='300' height='300' id='canvas6'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>裁剪画布</div>
+        <canvas width='300' height='300' id='canvas7'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>裁剪画布，但不裁控件</div>
+        <canvas width='300' height='300' id='canvas8'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>动画裁剪</div>
+        <canvas width='300' height='300' id='canvas9'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>使用绝对定位裁剪</div>
+        <canvas width='300' height='300' id='canvas10'></canvas>
+      </div>
+
+      <div className='canvas_x'>
+        <div>颠倒的clipPaths</div>
+        <canvas width='300' height='300' id='canvas11'></canvas>
+      </div>
+    </div>
+  );
+}

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Groups.scss';
 import { fabric } from 'fabric';
 import logo from '@/assets/images/logo.png';
 
-class GroupsView extends Component {
-  init = () => {
+export default function GroupsView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     // 椭圆
@@ -133,20 +133,17 @@ class GroupsView extends Component {
     });
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default GroupsView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

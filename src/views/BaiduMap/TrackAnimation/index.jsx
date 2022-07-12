@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './TrackAnimation.scss';
 
-class TrackAnimationView extends Component {
-  initMap = () => {
+export default function TrackAnimationView() {
+  const initMap = () => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container'); // 创建Map实例
     // eslint-disable-next-line
@@ -34,12 +34,10 @@ class TrackAnimationView extends Component {
     trackAnimation.start(); // 开始播放
     // trackAnimation.cancel() // 暂停
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
 
-export default TrackAnimationView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='container'></div>;
+}

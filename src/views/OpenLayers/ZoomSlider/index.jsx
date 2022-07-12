@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ZoomSlider.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -6,8 +6,8 @@ import OSM from 'ol/source/OSM';
 import * as control from 'ol/control';
 import 'ol/ol.css';
 
-class ZoomSliderView extends Component {
-  initMap = () => {
+export default function ZoomSliderView() {
+  const initMap = () => {
     // eslint-disable-next-line
     let map = new Map({
       target: 'map',
@@ -24,12 +24,10 @@ class ZoomSliderView extends Component {
       controls: control.defaults().extend([new control.ZoomSlider()])
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default ZoomSliderView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

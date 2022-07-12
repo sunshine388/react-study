@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ZoomAndPanning.scss';
 import { fabric } from 'fabric';
 
-class ZoomAndPanningView extends Component {
-  init1 = () => {
+export default function ZoomAndPanningView() {
+  const init1 = () => {
     let canvas = new fabric.Canvas('canvas1');
     let rect = new fabric.Rect({
       left: 10,
@@ -63,7 +63,7 @@ class ZoomAndPanningView extends Component {
     });
   };
 
-  init2 = () => {
+  const init2 = () => {
     let canvas = new fabric.Canvas('canvas2');
     let rect = new fabric.Rect({
       left: 210,
@@ -100,25 +100,22 @@ class ZoomAndPanningView extends Component {
     });
   };
 
-  componentDidMount() {
-    this.init1();
-    this.init2();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <div className='canvas_x'>
-          <div>鼠标滚轮缩放画布，alt + 单击动作进行拖动画布</div>
-          <canvas width='400' height='400' id='canvas1'></canvas>
-        </div>
+  useEffect(() => {
+    init1();
+    init2();
+  }, []);
 
-        <div className='canvas_x'>
-          <div>以鼠标指针为缩放中心</div>
-          <canvas width='400' height='400' id='canvas2'></canvas>
-        </div>
+  return (
+    <div className='box'>
+      <div className='canvas_x'>
+        <div>鼠标滚轮缩放画布，alt + 单击动作进行拖动画布</div>
+        <canvas width='400' height='400' id='canvas1'></canvas>
       </div>
-    );
-  }
-}
 
-export default ZoomAndPanningView;
+      <div className='canvas_x'>
+        <div>以鼠标指针为缩放中心</div>
+        <canvas width='400' height='400' id='canvas2'></canvas>
+      </div>
+    </div>
+  );
+}

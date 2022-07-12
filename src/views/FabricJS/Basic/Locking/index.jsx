@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Locking.scss';
 import { fabric } from 'fabric';
 
-class LockingView extends Component {
-  init = () => {
+export default function LockingView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     let rect1 = new fabric.Rect({
@@ -64,20 +64,17 @@ class LockingView extends Component {
     canvas.add(rect1, rect2, rect3, rect4, rect5);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default LockingView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

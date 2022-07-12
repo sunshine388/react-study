@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ArrowLine.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -12,8 +12,8 @@ import 'ol/ol.css';
 // 箭头图片
 import arrowPng from '@/assets/map/arrow.png';
 
-class ArrowLineView extends Component {
-  styleFunction = (feature) => {
+export default function ArrowLineView() {
+  const styleFunction = (feature) => {
     let geometry = feature.getGeometry();
     let styles = [
       new Style({
@@ -42,7 +42,7 @@ class ArrowLineView extends Component {
     return styles;
   };
 
-  initMap = () => {
+  useEffect(() => {
     // 底图
     const raster = new Tile({
       source: new OSM()
@@ -52,7 +52,7 @@ class ArrowLineView extends Component {
     });
     const vector = new LayerVector({
       source: source,
-      style: this.styleFunction
+      style: styleFunction
     });
     let map = new Map({
       target: 'map',
@@ -70,13 +70,7 @@ class ArrowLineView extends Component {
         // freehand: true // 如果加上自由绘制哈哈哈哈哈哈
       })
     );
-  };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
+  }, []);
 
-export default ArrowLineView;
+  return <div id='map'></div>;
+}

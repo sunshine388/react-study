@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './CustomTheme.scss';
 
-class CustomThemeView extends Component {
-  initMap = () => {
+export default function CustomThemeView() {
+  const initMap = () => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container'); // 创建Map实例
     // eslint-disable-next-line
@@ -13,12 +13,10 @@ class CustomThemeView extends Component {
       styleId: 'f1479cb75b9c850e24c98229cb077a67' // 使用生成ID的方式
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
 
-export default CustomThemeView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='container'></div>;
+}

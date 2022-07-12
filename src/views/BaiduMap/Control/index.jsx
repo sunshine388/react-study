@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Control.scss';
 
-class ControlView extends Component {
-  initMap = () => {
+export default function ControlView() {
+  const initMap = () => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container', {
       minZoom: 11,
@@ -41,12 +41,10 @@ class ControlView extends Component {
       console.log('zoom缩放后：', map.getZoom());
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
 
-export default ControlView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='container'></div>;
+}

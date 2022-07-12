@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Graticule.scss';
 import { Map, View } from 'ol';
 import Stroke from 'ol/style/Stroke';
@@ -7,8 +7,8 @@ import Graticule from 'ol/layer/Graticule';
 import BingMaps from 'ol/source/BingMaps';
 import 'ol/ol.css';
 
-class GraticuleView extends Component {
-  initMap = () => {
+export default function GraticuleView() {
+  const initMap = () => {
     let map = new Map({
       target: 'map',
       layers: [
@@ -38,12 +38,10 @@ class GraticuleView extends Component {
 
     graticule.setMap(map);
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default GraticuleView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

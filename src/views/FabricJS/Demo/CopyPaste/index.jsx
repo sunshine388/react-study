@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './CopyPaste.scss';
 import { fabric } from 'fabric';
 
-class CopyPasteView extends Component {
-  state = {
-    canvas: null, // canvas实例，初始化时赋值
-    clipboard: null // 复制到的内容
-  };
-  init = () => {
-    let canvas = new fabric.Canvas('canvas');
+let canvas = null;
+let clipboard = null;
+
+export default function CopyPasteView() {
+  const init = () => {
+    canvas = new fabric.Canvas('canvas');
 
     const rect = new fabric.Rect({
       left: 100,
@@ -55,35 +54,29 @@ class CopyPasteView extends Component {
     });
 
     canvas.add(rect, rect2, group);
-    this.setState({
-      canvas: canvas
-    });
   };
 
   // 复制
-  copy = () => {
-    if (!this.state.canvas.getActiveObject()) {
+  const copy = () => {
+    if (!canvas.getActiveObject()) {
       alert('请先选择元素');
       return;
     }
-    this.state.canvas.getActiveObject().clone((cloned) => {
-      this.setState({
-        clipboard: cloned
-      });
+    canvas.getActiveObject().clone((cloned) => {
+      clipboard = cloned;
     });
   };
 
   // 粘贴
-  paste = () => {
-    if (!this.state.clipboard) {
+  const paste = () => {
+    if (!clipboard) {
       alert('还没复制过任何内容');
       return;
     }
 
-    let clipboard = this.state.clipboard;
     clipboard.clone((clonedObj) => {
       console.log(clonedObj);
-      this.state.canvas.discardActiveObject(); // 取消选择
+      canvas.discardActiveObject(); // 取消选择
 
       // 设置新内容的坐标位置
       clonedObj.set({
@@ -94,48 +87,43 @@ class CopyPasteView extends Component {
 
       if (clonedObj.type === 'activeSelection') {
         // 活动选择需要一个对画布的引用
-        clonedObj.canvas = this.state.canvas;
+        clonedObj.canvas = canvas;
         clonedObj.forEachObject(function(obj) {
-          this.state.canvas.add(obj);
+          canvas.add(obj);
         });
 
         clonedObj.setCoords();
       } else {
-        this.state.canvas.add(clonedObj);
+        canvas.add(clonedObj);
       }
       clipboard.top += 10;
       clipboard.left += 10;
-      this.state.canvas.setActiveObject(clonedObj);
-      this.state.canvas.requestRenderAll();
-      this.setState({
-        clipboard: clipboard
-      });
+      canvas.setActiveObject(clonedObj);
+      canvas.requestRenderAll();
     });
   };
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <div>
-          <button onClick={this.copy}>复制</button>
-          <button onClick={this.paste}>粘贴</button>
-        </div>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-        <div>
-          代码出处{' '}
-          <a href='http://fabricjs.com/copypaste' target='view_window'>
-            http://fabricjs.com/copypaste
-          </a>
-        </div>
-      </div>
-    );
-  }
-}
 
-export default CopyPasteView;
+  useEffect(() => {
+    init();
+  }, []);
+
+  return (
+    <div className='box'>
+      <div>
+        <button onClick={copy}>复制</button>
+        <button onClick={paste}>粘贴</button>
+      </div>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+      <div>
+        代码出处{' '}
+        <a href='http://fabricjs.com/copypaste' target='view_window'>
+          http://fabricjs.com/copypaste
+        </a>
+      </div>
+    </div>
+  );
+}

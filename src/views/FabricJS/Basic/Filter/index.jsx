@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Filter.scss';
 import { fabric } from 'fabric';
 import gwen from '@/assets/images/gwen-spider-verse-ah.jpg';
@@ -23,8 +23,8 @@ import gwen from '@/assets/images/gwen-spider-verse-ah.jpg';
  * Sepia 色偏
  */
 
-class FilterView extends Component {
-  init = () => {
+export default function FilterView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
     // 正常图
     fabric.Image.fromURL(gwen, (img) => {
@@ -64,20 +64,17 @@ class FilterView extends Component {
     });
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default FilterView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

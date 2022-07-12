@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './SetResolution.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
 import { OSM, TileJSON } from 'ol/source';
 import 'ol/ol.css';
-class SetResolutionView extends Component {
-  initMap = () => {
+
+export default function SetResolutionView() {
+  const initMap = () => {
     // eslint-disable-next-line
     let map = new Map({
       target: 'map',
@@ -32,20 +33,18 @@ class SetResolutionView extends Component {
       })
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <p>
-          在限制的范围之内时显示图层，在限制的范围之外时不显示图层。只有当指定图层在
-          minResolution 和 maxResolution 范围内，才显示。
-        </p>
-      </React.Fragment>
-    );
-  }
-}
 
-export default SetResolutionView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <p>
+        在限制的范围之内时显示图层，在限制的范围之外时不显示图层。只有当指定图层在
+        minResolution 和 maxResolution 范围内，才显示。
+      </p>
+    </React.Fragment>
+  );
+}

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Textbox.scss';
 import { fabric } from 'fabric';
 
-class TextboxView extends Component {
-  init = () => {
+export default function TextboxView() {
+  const init = () => {
     const canvas = new fabric.Canvas('canvas');
     const textbox = new fabric.Textbox('Lorum ipsum dolor sit amet', {
       left: 50,
@@ -15,20 +15,17 @@ class TextboxView extends Component {
     canvas.add(textbox);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default TextboxView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

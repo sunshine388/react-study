@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './BasicGraph.scss';
 import { fabric } from 'fabric';
 
-class BasicGraphView extends Component {
-  init = () => {
+export default function BasicGraphView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     // 矩形
@@ -96,20 +96,17 @@ class BasicGraphView extends Component {
     canvas.add(polyline);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default BasicGraphView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

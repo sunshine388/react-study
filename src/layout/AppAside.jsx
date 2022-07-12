@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Menu } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
-import withRouter from '@/utils/withRouter';
 import menu from '@/router/menu';
+import { useLocation } from 'react-router-dom';
 
 const { Sider } = Layout;
 
-class AppAside extends Component {
-  state = {
-    openKeys: [],
-    selectedKeys: []
-  };
+const AppAside = (props) => {
+  const [openKeys, setOpenKeys] = useState([]);
+  const [selectedKeys, setSelectedKeys] = useState([]);
+  const location = useLocation();
 
   // 处理 pathname
-  getOpenKeys = (string) => {
+  const getOpenKeys = (string) => {
     let newStr = '',
       newArr = [],
       arr = string.split('/').map((i) => '/' + i);
@@ -25,75 +24,55 @@ class AppAside extends Component {
     return newArr;
   };
 
-  componentDidMount() {
-    let { pathname } = this.props.location;
-    this.setState({
-      selectedKeys: [pathname],
-      openKeys: this.getOpenKeys(pathname)
-    });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    let { pathname } = this.props.location;
-    if (prevProps.location.pathname !== pathname) {
-      this.setState({
-        selectedKeys: [pathname],
-        openKeys: this.getOpenKeys(pathname)
-      });
-    }
-  }
-
-  onOpenChange = (openKeys) => {
+  const onOpenChange = (openKeys) => {
     if (openKeys.length === 0 || openKeys.length === 1) {
-      this.setState({
-        openKeys
-      });
+      setOpenKeys(openKeys);
       return;
     }
 
     const latestOpenKey = openKeys[openKeys.length - 1];
 
     if (latestOpenKey.includes(openKeys[0])) {
-      this.setState({
-        openKeys
-      });
+      setOpenKeys(openKeys);
     } else {
-      this.setState({
-        openKeys: [latestOpenKey]
-      });
+      setOpenKeys([latestOpenKey]);
     }
   };
-  onClick = ({ key }) => {
-    this.setState({ selectedKeys: [key] });
+
+  const onClick = ({ key }) => {
+    setSelectedKeys([key]);
   };
 
-  render() {
-    let { openKeys, selectedKeys } = this.state;
-    return (
-      <Sider className='aside' collapsed={this.props.menuToggle}>
-        <div className='logo'>
-          <a
-            rel='noopener noreferrer'
-            href='https://github.com/sunshine388'
-            target='_blank'>
-            <GithubOutlined style={{ fontSize: '45px', color: '#fff' }} />
-          </a>
-        </div>
-        <Menu
-          mode='inline'
-          theme='dark'
-          openKeys={openKeys}
-          selectedKeys={selectedKeys}
-          onClick={this.onClick}
-          onOpenChange={this.onOpenChange}
-          items={menu}></Menu>
-      </Sider>
-    );
-  }
-}
+  useEffect(() => {
+    let { pathname } = location;
+    setSelectedKeys([pathname]);
+    setOpenKeys(() => getOpenKeys(pathname));
+  }, [location]);
+
+  return (
+    <Sider className='aside' collapsed={props.menuToggle}>
+      <div className='logo'>
+        <a
+          rel='noopener noreferrer'
+          href='https://github.com/sunshine388'
+          target='_blank'>
+          <GithubOutlined style={{ fontSize: '45px', color: '#fff' }} />
+        </a>
+      </div>
+      <Menu
+        mode='inline'
+        theme='dark'
+        openKeys={openKeys}
+        selectedKeys={selectedKeys}
+        onClick={onClick}
+        onOpenChange={onOpenChange}
+        items={menu}></Menu>
+    </Sider>
+  );
+};
 
 AppAside.propTypes = {
   menuToggle: PropTypes.bool
 };
 
-export default withRouter(AppAside);
+export default React.memo(AppAside);

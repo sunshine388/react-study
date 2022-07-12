@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './ScatterDiagram.scss';
 
-class ScatterDiagramView extends Component {
+export default function ScatterDiagramView() {
   // 使用 script src="https://mapv.baidu.com/gl/examples/static/common.js"
   // common.js 需要指定容器 id 为 map_container
 
@@ -10,7 +10,7 @@ class ScatterDiagramView extends Component {
   // 使用 script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.54/dist/mapvgl.min.js" mapvgl 进行绘制
 
   // 初始化百度地图
-  initBMap = () => {
+  const initBMap = () => {
     // eslint-disable-next-line
     const cityCenter = mapv.utilCityCenter.getCenterByCityName('上海');
     // eslint-disable-next-line
@@ -24,7 +24,7 @@ class ScatterDiagramView extends Component {
     return map;
   };
   // 准备数据源
-  initData = () => {
+  const initData = () => {
     // 准备数据源
     let data = [];
     let random = 700;
@@ -89,7 +89,7 @@ class ScatterDiagramView extends Component {
   };
 
   // 绘制数据源
-  setData = (map, data) => {
+  const setData = (map, data) => {
     // 1. 生成 mapvgl 视图 View
     // eslint-disable-next-line
     const view = new mapvgl.View({ map }); // 传入 map 对象，表示 视图 和 map 对象有一个映射关联
@@ -130,14 +130,12 @@ class ScatterDiagramView extends Component {
     // 5. 将 data 与 Point 进行绑定
     pointLayer.setData(data);
   };
-  componentDidMount() {
-    const map = this.initBMap();
-    const data = this.initData();
-    this.setData(map, data);
-  }
-  render() {
-    return <div id='map_container'></div>;
-  }
-}
 
-export default ScatterDiagramView;
+  useEffect(() => {
+    const map = initBMap();
+    const data = initData();
+    setData(map, data);
+  }, []);
+
+  return <div id='map_container'></div>;
+}

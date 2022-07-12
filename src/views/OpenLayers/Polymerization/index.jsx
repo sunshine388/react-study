@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Polymerization.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -11,8 +11,8 @@ import Point from 'ol/geom/Point';
 import Feature from 'ol/Feature';
 import 'ol/ol.css';
 
-class PolymerizationView extends Component {
-  initMap = () => {
+export default function PolymerizationView() {
+  const initMap = () => {
     let count = 20000; // 点的数量
     let features = []; // 存放点要素的数组
 
@@ -84,12 +84,10 @@ class PolymerizationView extends Component {
       })
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default PolymerizationView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

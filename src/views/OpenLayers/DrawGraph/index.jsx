@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './DrawGraph.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -9,43 +9,44 @@ import Draw, { createRegularPolygon, createBox } from 'ol/interaction/Draw';
 import Polygon from 'ol/geom/Polygon';
 import 'ol/ol.css';
 
-class DrawGraphView extends Component {
-  state = {
-    map: null,
-    draw: null,
-    tool: 'Circle'
-  };
-  tools = [
-    // 工具集
-    {
-      value: 'Circle',
-      label: '圆'
-    },
-    {
-      value: 'Square',
-      label: '方形'
-    },
-    {
-      value: 'Rectangle',
-      label: '矩形'
-    },
-    {
-      value: 'Hexagram',
-      label: '六芒星'
-    },
-    {
-      value: 'None',
-      label: '无'
-    }
-  ];
-  source = new SourceVector({
-    wrapX: false // 禁止横向无限重复（底图渲染的时候会横向无限重复），设置了这个属性，可以让绘制的图形不跟随底图横向无限重复
-  });
+const tools = [
+  // 工具集
+  {
+    value: 'Circle',
+    label: '圆'
+  },
+  {
+    value: 'Square',
+    label: '方形'
+  },
+  {
+    value: 'Rectangle',
+    label: '矩形'
+  },
+  {
+    value: 'Hexagram',
+    label: '六芒星'
+  },
+  {
+    value: 'None',
+    label: '无'
+  }
+];
 
-  initMap = () => {
+const source = new SourceVector({
+  wrapX: false // 禁止横向无限重复（底图渲染的时候会横向无限重复），设置了这个属性，可以让绘制的图形不跟随底图横向无限重复
+});
+
+let draw = null;
+
+export default function DrawGraphView() {
+  const [map, setMap] = useState(null);
+  const [tool, setTool] = useState('Circle');
+
+  const initMap = () => {
     // 绘图层
     let vector = new LayerVector({
-      source: this.source
+      source: source
     });
     // 底图
     const raster = new Tile({
@@ -60,32 +61,26 @@ class DrawGraphView extends Component {
         zoom: 12
       })
     });
-    this.setState(
-      {
-        map: map
-      },
-      () => {
-        this.addInteraction();
-      }
-    );
+
+    setMap(map);
   };
 
-  addInteraction = () => {
-    if (this.state.draw != null) {
-      this.state.map.removeInteraction(this.state.draw);
+  const addInteraction = useCallback(() => {
+    if (draw != null) {
+      map.removeInteraction(draw);
     }
 
-    if (this.state.tool !== 'None') {
+    if (tool !== 'None') {
       let geometryFunction;
       let type = 'Circle';
 
-      if (this.state.tool === 'Square') {
+      if (tool === 'Square') {
         // 方形
         geometryFunction = createRegularPolygon(4);
-      } else if (this.state.tool === 'Rectangle') {
+      } else if (tool === 'Rectangle') {
         // 矩形
         geometryFunction = createBox();
-      } else if (this.state.tool === 'Hexagram') {
+      } else if (tool === 'Hexagram') {
         geometryFunction = function(coordinates, geometry) {
           //中心点
           let center = coordinates[0];
@@ -121,41 +116,39 @@ class DrawGraphView extends Component {
         };
       }
 
-      const draw = new Draw({
-        source: this.source,
+      draw = new Draw({
+        source: source,
         type,
         geometryFunction
       });
-      this.state.map.addInteraction(draw);
-      this.setState({
-        draw: draw
-      });
+      map.addInteraction(draw);
     }
-  };
-  changeTool = (event) => {
-    this.setState({ tool: event.target.value }, () => {
-      this.addInteraction();
-    });
-  };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <div className='map-btn'>
-          <select id='type' value={this.state.tool} onChange={this.changeTool}>
-            {this.tools.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+  }, [map, tool]);
 
-export default DrawGraphView;
+  const changeTool = (event) => {
+    setTool(event.target.value);
+  };
+
+  useEffect(() => {
+    if (!map) {
+      initMap();
+    } else {
+      addInteraction();
+    }
+  }, [addInteraction, map, tool]);
+
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <div className='map-btn'>
+        <select id='type' value={tool} onChange={changeTool}>
+          {tools.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+      </div>
+    </React.Fragment>
+  );
+}

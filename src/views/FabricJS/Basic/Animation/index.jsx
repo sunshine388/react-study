@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Animation.scss';
 import { fabric } from 'fabric';
 
-class AnimationView extends Component {
-  init = () => {
+export default function AnimationView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
     let rect = new fabric.Rect({
       left: 100,
@@ -55,20 +55,17 @@ class AnimationView extends Component {
     canvas.add(rect);
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default AnimationView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

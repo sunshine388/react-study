@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './CoverageModal.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import 'ol/ol.css';
 
-class CoverageModalView extends Component {
-  initMap = () => {
+export default function CoverageModalView() {
+  const initMap = () => {
     let layer = new Tile({
       preload: Infinity,
       source: new OSM()
@@ -52,12 +52,10 @@ class CoverageModalView extends Component {
       ctx.restore();
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default CoverageModalView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

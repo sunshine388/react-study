@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './SelectedStyle.scss';
 import { fabric } from 'fabric';
 
-class SelectedStyleView extends Component {
-  init = () => {
+export default function SelectedStyleView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
 
     // 圆形
@@ -85,20 +85,17 @@ class SelectedStyleView extends Component {
     // )
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default SelectedStyleView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+    </div>
+  );
+}

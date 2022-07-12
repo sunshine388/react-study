@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './PreloadMap.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
 import BingMaps from 'ol/source/BingMaps';
 import 'ol/ol.css';
 
-class PreloadMapView extends Component {
-  initMap = () => {
+export default function PreloadMapView() {
+  const initMap = () => {
     const view = new View({
       projection: 'EPSG:4326',
       center: [114.064839, 22.548857],
@@ -46,23 +46,20 @@ class PreloadMapView extends Component {
     });
   };
 
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div className='map-container'>
-          <div id='map1' className='map'></div>
-          <div id='map2' className='map'></div>
-        </div>
-        <div className='explain'>
-          <p>预加载：preload: Infinity</p>
-          <p>默认值：preload: 0</p>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+  useEffect(() => {
+    initMap();
+  }, []);
 
-export default PreloadMapView;
+  return (
+    <React.Fragment>
+      <div className='map-container'>
+        <div id='map1' className='map'></div>
+        <div id='map2' className='map'></div>
+      </div>
+      <div className='explain'>
+        <p>预加载：preload: Infinity</p>
+        <p>默认值：preload: 0</p>
+      </div>
+    </React.Fragment>
+  );
+}

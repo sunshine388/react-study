@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SimplenessLabel.scss';
 import { Map, View, Feature } from 'ol';
 import Point from 'ol/geom/Point';
@@ -11,11 +11,10 @@ import Overlay from 'ol/Overlay';
 import 'ol/ol.css';
 import iconPng from '@/assets/map/icon.png'; // 引入图标图片
 
-class SimplenessLabelView extends Component {
-  state = {
-    shopPopup: false
-  };
-  initMap = () => {
+export default function SimplenessLabelView() {
+  const [shopPopup, setShopPopup] = useState(false);
+
+  const initMap = () => {
     // 创建图标特性
     let iconFeature = new Feature({
       geometry: new Point([0, 0]), // 图标展示的位置
@@ -75,33 +74,25 @@ class SimplenessLabelView extends Component {
       if (feature) {
         elPopup.innerHTML = feature.values_.name;
         let coordinates = feature.getGeometry().getCoordinates();
-        this.setState({
-          shopPopup: true
-        });
+
+        setShopPopup(true);
         setTimeout(() => {
           popup.setPosition(coordinates);
         }, 0);
       } else {
-        this.setState({
-          shopPopup: false
-        });
+        setShopPopup(false);
       }
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <div
-          id='popup'
-          className='popup'
-          style={{ visible: this.state.shopPopup }}></div>
-      </React.Fragment>
-    );
-  }
-}
 
-export default SimplenessLabelView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <div id='popup' className='popup' style={{ visible: shopPopup }}></div>
+    </React.Fragment>
+  );
+}

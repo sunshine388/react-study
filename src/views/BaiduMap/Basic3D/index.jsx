@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './Basic3D.scss';
 
-class Basic3DView extends Component {
-  initMap = () => {
+export default function Basic3DView() {
+  const initMap = () => {
     // eslint-disable-next-line
     const map = new BMapGL.Map('container'); // 创建Map实例
     // eslint-disable-next-line
@@ -11,12 +11,10 @@ class Basic3DView extends Component {
     map.setHeading(30); // 旋转30度
     map.setTilt(70); // 倾斜45度
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='container'></div>;
-  }
-}
 
-export default Basic3DView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='container'></div>;
+}

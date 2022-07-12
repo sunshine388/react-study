@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SnapGraph.scss';
 import { Map, View } from 'ol';
 import Tile from 'ol/layer/Tile';
@@ -9,42 +9,44 @@ import { Draw, Modify, Snap } from 'ol/interaction';
 import { Style, Fill, Stroke, Circle } from 'ol/style';
 import 'ol/ol.css';
 
-class SnapGraphView extends Component {
-  state = {
-    map: null,
-    draw: null,
-    tool: 'Point'
-  };
-  tools = [
-    {
-      value: 'Point',
-      label: '点'
-    },
-    {
-      value: 'LineString',
-      label: '线'
-    },
-    {
-      value: 'Polygon',
-      label: '多边形'
-    },
-    {
-      value: 'Circle',
-      label: '圆'
-    },
-    {
-      value: 'None',
-      label: '无'
-    }
-  ];
-  source = new SourceVector({
-    wrapX: false // 禁止横向无限重复（底图渲染的时候会横向无限重复），设置了这个属性，可以让绘制的图形不跟随底图横向无限重复
-  });
+const tools = [
+  {
+    value: 'Point',
+    label: '点'
+  },
+  {
+    value: 'LineString',
+    label: '线'
+  },
+  {
+    value: 'Polygon',
+    label: '多边形'
+  },
+  {
+    value: 'Circle',
+    label: '圆'
+  },
+  {
+    value: 'None',
+    label: '无'
+  }
+];
 
-  initMap = () => {
+const source = new SourceVector({
+  wrapX: false // 禁止横向无限重复（底图渲染的时候会横向无限重复），设置了这个属性，可以让绘制的图形不跟随底图横向无限重复
+});
+
+let draw = null;
+let snap = null;
+
+export default function SnapGraphView() {
+  const [map, setMap] = useState(null);
+  const [tool, setTool] = useState('Point');
+
+  const initMap = () => {
     // 绘图层
     const vector = new LayerVector({
-      source: this.source,
+      source: source,
       style: new Style({
         fill: new Fill({
           color: 'rgba(255, 255, 255, 0.2)'
@@ -75,65 +77,51 @@ class SnapGraphView extends Component {
       })
     });
     const modify = new Modify({
-      source: this.source,
+      source: source,
       insertVertexCondition: () => false // 如果返回true，可以增加节点
     });
     map.addInteraction(modify);
-    this.setState(
-      {
-        map: map
-      },
-      () => {
-        this.addInteraction();
+    setMap(map);
+  };
+
+  const changeTool = (event) => {
+    setTool(event.target.value);
+  };
+
+  useEffect(() => {
+    if (!map) {
+      initMap();
+    } else {
+      if (draw != null) {
+        map.removeInteraction(draw);
       }
-    );
-  };
+      if (snap !== null) {
+        map.removeInteraction(snap);
+      }
+      if (tool !== 'None') {
+        draw = new Draw({
+          source: source,
+          type: tool
+        });
+        map.addInteraction(draw);
 
-  addInteraction = () => {
-    if (this.state.draw != null) {
-      this.state.map.removeInteraction(this.state.draw);
+        snap = new Snap({ source: source });
+      }
     }
-    if (this.state.snap !== null) {
-      this.state.map.removeInteraction(this.state.snap);
-    }
-    if (this.state.tool !== 'None') {
-      const draw = new Draw({
-        source: this.source,
-        type: this.state.tool
-      });
-      this.state.map.addInteraction(draw);
+  }, [map, tool]);
 
-      const snap = new Snap({ source: this.source });
-      this.setState({
-        draw: draw,
-        snap: snap
-      });
-    }
-  };
-  changeTool = (event) => {
-    this.setState({ tool: event.target.value }, () => {
-      this.addInteraction();
-    });
-  };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <div className='map-btn'>
-          <select id='type' value={this.state.tool} onChange={this.changeTool}>
-            {this.tools.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <div className='map-btn'>
+        <select id='type' value={tool} onChange={changeTool}>
+          {tools.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+      </div>
+    </React.Fragment>
+  );
 }
-
-export default SnapGraphView;

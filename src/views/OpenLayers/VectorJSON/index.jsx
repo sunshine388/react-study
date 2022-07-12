@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './VectorJSON.scss';
 import { Map, View } from 'ol';
 import SourceVector from 'ol/source/Vector';
@@ -7,8 +7,8 @@ import GeoJSON from 'ol/format/GeoJSON';
 import CN from '@/assets/map/MapOfChina.json'; // 矢量图（中国版）
 import 'ol/ol.css';
 
-class VectorJSONView extends Component {
-  initMap = () => {
+export default function VectorJSONView() {
+  const initMap = () => {
     // eslint-disable-next-line
     let map = new Map({
       target: 'map',
@@ -30,12 +30,10 @@ class VectorJSONView extends Component {
       })
     });
   };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
 
-export default VectorJSONView;
+  useEffect(() => {
+    initMap();
+  }, []);
+
+  return <div id='map'></div>;
+}

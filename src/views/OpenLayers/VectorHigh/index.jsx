@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './VectorHigh.scss';
 import { Map, View } from 'ol';
 import { Style, Fill, Stroke, Text } from 'ol/style';
@@ -28,14 +28,14 @@ const highlightStyle = new Style({
   })
 });
 
-class VectorHighView extends Component {
-  state = {
-    map: null,
-    featureOverlay: null,
-    highlight: null,
-    info: ''
-  };
-  initMap = () => {
+let map = null;
+let featureOverlay = null;
+let highlight = null;
+
+export default function VectorHighView() {
+  const [info, setInfo] = useState('');
+
+  const initMap = () => {
     let style = new Style({
       fill: new Fill({
         color: 'rgba(255, 255, 255, 0.6)'
@@ -55,7 +55,7 @@ class VectorHighView extends Component {
         })
       })
     });
-    let map = new Map({
+    map = new Map({
       target: 'map',
       layers: [
         new LayerVector({
@@ -78,65 +78,48 @@ class VectorHighView extends Component {
       })
     });
 
-    this.setState({ map: map }, () => {
-      map.on('pointermove', (evt) => {
-        if (evt.dragging) {
-          // 拖拽
-          return;
+    map.on('pointermove', (evt) => {
+      if (evt.dragging) {
+        // 拖拽
+        return;
+      }
+      let pixel = map.getEventPixel(evt.originalEvent); // 鼠标在容器的坐标(左上角是[0,0])
+      if (!featureOverlay) {
+        featureOverlay = new LayerVector({
+          source: new SourceVector(),
+          map: map,
+          style: (feature) => {
+            highlightStyle.getText().setText(feature.get('name'));
+            return highlightStyle;
+          }
+        });
+      }
+      let feature = map.forEachFeatureAtPixel(pixel, (feature) => feature);
+      if (feature) {
+        setInfo(feature.get('name'));
+      } else {
+        setInfo('');
+      }
+      if (feature !== highlight) {
+        if (highlight) {
+          featureOverlay.getSource().removeFeature(highlight);
         }
-        let pixel = map.getEventPixel(evt.originalEvent); // 鼠标在容器的坐标(左上角是[0,0])
-        this.displayFeatureInfo(pixel);
-      });
+        if (feature) {
+          featureOverlay.getSource().addFeature(feature);
+        }
+        highlight = feature;
+      }
     });
   };
 
-  displayFeatureInfo = (pixel) => {
-    if (!this.state.featureOverlay) {
-      const featureOverlay = new LayerVector({
-        source: new SourceVector(),
-        map: this.state.map,
-        style: (feature) => {
-          highlightStyle.getText().setText(feature.get('name'));
-          return highlightStyle;
-        }
-      });
-      this.setState({
-        featureOverlay: featureOverlay
-      });
-    }
-    let feature = this.state.map.forEachFeatureAtPixel(
-      pixel,
-      (feature) => feature
-    );
-    if (feature) {
-      this.setState({
-        info: feature.get('name')
-      });
-    } else {
-      this.setState({
-        info: ''
-      });
-    }
-    if (feature !== this.state.highlight) {
-      if (this.state.highlight) {
-        this.state.featureOverlay
-          .getSource()
-          .removeFeature(this.state.highlight);
-      }
-      if (feature) {
-        this.state.featureOverlay.getSource().addFeature(feature);
-      }
-      this.setState({
-        highlight: feature
-      });
-    }
-  };
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return <div id='map'></div>;
-  }
-}
+  useEffect(() => {
+    initMap();
+  }, []);
 
-export default VectorHighView;
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <p>{info}</p>
+    </React.Fragment>
+  );
+}

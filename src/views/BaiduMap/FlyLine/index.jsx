@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './FlyLine.scss';
 
-class FlyLineView extends Component {
+export default function FlyLineView() {
   // 初始化百度地图
-  initBMap = () => {
+  const initBMap = () => {
     // eslint-disable-next-line
     const cityCenter = mapv.utilCityCenter.getCenterByCityName('上海');
     // eslint-disable-next-line
@@ -17,7 +17,7 @@ class FlyLineView extends Component {
     return map;
   };
 
-  initData = () => {
+  const initData = () => {
     // 数据源需要提供起点坐标和终点坐标
     let data = [];
 
@@ -48,7 +48,7 @@ class FlyLineView extends Component {
     return data;
   };
 
-  setData = (map, data) => {
+  const setData = (map, data) => {
     // 1. 初始化图层
     // eslint-disable-next-line
     const view = new mapvgl.View({ map });
@@ -71,14 +71,11 @@ class FlyLineView extends Component {
     flyLine.setData(data);
   };
 
-  componentDidMount() {
-    const map = this.initBMap();
-    const data = this.initData();
-    this.setData(map, data);
-  }
-  render() {
-    return <div id='map_container'></div>;
-  }
-}
+  useEffect(() => {
+    const map = initBMap();
+    const data = initData();
+    setData(map, data);
+  }, []);
 
-export default FlyLineView;
+  return <div id='map_container'></div>;
+}

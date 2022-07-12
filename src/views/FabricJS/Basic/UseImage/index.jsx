@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './UseImage.scss';
 import { fabric } from 'fabric';
 import logo from '@/assets/images/logo.png';
 
-class UseImageView extends Component {
-  init = () => {
+export default function UseImageView() {
+  const init = () => {
     let canvas = new fabric.Canvas('canvas');
     let imgElement = document.getElementById('logo');
     imgElement.onload = () => {
@@ -24,21 +24,18 @@ class UseImageView extends Component {
     });
   };
 
-  componentDidMount() {
-    this.init();
-  }
-  render() {
-    return (
-      <div className='box'>
-        <canvas
-          width='600'
-          height='600'
-          id='canvas'
-          style={{ border: '1px solid #ccc' }}></canvas>
-        <img src={logo} id='logo' alt='' />
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    init();
+  }, []);
 
-export default UseImageView;
+  return (
+    <div className='box'>
+      <canvas
+        width='600'
+        height='600'
+        id='canvas'
+        style={{ border: '1px solid #ccc' }}></canvas>
+      <img src={logo} id='logo' alt='' />
+    </div>
+  );
+}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Heatmap.scss';
 import { Map, View } from 'ol';
 import { Heatmap, Tile } from 'ol/layer';
@@ -7,16 +7,15 @@ import GeoJSON from 'ol/format/GeoJSON'; // 解析geojson格式
 import HeatData from '@/assets/map/heatData.json';
 import 'ol/ol.css';
 
-class HeatmapView extends Component {
-  state = {
-    map: null,
-    vector: null,
-    radius: 10, // 半径大小
-    blur: 10 // 模糊
-  };
+let map = null;
+let vector = null;
 
-  initMap = () => {
-    const vector = new Heatmap({
+export default function HeatmapView() {
+  const [radius, setRadius] = useState(10);
+  const [blur, setBlur] = useState(10);
+
+  const initMap = () => {
+    vector = new Heatmap({
       // 热力图
       name: '热力图',
       source: new SourceVector({
@@ -29,7 +28,7 @@ class HeatmapView extends Component {
       blur: 10, // 模糊
       gradient: ['#00f', '#0ff', '#0f0', '#ff0', '#f00'] // 热力图颜色（可以不设置）
     });
-    const map = new Map({
+    map = new Map({
       target: 'map',
       layers: [
         // 图层
@@ -49,67 +48,60 @@ class HeatmapView extends Component {
         zoom: 19 // 地图缩放级别（打开页面时默认级别）
       })
     });
-    this.setState({
-      map: map,
-      vector: vector
-    });
   };
 
   // 修改半径大小
-  changeRadius = (event) => {
-    this.setState({ radius: event.target.value });
-    this.state.vector.setRadius(parseInt(event.target.value, 10));
+  const changeRadius = (event) => {
+    setRadius(event.target.value);
+    vector.setRadius(parseInt(event.target.value, 10));
   };
 
   // 修改模糊半径
-  changeBlur = (event) => {
-    this.setState({ blur: event.target.value });
-    this.state.vector.setBlur(parseInt(event.target.value, 10));
+  const changeBlur = (event) => {
+    setBlur(event.target.value);
+    vector.setBlur(parseInt(event.target.value, 10));
   };
 
   // 在控制台输出图层名
-  getHeatName = () => {
-    let layers = this.state.map.getLayers();
+  const getHeatName = () => {
+    let layers = map.getLayers();
     for (let i = 0; i < layers.getLength(); i++) {
       console.log('图层名：', layers.item(i).get('name'));
     }
   };
 
-  componentDidMount() {
-    this.initMap();
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <div id='map'></div>
-        <div className='map-btn'>
-          <label>半径大小</label>
-          <input
-            id='radius'
-            type='range'
-            min='1'
-            max='50'
-            step='1'
-            value={this.state.radius}
-            onChange={this.changeRadius}
-          />
+  useEffect(() => {
+    initMap();
+  }, []);
 
-          <label>模糊半径</label>
-          <input
-            id='blur'
-            type='range'
-            min='1'
-            max='50'
-            step='1'
-            value={this.state.blur}
-            onChange={this.changeBlur}
-          />
+  return (
+    <React.Fragment>
+      <div id='map'></div>
+      <div className='map-btn'>
+        <label>半径大小</label>
+        <input
+          id='radius'
+          type='range'
+          min='1'
+          max='50'
+          step='1'
+          value={radius}
+          onChange={changeRadius}
+        />
 
-          <button onClick={this.getHeatName}>在控制台输出涂层名</button>
-        </div>
-      </React.Fragment>
-    );
-  }
+        <label>模糊半径</label>
+        <input
+          id='blur'
+          type='range'
+          min='1'
+          max='50'
+          step='1'
+          value={blur}
+          onChange={changeBlur}
+        />
+
+        <button onClick={getHeatName}>在控制台输出涂层名</button>
+      </div>
+    </React.Fragment>
+  );
 }
-
-export default HeatmapView;
