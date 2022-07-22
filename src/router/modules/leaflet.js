@@ -5,11 +5,13 @@ import loadable from '@/utils/loadable';
 const StatedView = loadable(() => import('@/views/Leaflet/Stated'));
 const ControlView = loadable(() => import('@/views/Leaflet/Control'));
 const MapOperationView = loadable(() => import('@/views/Leaflet/MapOperation'));
+const MapEventView = loadable(() => import('@/views/Leaflet/MapEvent'));
 
 export const leafletRoutes = [
-  { path: 'leaflet/stated', component: <StatedView />},
+  { path: 'leaflet/stated', component: <StatedView /> },
   { path: 'leaflet/control', component: <ControlView /> },
-  { path: 'leaflet/mapOperation', component: <MapOperationView /> }
+  { path: 'leaflet/mapOperation', component: <MapOperationView /> },
+  { path: 'leaflet/mapEvent', component: <MapEventView /> }
 ];
 
 export const leafletMenu = {
@@ -28,6 +30,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/mapOperation'>地图操作</Link>,
       key: '/leaflet/mapOperation'
+    },
+    {
+      label: <Link to='/leaflet/mapEvent'>地图事件</Link>,
+      key: '/leaflet/mapEvent'
     }
   ]
 };

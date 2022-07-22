@@ -20,7 +20,7 @@ export default function MapOperationView() {
 
   const initMap = () => {
     // eslint-disable-next-line
-    map = L.map('map', {
+    map = L.map('mymap', {
       minZoom: minZoom,
       //最大显示等级
       maxZoom: maxZoom,
@@ -271,7 +271,7 @@ export default function MapOperationView() {
           onChange={changeImageLayerIndex}
         />
       </div>
-      <div id='map'></div>
+      <div id='mymap'></div>
     </React.Fragment>
   );
 }
