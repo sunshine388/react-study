@@ -17,6 +17,7 @@ const OtherGraphicsView = React.lazy(() =>
 const DrawGraphicsView = React.lazy(() =>
   import('@/views/Leaflet/DrawGraphics')
 );
+const MapMarkerView = React.lazy(() => import('@/views/Leaflet/MapMarker'));
 
 export const leafletRoutes = [
   { path: 'leaflet/stated', component: <StatedView /> },
@@ -25,7 +26,8 @@ export const leafletRoutes = [
   { path: 'leaflet/mapEvent', component: <MapEventView /> },
   { path: 'leaflet/graphicsOperation', component: <GraphicsOperationView /> },
   { path: 'leaflet/otherGraphics', component: <OtherGraphicsView /> },
-  { path: 'leaflet/drawGraphics', component: <DrawGraphicsView /> }
+  { path: 'leaflet/drawGraphics', component: <DrawGraphicsView /> },
+  { path: 'leaflet/mapMarker', component: <MapMarkerView /> }
 ];
 
 export const leafletMenu = {
@@ -60,6 +62,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/drawGraphics'>绘制图形</Link>,
       key: '/leaflet/drawGraphics'
+    },
+    {
+      label: <Link to='/leaflet/mapMarker'>地图标注</Link>,
+      key: '/leaflet/mapMarker'
     }
   ]
 };
