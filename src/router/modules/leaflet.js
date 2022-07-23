@@ -14,7 +14,8 @@ export const leafletRoutes = [
   { path: 'leaflet/stated', component: <StatedView /> },
   { path: 'leaflet/control', component: <ControlView /> },
   { path: 'leaflet/mapOperation', component: <MapOperationView /> },
-  { path: 'leaflet/mapEvent', component: <MapEventView /> }
+  { path: 'leaflet/mapEvent', component: <MapEventView /> },
+  { path: 'leaflet/graphicsOperation', component: <GraphicsOperationView /> }
 ];
 
 export const leafletMenu = {
@@ -37,6 +38,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/mapEvent'>地图事件</Link>,
       key: '/leaflet/mapEvent'
+    },
+    {
+      label: <Link to='/leaflet/graphicsOperation'>图形操作</Link>,
+      key: '/leaflet/graphicsOperation'
     }
   ]
 };
