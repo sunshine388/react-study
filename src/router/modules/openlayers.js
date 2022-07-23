@@ -1,68 +1,68 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const StatedView = loadable(() => import('@/views/OpenLayers/Stated'));
-const PopupView = loadable(() => import('@/views/OpenLayers/Popup'));
-const ZoomView = loadable(() => import('@/views/OpenLayers/Zoom'));
-const TabIndexView = loadable(() => import('@/views/OpenLayers/TabIndex'));
-const ChangeTargetView = loadable(() =>
+const StatedView = React.lazy(() => import('@/views/OpenLayers/Stated'));
+const PopupView = React.lazy(() => import('@/views/OpenLayers/Popup'));
+const ZoomView = React.lazy(() => import('@/views/OpenLayers/Zoom'));
+const TabIndexView = React.lazy(() => import('@/views/OpenLayers/TabIndex'));
+const ChangeTargetView = React.lazy(() =>
   import('@/views/OpenLayers/ChangeTarget')
 );
-const SynchronizationView = loadable(() =>
+const SynchronizationView = React.lazy(() =>
   import('@/views/OpenLayers/Synchronization')
 );
-const PreloadMapView = loadable(() => import('@/views/OpenLayers/PreloadMap'));
-const VectorJSONView = loadable(() => import('@/views/OpenLayers/VectorJSON'));
-const VectorHighView = loadable(() => import('@/views/OpenLayers/VectorHigh'));
-const RotationMapView = loadable(() =>
+const PreloadMapView = React.lazy(() => import('@/views/OpenLayers/PreloadMap'));
+const VectorJSONView = React.lazy(() => import('@/views/OpenLayers/VectorJSON'));
+const VectorHighView = React.lazy(() => import('@/views/OpenLayers/VectorHigh'));
+const RotationMapView = React.lazy(() =>
   import('@/views/OpenLayers/RotationMap')
 );
-const MouseRotationMapView = loadable(() =>
+const MouseRotationMapView = React.lazy(() =>
   import('@/views/OpenLayers/MouseRotationMap')
 );
-const ViewAnimateView = loadable(() =>
+const ViewAnimateView = React.lazy(() =>
   import('@/views/OpenLayers/ViewAnimate')
 );
-const GraticuleView = loadable(() => import('@/views/OpenLayers/Graticule'));
-const HeatmapView = loadable(() => import('@/views/OpenLayers/Heatmap'));
-const ScaleLineView = loadable(() => import('@/views/OpenLayers/ScaleLine'));
-const FullScreenView = loadable(() => import('@/views/OpenLayers/FullScreen'));
-const ZoomToExtentView = loadable(() =>
+const GraticuleView = React.lazy(() => import('@/views/OpenLayers/Graticule'));
+const HeatmapView = React.lazy(() => import('@/views/OpenLayers/Heatmap'));
+const ScaleLineView = React.lazy(() => import('@/views/OpenLayers/ScaleLine'));
+const FullScreenView = React.lazy(() => import('@/views/OpenLayers/FullScreen'));
+const ZoomToExtentView = React.lazy(() =>
   import('@/views/OpenLayers/ZoomToExtent')
 );
-const OverviewMapView = loadable(() =>
+const OverviewMapView = React.lazy(() =>
   import('@/views/OpenLayers/OverviewMap')
 );
-const MousePositionView = loadable(() =>
+const MousePositionView = React.lazy(() =>
   import('@/views/OpenLayers/MousePosition')
 );
-const ZoomSliderView = loadable(() => import('@/views/OpenLayers/ZoomSlider'));
-const LayerGroupView = loadable(() => import('@/views/OpenLayers/LayerGroup'));
-const SetZIndexView = loadable(() => import('@/views/OpenLayers/SetZIndex'));
-const SetResolutionView = loadable(() =>
+const ZoomSliderView = React.lazy(() => import('@/views/OpenLayers/ZoomSlider'));
+const LayerGroupView = React.lazy(() => import('@/views/OpenLayers/LayerGroup'));
+const SetZIndexView = React.lazy(() => import('@/views/OpenLayers/SetZIndex'));
+const SetResolutionView = React.lazy(() =>
   import('@/views/OpenLayers/SetResolution')
 );
-const SetExtentView = loadable(() => import('@/views/OpenLayers/SetExtent'));
-const CoverageModalView = loadable(() =>
+const SetExtentView = React.lazy(() => import('@/views/OpenLayers/SetExtent'));
+const CoverageModalView = React.lazy(() =>
   import('@/views/OpenLayers/CoverageModal')
 );
-const SetSourceView = loadable(() => import('@/views/OpenLayers/SetSource'));
-const MarkerView = loadable(() => import('@/views/OpenLayers/Marker'));
-const SimplenessLabelView = loadable(() =>
+const SetSourceView = React.lazy(() => import('@/views/OpenLayers/SetSource'));
+const MarkerView = React.lazy(() => import('@/views/OpenLayers/Marker'));
+const SimplenessLabelView = React.lazy(() =>
   import('@/views/OpenLayers/SimplenessLabel')
 );
-const BrightMarkView = loadable(() => import('@/views/OpenLayers/BrightMark'));
-const PolymerizationView = loadable(() =>
+const BrightMarkView = React.lazy(() => import('@/views/OpenLayers/BrightMark'));
+const PolymerizationView = React.lazy(() =>
   import('@/views/OpenLayers/Polymerization')
 );
-const BasicDrawView = loadable(() => import('@/views/OpenLayers/BasicDraw'));
-const DrawGraphView = loadable(() => import('@/views/OpenLayers/DrawGraph'));
-const FreeDrawingView = loadable(() =>
+const BasicDrawView = React.lazy(() => import('@/views/OpenLayers/BasicDraw'));
+const DrawGraphView = React.lazy(() => import('@/views/OpenLayers/DrawGraph'));
+const FreeDrawingView = React.lazy(() =>
   import('@/views/OpenLayers/FreeDrawing')
 );
-const ArrowLineView = loadable(() => import('@/views/OpenLayers/ArrowLine'));
-const SnapGraphView = loadable(() => import('@/views/OpenLayers/SnapGraph'));
+const ArrowLineView = React.lazy(() => import('@/views/OpenLayers/ArrowLine'));
+const SnapGraphView = React.lazy(() => import('@/views/OpenLayers/SnapGraph'));
 
 export const openlayersRoutes = [
   { path: 'openlayers/stated', component: <StatedView /> },

@@ -1,9 +1,9 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const ThreeMapView = loadable(() => import('@/views/Three/ThreeMap'));
-const CubeView = loadable(() => import('@/views/Three/Cube'));
+const ThreeMapView = React.lazy(() => import('@/views/Three/ThreeMap'));
+const CubeView = React.lazy(() => import('@/views/Three/Cube'));
 
 export const threeRoutes = [
   { path: 'three/threeMap', component: <ThreeMapView /> },

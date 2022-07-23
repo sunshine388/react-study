@@ -1,45 +1,45 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const BatmanView = loadable(() => import('@/views/Native/PureCSS/Batman'));
-const ActiveTextView = loadable(() =>
+const BatmanView = React.lazy(() => import('@/views/Native/PureCSS/Batman'));
+const ActiveTextView = React.lazy(() =>
   import('@/views/Native/PureCSS/ActiveText')
 );
-const GradientTextView = loadable(() =>
+const GradientTextView = React.lazy(() =>
   import('@/views/Native/PureCSS/GradientText')
 );
-const ZebraShadowTextView = loadable(() =>
+const ZebraShadowTextView = React.lazy(() =>
   import('@/views/Native/PureCSS/ZebraShadowText')
 );
-const MaterialInputView = loadable(() =>
+const MaterialInputView = React.lazy(() =>
   import('@/views/Native/PureCSS/MaterialInput')
 );
-const CarouselView = loadable(() => import('@/views/Native/PureCSS/Carousel'));
-const TapeEdgeView = loadable(() => import('@/views/Native/PureCSS/TapeEdge'));
-const MultilayerBorderView = loadable(() =>
+const CarouselView = React.lazy(() => import('@/views/Native/PureCSS/Carousel'));
+const TapeEdgeView = React.lazy(() => import('@/views/Native/PureCSS/TapeEdge'));
+const MultilayerBorderView = React.lazy(() =>
   import('@/views/Native/PureCSS/MultilayerBorder')
 );
-const FilletedCornerView = loadable(() =>
+const FilletedCornerView = React.lazy(() =>
   import('@/views/Native/PureCSS/FilletedCorner')
 );
-const ParallelogramView = loadable(() =>
+const ParallelogramView = React.lazy(() =>
   import('@/views/Native/PureCSS/Parallelogram')
 );
-const FrostedGlassView = loadable(() =>
+const FrostedGlassView = React.lazy(() =>
   import('@/views/Native/PureCSS/FrostedGlass')
 );
-const PhotoFrameView = loadable(() =>
+const PhotoFrameView = React.lazy(() =>
   import('@/views/Native/PureCSS/PhotoFrame')
 );
-const TurnBorderView = loadable(() =>
+const TurnBorderView = React.lazy(() =>
   import('@/views/Native/PureCSS/TurnBorder')
 );
-const LoadingView = loadable(() => import('@/views/Native/PureCSS/Loading'));
-const GradientBGAnimationView = loadable(() =>
+const LoadingView = React.lazy(() => import('@/views/Native/PureCSS/Loading'));
+const GradientBGAnimationView = React.lazy(() =>
   import('@/views/Native/PureCSS/GradientBGAnimation')
 );
-const ParallaxView = loadable(() =>
+const ParallaxView = React.lazy(() =>
   import('@/views/Native/ThreePiece/Parallax')
 );
 

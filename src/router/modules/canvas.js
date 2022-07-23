@@ -1,8 +1,8 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const BubbleView = loadable(() => import('@/views/Canvas/Bubble'));
+const BubbleView = React.lazy(() => import('@/views/Canvas/Bubble'));
 
 export const canvasRoutes = [
   { path: 'canvas/bubble', component: <BubbleView /> }

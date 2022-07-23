@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect, useState, Suspense } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout, message } from 'antd';
 import './layout.scss';
 import { useNavigate } from 'react-router-dom';
+import routes from '@/router';
+import { Spin } from 'antd';
 
 import AppHeader from './AppHeader.jsx';
 import AppAside from './AppAside.jsx';
@@ -49,7 +51,25 @@ export default function DefaultLayout() {
           loginOut={loginOut}
         />
         <Content className='app_content'>
-          <Outlet />
+          <Suspense fallback={<Spin color='primary' />}>
+            <Routes>
+              {routes.map((route, idx) => {
+                return (
+                  route.component && (
+                    <Route
+                      key={idx}
+                      path={route.path}
+                      element={route.component}
+                    />
+                  )
+                );
+              })}
+              <Route
+                path='/'
+                element={<Navigate to='/native/pureCSS/batman' replace />}
+              />
+            </Routes>
+          </Suspense>
         </Content>
         <AppFooter />
       </Layout>

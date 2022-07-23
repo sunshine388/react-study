@@ -1,8 +1,8 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const StatedView = loadable(() => import('@/views/Tianditu/Stated'));
+const StatedView = React.lazy(() => import('@/views/Tianditu/Stated'));
 
 export const tiandituRoutes = [
   { path: 'tianditu/stated', component: <StatedView /> }

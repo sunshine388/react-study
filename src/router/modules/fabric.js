@@ -1,57 +1,57 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const StatedView = loadable(() => import('@/views/FabricJS/Basic/Stated'));
-const BasicGraphView = loadable(() =>
+const StatedView = React.lazy(() => import('@/views/FabricJS/Basic/Stated'));
+const BasicGraphView = React.lazy(() =>
   import('@/views/FabricJS/Basic/BasicGraph')
 );
-const UseImageView = loadable(() => import('@/views/FabricJS/Basic/UseImage'));
-const DrawPathView = loadable(() => import('@/views/FabricJS/Basic/DrawPath'));
-const AnimationView = loadable(() =>
+const UseImageView = React.lazy(() => import('@/views/FabricJS/Basic/UseImage'));
+const DrawPathView = React.lazy(() => import('@/views/FabricJS/Basic/DrawPath'));
+const AnimationView = React.lazy(() =>
   import('@/views/FabricJS/Basic/Animation')
 );
-const FilterView = loadable(() => import('@/views/FabricJS/Basic/Filter'));
-const GradientView = loadable(() => import('@/views/FabricJS/Basic/Gradient'));
-const ColorView = loadable(() => import('@/views/FabricJS/Basic/Color'));
-const TextView = loadable(() => import('@/views/FabricJS/Basic/Text'));
-const ITextView = loadable(() => import('@/views/FabricJS/Basic/IText'));
-const TextboxView = loadable(() => import('@/views/FabricJS/Basic/Textbox'));
-const EventView = loadable(() => import('@/views/FabricJS/Basic/Event'));
-const GroupsView = loadable(() => import('@/views/FabricJS/Basic/Groups'));
-const FreeDrawingView = loadable(() =>
+const FilterView = React.lazy(() => import('@/views/FabricJS/Basic/Filter'));
+const GradientView = React.lazy(() => import('@/views/FabricJS/Basic/Gradient'));
+const ColorView = React.lazy(() => import('@/views/FabricJS/Basic/Color'));
+const TextView = React.lazy(() => import('@/views/FabricJS/Basic/Text'));
+const ITextView = React.lazy(() => import('@/views/FabricJS/Basic/IText'));
+const TextboxView = React.lazy(() => import('@/views/FabricJS/Basic/Textbox'));
+const EventView = React.lazy(() => import('@/views/FabricJS/Basic/Event'));
+const GroupsView = React.lazy(() => import('@/views/FabricJS/Basic/Groups'));
+const FreeDrawingView = React.lazy(() =>
   import('@/views/FabricJS/Basic/FreeDrawing')
 );
-const LockingView = loadable(() => import('@/views/FabricJS/Basic/Locking'));
-const ChangingBordersCornersView = loadable(() =>
+const LockingView = React.lazy(() => import('@/views/FabricJS/Basic/Locking'));
+const ChangingBordersCornersView = React.lazy(() =>
   import('@/views/FabricJS/Basic/ChangingBordersCorners')
 );
-const SelectedStyleView = loadable(() =>
+const SelectedStyleView = React.lazy(() =>
   import('@/views/FabricJS/Basic/SelectedStyle')
 );
-const ZoomAndPanningView = loadable(() =>
+const ZoomAndPanningView = React.lazy(() =>
   import('@/views/FabricJS/Basic/ZoomAndPanning')
 );
-const ClipPathView = loadable(() => import('@/views/FabricJS/Basic/ClipPath'));
-const SerializationView = loadable(() =>
+const ClipPathView = React.lazy(() => import('@/views/FabricJS/Basic/ClipPath'));
+const SerializationView = React.lazy(() =>
   import('@/views/FabricJS/Basic/Serialization')
 );
-const DeserializationView = loadable(() =>
+const DeserializationView = React.lazy(() =>
   import('@/views/FabricJS/Basic/Deserialization')
 );
 
-const CustomControlRenderView = loadable(() =>
+const CustomControlRenderView = React.lazy(() =>
   import('@/views/FabricJS/Demo/CustomControlRender')
 );
-const ManageSelectionView = loadable(() =>
+const ManageSelectionView = React.lazy(() =>
   import('@/views/FabricJS/Demo/ManageSelection')
 );
-const CopyPasteView = loadable(() => import('@/views/FabricJS/Demo/CopyPaste'));
-const AnimationEasingView = loadable(() =>
+const CopyPasteView = React.lazy(() => import('@/views/FabricJS/Demo/CopyPaste'));
+const AnimationEasingView = React.lazy(() =>
   import('@/views/FabricJS/Demo/AnimationEasing')
 );
-const HoveringView = loadable(() => import('@/views/FabricJS/Demo/Hovering'));
-const CustomizationView = loadable(() =>
+const HoveringView = React.lazy(() => import('@/views/FabricJS/Demo/Hovering'));
+const CustomizationView = React.lazy(() =>
   import('@/views/FabricJS/Demo/Customization')
 );
 

@@ -1,8 +1,8 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const BaseShapeView = loadable(() => import('@/views/SVG/BaseShape'));
+const BaseShapeView = React.lazy(() => import('@/views/SVG/BaseShape'));
 
 export const svgRoutes = [
   { path: 'svg/baseShape', component: <BaseShapeView /> }

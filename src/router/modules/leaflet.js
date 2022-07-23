@@ -1,11 +1,14 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import loadable from '@/utils/loadable';
+import React from 'react';
 
-const StatedView = loadable(() => import('@/views/Leaflet/Stated'));
-const ControlView = loadable(() => import('@/views/Leaflet/Control'));
-const MapOperationView = loadable(() => import('@/views/Leaflet/MapOperation'));
-const MapEventView = loadable(() => import('@/views/Leaflet/MapEvent'));
+const StatedView = React.lazy(() => import('@/views/Leaflet/Stated'));
+const ControlView = React.lazy(() => import('@/views/Leaflet/Control'));
+const MapOperationView = React.lazy(() => import('@/views/Leaflet/MapOperation'));
+const MapEventView = React.lazy(() => import('@/views/Leaflet/MapEvent'));
+const GraphicsOperationView = React.lazy(() =>
+  import('@/views/Leaflet/GraphicsOperation')
+);
 
 export const leafletRoutes = [
   { path: 'leaflet/stated', component: <StatedView /> },
