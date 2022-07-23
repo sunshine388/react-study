@@ -18,6 +18,12 @@ const DrawGraphicsView = React.lazy(() =>
   import('@/views/Leaflet/DrawGraphics')
 );
 const MapMarkerView = React.lazy(() => import('@/views/Leaflet/MapMarker'));
+const ViewAnimationView = React.lazy(() =>
+  import('@/views/Leaflet/ViewAnimation')
+);
+const AirlineAnimationView = React.lazy(() =>
+  import('@/views/Leaflet/AirlineAnimation')
+);
 
 export const leafletRoutes = [
   { path: 'leaflet/stated', component: <StatedView /> },
@@ -27,7 +33,9 @@ export const leafletRoutes = [
   { path: 'leaflet/graphicsOperation', component: <GraphicsOperationView /> },
   { path: 'leaflet/otherGraphics', component: <OtherGraphicsView /> },
   { path: 'leaflet/drawGraphics', component: <DrawGraphicsView /> },
-  { path: 'leaflet/mapMarker', component: <MapMarkerView /> }
+  { path: 'leaflet/mapMarker', component: <MapMarkerView /> },
+  { path: 'leaflet/viewAnimation', component: <ViewAnimationView /> },
+  { path: 'leaflet/airlineAnimation', component: <AirlineAnimationView /> }
 ];
 
 export const leafletMenu = {
@@ -66,6 +74,14 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/mapMarker'>地图标注</Link>,
       key: '/leaflet/mapMarker'
+    },
+    {
+      label: <Link to='/leaflet/viewAnimation'>要素动画</Link>,
+      key: '/leaflet/viewAnimation'
+    },
+    {
+      label: <Link to='/leaflet/airlineAnimation'>航线动画</Link>,
+      key: '/leaflet/airlineAnimation'
     }
   ]
 };
