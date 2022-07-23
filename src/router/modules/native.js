@@ -15,8 +15,12 @@ const ZebraShadowTextView = React.lazy(() =>
 const MaterialInputView = React.lazy(() =>
   import('@/views/Native/PureCSS/MaterialInput')
 );
-const CarouselView = React.lazy(() => import('@/views/Native/PureCSS/Carousel'));
-const TapeEdgeView = React.lazy(() => import('@/views/Native/PureCSS/TapeEdge'));
+const CarouselView = React.lazy(() =>
+  import('@/views/Native/PureCSS/Carousel')
+);
+const TapeEdgeView = React.lazy(() =>
+  import('@/views/Native/PureCSS/TapeEdge')
+);
 const MultilayerBorderView = React.lazy(() =>
   import('@/views/Native/PureCSS/MultilayerBorder')
 );

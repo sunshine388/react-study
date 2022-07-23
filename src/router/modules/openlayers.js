@@ -12,9 +12,15 @@ const ChangeTargetView = React.lazy(() =>
 const SynchronizationView = React.lazy(() =>
   import('@/views/OpenLayers/Synchronization')
 );
-const PreloadMapView = React.lazy(() => import('@/views/OpenLayers/PreloadMap'));
-const VectorJSONView = React.lazy(() => import('@/views/OpenLayers/VectorJSON'));
-const VectorHighView = React.lazy(() => import('@/views/OpenLayers/VectorHigh'));
+const PreloadMapView = React.lazy(() =>
+  import('@/views/OpenLayers/PreloadMap')
+);
+const VectorJSONView = React.lazy(() =>
+  import('@/views/OpenLayers/VectorJSON')
+);
+const VectorHighView = React.lazy(() =>
+  import('@/views/OpenLayers/VectorHigh')
+);
 const RotationMapView = React.lazy(() =>
   import('@/views/OpenLayers/RotationMap')
 );
@@ -27,7 +33,9 @@ const ViewAnimateView = React.lazy(() =>
 const GraticuleView = React.lazy(() => import('@/views/OpenLayers/Graticule'));
 const HeatmapView = React.lazy(() => import('@/views/OpenLayers/Heatmap'));
 const ScaleLineView = React.lazy(() => import('@/views/OpenLayers/ScaleLine'));
-const FullScreenView = React.lazy(() => import('@/views/OpenLayers/FullScreen'));
+const FullScreenView = React.lazy(() =>
+  import('@/views/OpenLayers/FullScreen')
+);
 const ZoomToExtentView = React.lazy(() =>
   import('@/views/OpenLayers/ZoomToExtent')
 );
@@ -37,8 +45,12 @@ const OverviewMapView = React.lazy(() =>
 const MousePositionView = React.lazy(() =>
   import('@/views/OpenLayers/MousePosition')
 );
-const ZoomSliderView = React.lazy(() => import('@/views/OpenLayers/ZoomSlider'));
-const LayerGroupView = React.lazy(() => import('@/views/OpenLayers/LayerGroup'));
+const ZoomSliderView = React.lazy(() =>
+  import('@/views/OpenLayers/ZoomSlider')
+);
+const LayerGroupView = React.lazy(() =>
+  import('@/views/OpenLayers/LayerGroup')
+);
 const SetZIndexView = React.lazy(() => import('@/views/OpenLayers/SetZIndex'));
 const SetResolutionView = React.lazy(() =>
   import('@/views/OpenLayers/SetResolution')
@@ -52,7 +64,9 @@ const MarkerView = React.lazy(() => import('@/views/OpenLayers/Marker'));
 const SimplenessLabelView = React.lazy(() =>
   import('@/views/OpenLayers/SimplenessLabel')
 );
-const BrightMarkView = React.lazy(() => import('@/views/OpenLayers/BrightMark'));
+const BrightMarkView = React.lazy(() =>
+  import('@/views/OpenLayers/BrightMark')
+);
 const PolymerizationView = React.lazy(() =>
   import('@/views/OpenLayers/Polymerization')
 );

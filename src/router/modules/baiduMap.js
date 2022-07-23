@@ -6,19 +6,31 @@ const StatedView = React.lazy(() => import('@/views/BaiduMap/Stated'));
 const Basic3DView = React.lazy(() => import('@/views/BaiduMap/Basic3D'));
 const Earth3DView = React.lazy(() => import('@/views/BaiduMap/3DEarth'));
 const ControlView = React.lazy(() => import('@/views/BaiduMap/Control'));
-const CustomThemeView = React.lazy(() => import('@/views/BaiduMap/CustomTheme'));
+const CustomThemeView = React.lazy(() =>
+  import('@/views/BaiduMap/CustomTheme')
+);
 const DrawIconView = React.lazy(() => import('@/views/BaiduMap/DrawIcon'));
 const DrawLineView = React.lazy(() => import('@/views/BaiduMap/DrawLine'));
-const DrawPolygonView = React.lazy(() => import('@/views/BaiduMap/DrawPolygon'));
+const DrawPolygonView = React.lazy(() =>
+  import('@/views/BaiduMap/DrawPolygon')
+);
 const DrawLabelView = React.lazy(() => import('@/views/BaiduMap/DrawLabel'));
 const InfoWindowView = React.lazy(() => import('@/views/BaiduMap/InfoWindow'));
 const AnimationView = React.lazy(() => import('@/views/BaiduMap/Animation'));
-const TrackAnimationView = React.lazy(() => import('@/views/BaiduMap/TrackAnimation'));
-const ScatterDiagramView = React.lazy(() => import('@/views/BaiduMap/ScatterDiagram'));
+const TrackAnimationView = React.lazy(() =>
+  import('@/views/BaiduMap/TrackAnimation')
+);
+const ScatterDiagramView = React.lazy(() =>
+  import('@/views/BaiduMap/ScatterDiagram')
+);
 const FlyLineView = React.lazy(() => import('@/views/BaiduMap/FlyLine'));
 const FlyLine2View = React.lazy(() => import('@/views/BaiduMap/FlyLine2'));
-const Architecture3DView = React.lazy(() => import('@/views/BaiduMap/3DArchitecture'));
-const Architecture3D2View = React.lazy(() => import('@/views/BaiduMap/3DArchitecture2'));
+const Architecture3DView = React.lazy(() =>
+  import('@/views/BaiduMap/3DArchitecture')
+);
+const Architecture3D2View = React.lazy(() =>
+  import('@/views/BaiduMap/3DArchitecture2')
+);
 
 export const baiduMapRoutes = [
   { path: 'baiduMap/stated', component: <StatedView /> },

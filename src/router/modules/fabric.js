@@ -6,13 +6,19 @@ const StatedView = React.lazy(() => import('@/views/FabricJS/Basic/Stated'));
 const BasicGraphView = React.lazy(() =>
   import('@/views/FabricJS/Basic/BasicGraph')
 );
-const UseImageView = React.lazy(() => import('@/views/FabricJS/Basic/UseImage'));
-const DrawPathView = React.lazy(() => import('@/views/FabricJS/Basic/DrawPath'));
+const UseImageView = React.lazy(() =>
+  import('@/views/FabricJS/Basic/UseImage')
+);
+const DrawPathView = React.lazy(() =>
+  import('@/views/FabricJS/Basic/DrawPath')
+);
 const AnimationView = React.lazy(() =>
   import('@/views/FabricJS/Basic/Animation')
 );
 const FilterView = React.lazy(() => import('@/views/FabricJS/Basic/Filter'));
-const GradientView = React.lazy(() => import('@/views/FabricJS/Basic/Gradient'));
+const GradientView = React.lazy(() =>
+  import('@/views/FabricJS/Basic/Gradient')
+);
 const ColorView = React.lazy(() => import('@/views/FabricJS/Basic/Color'));
 const TextView = React.lazy(() => import('@/views/FabricJS/Basic/Text'));
 const ITextView = React.lazy(() => import('@/views/FabricJS/Basic/IText'));
@@ -32,7 +38,9 @@ const SelectedStyleView = React.lazy(() =>
 const ZoomAndPanningView = React.lazy(() =>
   import('@/views/FabricJS/Basic/ZoomAndPanning')
 );
-const ClipPathView = React.lazy(() => import('@/views/FabricJS/Basic/ClipPath'));
+const ClipPathView = React.lazy(() =>
+  import('@/views/FabricJS/Basic/ClipPath')
+);
 const SerializationView = React.lazy(() =>
   import('@/views/FabricJS/Basic/Serialization')
 );
@@ -46,7 +54,9 @@ const CustomControlRenderView = React.lazy(() =>
 const ManageSelectionView = React.lazy(() =>
   import('@/views/FabricJS/Demo/ManageSelection')
 );
-const CopyPasteView = React.lazy(() => import('@/views/FabricJS/Demo/CopyPaste'));
+const CopyPasteView = React.lazy(() =>
+  import('@/views/FabricJS/Demo/CopyPaste')
+);
 const AnimationEasingView = React.lazy(() =>
   import('@/views/FabricJS/Demo/AnimationEasing')
 );

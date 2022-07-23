@@ -33,6 +33,10 @@ export default function GraphicsOperationView() {
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
+        //设置地图不连续显示
+        noWrap: true,
+        // 设置图层显示范围
+        bounds: [[-90, -180], [90, 180]],
         accessToken:
           'pk.eyJ1Ijoic3Vuc2hpbmUzODgiLCJhIjoiY2w1bTkwYzl2MHJ0cjNncWlvMzA5aGYzeSJ9.uaM3WZCNU2_Cg2yXBi-ilA'
       }

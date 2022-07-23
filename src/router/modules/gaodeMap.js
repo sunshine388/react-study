@@ -4,7 +4,9 @@ import React from 'react';
 
 const StatedView = React.lazy(() => import('@/views/GaodeMap/Stated'));
 
-export const gaodeMapRoutes = [{ path: 'gaodeMap/stated', component: <StatedView /> }];
+export const gaodeMapRoutes = [
+  { path: 'gaodeMap/stated', component: <StatedView /> }
+];
 
 export const gaodeMapMenu = {
   label: '高德地图',
