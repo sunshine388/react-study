@@ -28,6 +28,7 @@ const ThirdPartyMapView = React.lazy(() =>
   import('@/views/Leaflet/ThirdPartyMap')
 );
 const OGCView = React.lazy(() => import('@/views/Leaflet/OGC'));
+const HeatmapView = React.lazy(() => import('@/views/Leaflet/Heatmap'));
 
 export const leafletRoutes = [
   { path: 'leaflet/stated', component: <StatedView /> },
@@ -41,7 +42,8 @@ export const leafletRoutes = [
   { path: 'leaflet/viewAnimation', component: <ViewAnimationView /> },
   { path: 'leaflet/airlineAnimation', component: <AirlineAnimationView /> },
   { path: 'leaflet/thirdPartyMap', component: <ThirdPartyMapView /> },
-  { path: 'leaflet/OGC', component: <OGCView /> }
+  { path: 'leaflet/OGC', component: <OGCView /> },
+  { path: 'leaflet/heatmap', component: <HeatmapView /> }
 ];
 
 export const leafletMenu = {
@@ -96,6 +98,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/OGC'>OGC资源</Link>,
       key: '/leaflet/OGC'
+    },
+    {
+      label: <Link to='/leaflet/heatmap'>热力图</Link>,
+      key: '/leaflet/heatmap'
     }
   ]
 };

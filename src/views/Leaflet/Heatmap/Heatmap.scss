@@ -1,0 +1,16 @@
+#heatmap {
+  width: 100%;
+  height: 100%;
+  height: calc(100% - 40px);
+}
+.map-btn {
+  margin-bottom: 10px;
+  height: 30px;
+  button {
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    margin-right: 20px;
+    padding: 0 16px;
+  }
+}
