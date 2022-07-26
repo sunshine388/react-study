@@ -30,6 +30,9 @@ const ThirdPartyMapView = React.lazy(() =>
 const OGCView = React.lazy(() => import('@/views/Leaflet/OGC'));
 const HeatmapView = React.lazy(() => import('@/views/Leaflet/Heatmap'));
 const MapShowView = React.lazy(() => import('@/views/Leaflet/MapShow'));
+const ProjectionTransformationView = React.lazy(() =>
+  import('@/views/Leaflet/ProjectionTransformation')
+);
 const NetworkAnalysisView = React.lazy(() =>
   import('@/views/Leaflet/NetworkAnalysis')
 );
@@ -49,6 +52,10 @@ export const leafletRoutes = [
   { path: 'leaflet/OGC', component: <OGCView /> },
   { path: 'leaflet/heatmap', component: <HeatmapView /> },
   { path: 'leaflet/mapShow', component: <MapShowView /> },
+  {
+    path: 'leaflet/projectionTransformation',
+    component: <ProjectionTransformationView />
+  },
   { path: 'leaflet/networkAnalysis', component: <NetworkAnalysisView /> }
 ];
 
@@ -112,6 +119,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/mapShow'>地图显示</Link>,
       key: '/leaflet/mapShow'
+    },
+    {
+      label: <Link to='/leaflet/projectionTransformation'>投影转换</Link>,
+      key: '/leaflet/projectionTransformation'
     },
     {
       label: <Link to='/leaflet/networkAnalysis'>网络分析</Link>,
