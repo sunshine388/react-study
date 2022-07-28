@@ -33,10 +33,10 @@ export default function LayerView() {
         guid: new Date().getTime().toString()
       }
     ).addTo(map);
+    document.getElementById('preview1').style.display = 'none';
   };
 
-  /** 根据空间参照系信息对图层进行投影转换
-   */
+  // 根据空间参照系信息对图层进行投影转换
   const projectByParam = () => {
     //清除之前的结果图层
     clearRlt();
