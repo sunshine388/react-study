@@ -30,6 +30,9 @@ const ThirdPartyMapView = React.lazy(() =>
 const OGCView = React.lazy(() => import('@/views/Leaflet/OGC'));
 const HeatmapView = React.lazy(() => import('@/views/Leaflet/Heatmap'));
 const MapShowView = React.lazy(() => import('@/views/Leaflet/MapShow'));
+const GeometryServiceView = React.lazy(() =>
+  import('@/views/Leaflet/GeometryService')
+);
 const MapServiceView = React.lazy(() => import('@/views/Leaflet/MapService'));
 const ThematicMapServiceView = React.lazy(() =>
   import('@/views/Leaflet/ThematicMapService')
@@ -59,6 +62,7 @@ export const leafletRoutes = [
   { path: 'leaflet/OGC', component: <OGCView /> },
   { path: 'leaflet/heatmap', component: <HeatmapView /> },
   { path: 'leaflet/mapShow', component: <MapShowView /> },
+  { path: 'leaflet/geometryService', component: <GeometryServiceView /> },
   { path: 'leaflet/mapService', component: <MapServiceView /> },
   { path: 'leaflet/thematicMapService', component: <ThematicMapServiceView /> },
   { path: 'leaflet/spatialAnalysis', component: <SpatialAnalysisView /> },
@@ -129,6 +133,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/mapShow'>地图显示</Link>,
       key: '/leaflet/mapShow'
+    },
+    {
+      label: <Link to='/leaflet/geometryService'>几何分析服务</Link>,
+      key: '/leaflet/geometryService'
     },
     {
       label: <Link to='/leaflet/mapService'>地图服务</Link>,
