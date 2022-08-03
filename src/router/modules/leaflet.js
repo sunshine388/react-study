@@ -33,6 +33,9 @@ const MapShowView = React.lazy(() => import('@/views/Leaflet/MapShow'));
 const DirectoryServiceView = React.lazy(() =>
   import('@/views/Leaflet/DirectoryService')
 );
+const FeatureQueryView = React.lazy(() =>
+  import('@/views/Leaflet/FeatureQuery')
+);
 const FeatureEditView = React.lazy(() => import('@/views/Leaflet/FeatureEdit'));
 const GeometryServiceView = React.lazy(() =>
   import('@/views/Leaflet/GeometryService')
@@ -67,6 +70,7 @@ export const leafletRoutes = [
   { path: 'leaflet/heatmap', component: <HeatmapView /> },
   { path: 'leaflet/mapShow', component: <MapShowView /> },
   { path: 'leaflet/directoryService', component: <DirectoryServiceView /> },
+  { path: 'leaflet/featureQuery', component: <FeatureQueryView /> },
   { path: 'leaflet/featureEdit', component: <FeatureEditView /> },
   { path: 'leaflet/geometryService', component: <GeometryServiceView /> },
   { path: 'leaflet/mapService', component: <MapServiceView /> },
@@ -143,6 +147,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/directoryService'>目录服务</Link>,
       key: '/leaflet/directoryService'
+    },
+    {
+      label: <Link to='/leaflet/featureQuery'>要素查询</Link>,
+      key: '/leaflet/featureQuery'
     },
     {
       label: <Link to='/leaflet/featureEdit'>要素编辑</Link>,
