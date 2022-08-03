@@ -33,6 +33,7 @@ const MapShowView = React.lazy(() => import('@/views/Leaflet/MapShow'));
 const DirectoryServiceView = React.lazy(() =>
   import('@/views/Leaflet/DirectoryService')
 );
+const FeatureEditView = React.lazy(() => import('@/views/Leaflet/FeatureEdit'));
 const GeometryServiceView = React.lazy(() =>
   import('@/views/Leaflet/GeometryService')
 );
@@ -66,6 +67,7 @@ export const leafletRoutes = [
   { path: 'leaflet/heatmap', component: <HeatmapView /> },
   { path: 'leaflet/mapShow', component: <MapShowView /> },
   { path: 'leaflet/directoryService', component: <DirectoryServiceView /> },
+  { path: 'leaflet/featureEdit', component: <FeatureEditView /> },
   { path: 'leaflet/geometryService', component: <GeometryServiceView /> },
   { path: 'leaflet/mapService', component: <MapServiceView /> },
   { path: 'leaflet/thematicMapService', component: <ThematicMapServiceView /> },
@@ -141,6 +143,10 @@ export const leafletMenu = {
     {
       label: <Link to='/leaflet/directoryService'>目录服务</Link>,
       key: '/leaflet/directoryService'
+    },
+    {
+      label: <Link to='/leaflet/featureEdit'>要素编辑</Link>,
+      key: '/leaflet/featureEdit'
     },
     {
       label: <Link to='/leaflet/geometryService'>几何分析服务</Link>,

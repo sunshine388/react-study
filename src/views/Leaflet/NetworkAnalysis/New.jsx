@@ -137,8 +137,8 @@ export default function NewView() {
 
   return (
     <React.Fragment>
-      <div className='map_container'>
-        <div id='map1' className='map'></div>
+      <div className='map_box'>
+        <div id='map1' className='info_map'></div>
         <div id='toolspanel' className='info_box'>
           <input type='button' value='网络分析' onClick={NetAnalysis} />
           <div id='resultInfo1'>
